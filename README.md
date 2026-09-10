@@ -174,7 +174,7 @@ Mundus Administratum — **где каждый уважает свободу с�
 
 *Etalon arbitri. prode LoveAndNuke.*
 
-![Эталон арбитра / Etalon arbitri](ChatGPT%20Image%2010%20сент.%202026%20г.,%2002_39_48.png)
+!
 
 Присутствие — тем, что стоит. Не атака. NaVi на месте — эталон.
 
