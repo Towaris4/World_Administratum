@@ -1,0 +1,5 @@
+id,name,knows_name,knows_latin,role,role_latin,chosen_on,notes
+1,example,yes,yes,Diplomat,Diplomaticus vocis,,
+2,example,yes,yes,Arbiter,Arbiter praesens,,"защита прав: просто отстояв"
+3,example,yes,yes,Emendator,Emendator,,"через дипломата: баги социума и госорганов"
+
