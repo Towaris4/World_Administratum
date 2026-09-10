@@ -223,6 +223,7 @@ Mundus Administratum — **где каждый уважает свободу с�
 | математика | *mathematica* |
 | кружка кофе (похоже на Java) | *poculum coffeae (simile Java)* |
 | с уважением The Sun | *cum reverentia The Sun* |
+И Илона Маска.
 
 *Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun.*
 
