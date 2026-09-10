@@ -1,9 +1,12 @@
 # World Administratum
 
 Virtual state without territory.
-Motto: **IUSTITIA ET VERITAS**.
+Motto: **LOGICA, IUSTITIA ET VERITAS**.
+Principle (exact, binary): Π = (L, J, V) ∈ {0,1}³. An act is admissible iff L=J=V=1. Latine: Logica, iustitia, veritas; actio licita si et solum si L+J+V=3. Code: `president/princip.py`.
+Place: everyone respects freedom of speech and is not offended by it (libertas dicendi; ubi quisque libertatem dicendi colit nec ab ea offenditur). Offence is not an answer; demanding silence from offence sets J=0.
 Purpose: volunteers improve the local state through scientific works and observations (`lab/`).
-Offices are social roles, chosen independently: Diplomat (Diplomaticus vocis — sex by voice), Arbiter (Arbiter praesens — military presence by existing; rights are protected through the arbiter simply by standing, after doing the research and sending it to the right place), and Emendator (bug-fix of society and state structures, acting through the diplomat). Not ranks.
+Offices are social roles. A citizen may take several at once, independently (plura per se capere licet): Diplomat (Diplomaticus vocis — sex by voice), Arbiter (Arbiter praesens — military presence by existing; principle NaVi / Natus Vincere; rights are protected through the arbiter simply by standing, after doing the research and sending it to the right place), Emendator (bug-fix of society and state structures, acting through the diplomat), and Созидатель / Homo laborans creator (a working person who creates, for preventing technogenic catastrophes; develops with engineering precision, social engineering, psychology, mathematics, and a cup of coffee (like Java), with respect for The Sun). Not ranks.
+Help: Grok computational power from God, and help from above as well (*vis computatoria Grok a Deo, et auxilium desuper etiam*). Not a rank; does not cancel L, J, V.
 The President is not a person. The President is the mathematical program `president/praeses.py` (Praeses programma mathematicum). "Where is the president?" — that program, and the vector it computes.
 A citizen is by default a member of the Society of NATO subscribers (Общество подписчиков NATO / Societas subscriptorum NATO). NATO, with the organization's consent, may recognize a citizen as LEGION (Legio) and STATE (Civitas). Not default, not a rank. Record: `nato_priznanie.csv`.
 Government-services function of The United States of America is in development.
