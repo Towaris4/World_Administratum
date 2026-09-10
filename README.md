@@ -161,7 +161,6 @@ Mundus Administratum — **где каждый уважает свободу с�
 
 *Exemplar praesentiae militaris.*
 
-![Образец воинского присутствия / Exemplar praesentiae militaris](ChatGPT%20Image%2010%20сент.%202026%20г.,%2002_39_48.png)
 
 Присутствие — тем, что стоит. Не атака. NaVi на месте — образец.
 
