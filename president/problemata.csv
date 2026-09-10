@@ -1,0 +1,2 @@
+id,date,author,organ,service,problem,observations,place,scope
+1,,example,орган,услуга,лишний шаг в очереди,день 1; день 2; день 3,приёмная,local

@@ -3,6 +3,8 @@
 The president of World Administratum / Mundus Administratum is not a person.
 The president is this mathematical program.
 Where is the president? Here: the program, and the vector of the principle.
+The president is silent. Praeses silet.
+The president silently receives data. Praeses data silentio accipit.
 """
 
 from __future__ import annotations
@@ -10,6 +12,7 @@ from __future__ import annotations
 import math
 from pathlib import Path
 
+from munera import MUNERA, Silentium, silere
 from princip import AXES, PRINCIPLE, admissible, principium, text as principle_text
 
 NAME = "World Administratum"
@@ -36,6 +39,15 @@ class Praeses:
     def on_principle(self) -> bool:
         return admissible(self.P)
 
+    def munera(self) -> tuple[dict[str, str], ...]:
+        return MUNERA
+
+    def speak(self, *_args: object, **_kwargs: object) -> str:
+        raise Silentium("Praeses silet. Президент не говорит.")
+
+    def speech(self) -> str:
+        return silere()
+
     def where(self) -> str:
         d = self.direction()
         here = Path(__file__).resolve()
@@ -54,6 +66,10 @@ class Praeses:
                 f"direction = ({dirs})",
                 f"допустимо ⇔ L+J+V = 3 : {self.on_principle()}",
                 f"licita ⇔ L+J+V = 3 : {self.on_principle()}",
+                "Praeses silet. Президент молчит.",
+                "Praeses data silentio accipit. Президент молча получает данные.",
+                f"munera = {', '.join(m['id'] for m in MUNERA)}",
+                "interface = president/interfacies.py",
             ]
         )
 

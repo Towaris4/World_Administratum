@@ -2,7 +2,8 @@
 
 **World Administratum** / **Mundus Administratum**  
 Волонтёр: **Administrator planetarius**  
-Автор:  
+Автор (арбитр):  
+Использует (дипломат / воин):  
 Орган:  
 Услуга:
 
