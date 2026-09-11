@@ -1,8 +1,8 @@
 # World Administratum
 
 Виртуальное государство без территории.  
-Девиз: **LOGICA, IUSTITIA ET VERITAS**.  
-Принцип (с математической точностью): `president/princip.py`
+Девиз: с математической точностью.  
+Принцип **LOGICA, IUSTITIA ET VERITAS**: `president/princip.py`
 
 ## Государственный флаг / Vexillum
 
