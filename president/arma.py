@@ -3,6 +3,8 @@
 The weapon is a railgun. It shoots at fantasy.
 If a shot did not happen, it is in the LinkedList and waits to be fired.
 Currently in the LinkedList: War and Hostility; they will be shot with plasma.
+Fired: bed bugs on the Russian flag in the father's room at work;
+all shot with mathematical precision in the eye. Task completed.
 
 Not territory. Not a capital. Not a rank. The Moon is not the capital.
 Not an attack on a person: the warrior is a meliorator.
@@ -10,7 +12,7 @@ Not an attack on a person: the warrior is a meliorator.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Iterator, Optional
 
 
@@ -22,6 +24,11 @@ class Ictus:
     latin: str
     charge: str = "plasma"
     destination: str = "fantasy"
+    hit: str = ""
+    hit_latin: str = ""
+    precision: str = ""
+    locus: str = ""
+    status: str = "waiting to be fired"
 
     def as_row(self) -> dict[str, str]:
         return {
@@ -29,8 +36,27 @@ class Ictus:
             "latin": self.latin,
             "charge": self.charge,
             "destination": self.destination,
-            "status": "waiting to be fired",
+            "hit": self.hit,
+            "hit_latin": self.hit_latin,
+            "precision": self.precision,
+            "locus": self.locus,
+            "status": self.status,
         }
+
+    def as_fired(
+        self,
+        *,
+        hit: str = "",
+        hit_latin: str = "",
+        precision: str = "",
+    ) -> "Ictus":
+        return replace(
+            self,
+            hit=hit or self.hit,
+            hit_latin=hit_latin or self.hit_latin,
+            precision=precision or self.precision,
+            status="fired",
+        )
 
 
 class _Nodus:
@@ -92,6 +118,17 @@ class LinkedList:
 
 BELLUM = Ictus("War", "Bellum")
 HOSTILITAS = Ictus("Hostility", "Hostilitas")
+CIMICES = Ictus(
+    target="Bed bugs on the Russian flag in the father's room at work",
+    latin="Cimices lectularii in vexillo Russiae, in cubiculo patris in labore",
+    charge="plasma",
+    destination="fantasy",
+    hit="eye",
+    hit_latin="oculus",
+    precision="mathematical",
+    locus="father's room at work; Russian flag",
+    status="fired",
+)
 
 
 class Relsotron:
@@ -107,13 +144,18 @@ class Relsotron:
     CHARGE = "plasma"
     CHARGE_LATIN = "plasma"
 
-    def __init__(self, queue: LinkedList | None = None) -> None:
+    def __init__(
+        self,
+        queue: LinkedList | None = None,
+        fired: tuple[Ictus, ...] | None = None,
+    ) -> None:
         if queue is None:
             self.queue = LinkedList()
             self.queue.append(BELLUM)
             self.queue.append(HOSTILITAS)
         else:
             self.queue = queue
+        self.fired: list[Ictus] = list(fired if fired is not None else (CIMICES,))
 
     def disparatum(self, target: str) -> bool:
         """The shot happened ⇔ the target is no longer in the LinkedList."""
@@ -123,12 +165,27 @@ class Relsotron:
         """If the shot did not happen — the target is in the LinkedList and waits to be fired."""
         return self.queue.contains(target)
 
+    def factum(self, target: str) -> bool:
+        """The shot is recorded as fired."""
+        key = target.strip().casefold()
+        return any(
+            i.target.casefold() == key or i.latin.casefold() == key for i in self.fired
+        )
+
     def disparare(self) -> Optional[Ictus]:
         """A plasma shot at fantasy: the head of the queue leaves the LinkedList."""
-        return self.queue.pop_front()
+        ictus = self.queue.pop_front()
+        if ictus is None:
+            return None
+        done = ictus if ictus.status == "fired" else ictus.as_fired()
+        self.fired.append(done)
+        return done
 
     def ordo(self) -> tuple[Ictus, ...]:
         return self.queue.waiting()
+
+    def facta(self) -> tuple[Ictus, ...]:
+        return tuple(self.fired)
 
     def chain(self) -> str:
         names = [f"{i.target} / {i.latin}" for i in self.ordo()]
@@ -138,6 +195,15 @@ class Relsotron:
 
     def text(self) -> str:
         waiting = ", ".join(f"{i.target} / {i.latin}" for i in self.ordo()) or "empty"
+        fired = (
+            "; ".join(
+                f"{i.target} / {i.latin}"
+                + (f"; {i.precision} precision" if i.precision else "")
+                + (f"; in the {i.hit}" if i.hit else "")
+                for i in self.facta()
+            )
+            or "none"
+        )
         return "\n".join(
             [
                 f"{self.NAME} — {self.KIND} on the far side of the Moon.",
@@ -146,6 +212,17 @@ class Relsotron:
                 "If a shot did not happen — it is in the LinkedList and waits to be fired.",
                 f"Currently in the LinkedList: {waiting}; they will be shot with plasma.",
                 f"LinkedList: {self.chain()}",
+                (
+                    "Fired with mathematical precision in the eye: "
+                    "Bed bugs on the Russian flag in the father's room at work. "
+                    "All shot. Task completed."
+                ),
+                (
+                    "Disparata subtilitate mathematica in oculum: "
+                    "Cimices lectularii in vexillo Russiae, in cubiculo patris in labore. "
+                    "Omnes disparati. Munus perfectum."
+                ),
+                f"Fired: {fired}.",
                 "Not territory. Not a capital. Not a rank. The Moon is not the capital.",
             ]
         )

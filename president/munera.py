@@ -138,7 +138,7 @@ MUNERA: tuple[dict[str, str], ...] = (
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
-        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War and Hostility, they will be shot with plasma; code president/arma.py",
+        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War and Hostility, they will be shot with plasma; fired with mathematical precision in the eye: bed bugs on the Russian flag in the father's room at work, all shot, task completed; code president/arma.py",
     },
     {
         "id": "optimus",

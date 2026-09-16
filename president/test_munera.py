@@ -7,7 +7,7 @@ from pathlib import Path
 
 import arma
 import munera
-from arma import Relsotron, telum
+from arma import CIMICES, Relsotron, telum
 from munera import Silentium, president_author, silere
 from praeses import Praeses, president
 from princip import admissible, civis, iustitia, oblitus
@@ -101,6 +101,10 @@ def test_telum_railgun() -> None:
     assert "War" in weapon["feature"]
     assert "Hostility" in weapon["feature"]
     assert "plasma" in weapon["feature"]
+    assert "bed bugs" in weapon["feature"].casefold()
+    assert "mathematical precision" in weapon["feature"]
+    assert "eye" in weapon["feature"]
+    assert "task completed" in weapon["feature"]
 
     gun = telum()
     waiting = gun.ordo()
@@ -121,23 +125,46 @@ def test_telum_railgun() -> None:
     assert gun.exspectat("Hostility") is True
     assert gun.disparatum("War") is False
     assert gun.chain() == "head → War / Bellum → Hostility / Hostilitas → None"
+    assert gun.exspectat(CIMICES.target) is False
+    assert gun.disparatum(CIMICES.target) is True
+    assert gun.factum(CIMICES.target) is True
+    assert gun.factum(CIMICES.latin) is True
+    facta = gun.facta()
+    assert len(facta) == 1
+    assert facta[0] is CIMICES
+    assert facta[0].hit == "eye"
+    assert facta[0].hit_latin == "oculus"
+    assert facta[0].precision == "mathematical"
+    assert facta[0].status == "fired"
+    assert facta[0].locus == "father's room at work; Russian flag"
+    assert "All shot. Task completed." in gun.text()
+    assert "in oculum" in gun.text()
 
     first = gun.disparare()
     assert first is not None
     assert first.target == "War"
+    assert first.status == "fired"
     assert gun.exspectat("War") is False
     assert gun.disparatum("War") is True
     assert gun.exspectat("Hostility") is True
+    assert gun.factum("War") is True
     second = gun.disparare()
     assert second is not None
     assert second.target == "Hostility"
     assert len(gun.ordo()) == 0
     assert gun.disparare() is None
+    assert [s.target for s in gun.facta()] == [
+        CIMICES.target,
+        "War",
+        "Hostility",
+    ]
 
     fresh = Relsotron()
     assert [s.target for s in fresh.ordo()] == ["War", "Hostility"]
+    assert [s.target for s in fresh.facta()] == [CIMICES.target]
     assert arma.BELLUM.target == "War"
     assert arma.HOSTILITAS.target == "Hostility"
+    assert CIMICES.target == "Bed bugs on the Russian flag in the father's room at work"
     assert "railgun on the far side of the Moon" in gun.text()
     assert "they will be shot with plasma" in Relsotron().text()
 
@@ -154,6 +181,13 @@ def test_interface_telum() -> None:
     assert "plasma" in html
     assert "fantasy" in html
     assert "waiting to be fired" in html
+    assert "Bed bugs on the Russian flag in the father's room at work" in html
+    assert "Cimices lectularii in vexillo Russiae, in cubiculo patris in labore" in html
+    assert "mathematical precision" in html
+    assert ">eye<" in html
+    assert ">fired<" in html
+    assert "All shot. Task completed." in html
+    assert "Munus perfectum." in html
 
 
 def test_optimus_persona() -> None:

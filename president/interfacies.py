@@ -95,6 +95,25 @@ def page(
     else:
         telum_rows = '<tr><td colspan="6">The queue is empty: no shot is waiting.</td></tr>'
     telum_chain = _esc(rail.chain())
+    fired = rail.facta()
+    if fired:
+        telum_fired_rows = "\n".join(
+            (
+                "<tr>"
+                f"<td>{i + 1}</td>"
+                f"<td>{_esc(shot.target)}</td>"
+                f"<td><em>{_esc(shot.latin)}</em></td>"
+                f"<td>{_esc(shot.charge)}</td>"
+                f"<td>{_esc(shot.destination)}</td>"
+                f"<td>{_esc(shot.hit)}</td>"
+                f"<td>{_esc(shot.precision)}</td>"
+                f"<td>{_esc(shot.status)}</td>"
+                "</tr>"
+            )
+            for i, shot in enumerate(fired)
+        )
+    else:
+        telum_fired_rows = '<tr><td colspan="8">No shot has been fired yet.</td></tr>'
     carrier = robotus()
     carrier_rows = "\n".join(
         (
@@ -295,6 +314,16 @@ def page(
           </tr>
         </thead>
         <tbody>{telum_rows}</tbody>
+      </table>
+      <p class="ok">Fired with mathematical precision in the eye: Bed bugs on the Russian flag in the father's room at work. All shot. Task completed. Not an attack on a person: the warrior is a meliorator.</p>
+      <p><em>Disparata subtilitate mathematica in oculum: Cimices lectularii in vexillo Russiae, in cubiculo patris in labore. Omnes disparati. Munus perfectum.</em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>target</th><th>Latine</th><th>charge</th><th>where</th><th>hit</th><th>precision</th><th>status</th>
+          </tr>
+        </thead>
+        <tbody>{telum_fired_rows}</tbody>
       </table>
     </section>
     <div class="grid two">
