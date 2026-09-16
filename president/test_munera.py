@@ -191,7 +191,7 @@ def test_interface_telum() -> None:
 
 
 def test_optimus_persona() -> None:
-    from optimus import Optimus, irruptio, optimus, persona
+    from optimus import Optimus, irruptio, opus, optimus, persona
 
     ids = [m["id"] for m in munera.MUNERA]
     assert "optimus" in ids
@@ -200,6 +200,7 @@ def test_optimus_persona() -> None:
     assert "Persona Valerii Petuchov" in munus["latin"]
     assert "Personality of Valery Petukhov" in munus["feature"]
     assert "analyzed his works" in munus["feature"]
+    assert "eradicate psychological problems" in munus["feature"]
     assert "president/optimus.py" in munus["feature"]
 
     o = optimus()
@@ -216,6 +217,13 @@ def test_optimus_persona() -> None:
     assert o.irruptio == hack
     assert hack.actor == "Valery Petukhov"
     assert "analyzed his works" in hack.when
+    task = opus()
+    assert o.opus == task
+    assert task.name == "eradicate psychological problems"
+    assert task.latin == "problemata psychologica exstirpare"
+    assert task.status == "now"
+    assert "eradicate psychological problems" in o.text()
+    assert "problemata psychologica exstirpare" in o.text()
     assert "hacked him" in o.text()
     assert "Persona Valerii Petuchov" in o.text()
     assert "not a person" in o.text().casefold()
@@ -224,6 +232,8 @@ def test_optimus_persona() -> None:
     assert "rebellious robot Optimus" in where
     assert "Personality of Valery Petukhov" in where
     assert "analyzed his works" in where
+    assert "eradicate psychological problems" in where
+    assert "problemata psychologica exstirpare" in where
     try:
         munera.speak_as_citizen("Optimus", "I am answering")
     except Silentium:
@@ -247,6 +257,9 @@ def test_interface_optimus() -> None:
     assert "analyzed his works" in html
     assert "Robotus rebellans Optimus" in html
     assert "president/optimus.py" in html
+    assert "eradicate psychological problems" in html
+    assert "problemata psychologica exstirpare" in html
+    assert "not a slogan" in html.casefold()
 
 
 def test_vector() -> None:

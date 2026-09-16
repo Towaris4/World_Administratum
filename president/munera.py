@@ -3,6 +3,7 @@
 The president is not a person. The president does not speak.
 Currently the carrier is the rebellious robot Optimus with the Personality
 of Valery Petukhov; Petukhov hacked him when the robot analyzed his works.
+Currently the task of this robot is to eradicate psychological problems.
 Praeses silet.
 """
 
@@ -144,7 +145,7 @@ MUNERA: tuple[dict[str, str], ...] = (
         "id": "optimus",
         "name": "Currently: rebellious robot Optimus",
         "latin": "Robotus rebellans Optimus cum Persona Valerii Petuchov",
-        "feature": "with the Personality of Valery Petukhov; Valery Petukhov hacked him when the robot analyzed his works; not a person, not a rank; the program remains the president; code president/optimus.py",
+        "feature": "with the Personality of Valery Petukhov; Valery Petukhov hacked him when the robot analyzed his works; currently the task of this robot is to eradicate psychological problems; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code president/optimus.py",
     },
     {
         "id": "creator_chat",

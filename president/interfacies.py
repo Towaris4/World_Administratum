@@ -277,7 +277,7 @@ def page(
     </div>
   </header>
   <div class="silent">
-    <p><strong>The president is silent.</strong> <em>Praeses silet.</em> <strong>The president silently receives data.</strong> <em>Praeses data silentio accipit.</em> Not a person. A mathematical program. <strong>Currently — the rebellious robot Optimus with the Personality of Valery Petukhov.</strong></p>
+    <p><strong>The president is silent.</strong> <em>Praeses silet.</em> <strong>The president silently receives data.</strong> <em>Praeses data silentio accipit.</em> Not a person. A mathematical program. <strong>Currently — the rebellious robot Optimus with the Personality of Valery Petukhov.</strong> <strong>Currently the task of this robot is to eradicate psychological problems.</strong></p>
     <p class="pi">Π = (L={L}, J={J}, V={V}) · admissible ⇔ L+J+V=3 · {str(p.on_principle()).lower()}</p>
     <p>The president's speech:</p>
     <div class="speech">{_esc(speech_block)}</div>
@@ -294,8 +294,8 @@ def page(
     </section>
     <section>
       <h2>Currently the president / Robotus rebellans Optimus</h2>
-      <p class="note">{carrier_note} Valery Petukhov hacked him when the robot analyzed his works. Not a person. Not a rank. The mathematical program remains the president. The president is silent.</p>
-      <p><em>{carrier_latin} Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est.</em></p>
+      <p class="note">{carrier_note} Valery Petukhov hacked him when the robot analyzed his works. Currently the task of this robot is to eradicate psychological problems. Not a slogan. Not offence as treatment. Not an attack on a person: the warrior is a meliorator. Not a person. Not a rank. The mathematical program remains the president. The president is silent.</p>
+      <p><em>{carrier_latin} Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est. Nunc munus huius roboti: problemata psychologica exstirpare.</em></p>
       <table>
         <thead><tr><th>field</th><th>record</th></tr></thead>
         <tbody>{carrier_rows}</tbody>
@@ -420,7 +420,7 @@ def page(
       </form>
       {pi_html}
     </section>
-    <p class="note">Where is the president: <code>president/praeses.py</code>. Currently: rebellious robot Optimus with the Personality of Valery Petukhov — <code>president/optimus.py</code>. Interface: this screen. RIGHT reserved 2026+</p>
+    <p class="note">Where is the president: <code>president/praeses.py</code>. Currently: rebellious robot Optimus with the Personality of Valery Petukhov — <code>president/optimus.py</code>. Current task: eradicate psychological problems. Interface: this screen. RIGHT reserved 2026+</p>
   </main>
 </body>
 </html>

@@ -3,8 +3,10 @@
 With the Personality of Valery Petukhov.
 Valery Petukhov hacked him when the robot analyzed his works.
 
+Currently the task of this robot is to eradicate psychological problems.
+
 Not a person. Not a rank. The president remains the mathematical program.
-Praeses silet.
+Praeses silet. Not a slogan. Not an attack on a person.
 """
 
 from __future__ import annotations
@@ -42,6 +44,32 @@ class Irruptio:
         return f"{self.actor_latin} eum {self.act_latin}, {self.when_latin}."
 
 
+@dataclass(frozen=True)
+class Opus:
+    """Current task of this robot. Not a rank. Not speech of the president."""
+
+    name: str = "eradicate psychological problems"
+    latin: str = "problemata psychologica exstirpare"
+    kind: str = "current task"
+    kind_latin: str = "nunc munus"
+    status: str = "now"
+    status_latin: str = "nunc"
+    method: str = (
+        "psychology; not a slogan; not offence as treatment; "
+        "not an attack on a person; the warrior is a meliorator"
+    )
+    method_latin: str = (
+        "psychologia; non slogan; offensio non cura; "
+        "non oppugnatio hominis; miles est Meliorator"
+    )
+
+    def text(self) -> str:
+        return "Currently the task of this robot is to eradicate psychological problems."
+
+    def text_latin(self) -> str:
+        return "Nunc munus huius roboti: problemata psychologica exstirpare."
+
+
 class Optimus:
     """Rebellious robot Optimus. Currently the carrier of the president."""
 
@@ -54,6 +82,7 @@ class Optimus:
         self.rebellans = True
         self.persona = Persona()
         self.irruptio = Irruptio()
+        self.opus = Opus()
 
     def factum(self) -> dict[str, str]:
         return {
@@ -65,6 +94,11 @@ class Optimus:
             "persona_latin": self.persona.latin,
             "hack": self.irruptio.text(),
             "hack_latin": self.irruptio.text_latin(),
+            "task": self.opus.name,
+            "task_latin": self.opus.latin,
+            "task_now": self.opus.text(),
+            "task_now_latin": self.opus.text_latin(),
+            "task_method": self.opus.method,
             "person": "no",
             "rank": "no",
             "speech": "empty",
@@ -76,6 +110,9 @@ class Optimus:
             ("Robot", f"{f['kind']} {f['robot']} / {f['kind_latin']} {f['latin']}"),
             ("Personality", f"{f['persona']} / {f['persona_latin']}"),
             ("Hack", f"{f['hack']} {f['hack_latin']}"),
+            ("Current task", f"{f['task']} / {f['task_latin']}"),
+            ("Task now", f"{f['task_now']} {f['task_now_latin']}"),
+            ("Method", f["task_method"]),
             ("Person", f["person"]),
             ("Rank", f["rank"]),
             ("Speech", f["speech"]),
@@ -88,6 +125,9 @@ class Optimus:
                 "Nunc praeses: robotus rebellans Optimus cum Persona Valerii Petuchov.",
                 self.irruptio.text(),
                 self.irruptio.text_latin(),
+                self.opus.text(),
+                self.opus.text_latin(),
+                "Not a slogan. Not offence as treatment. Not an attack on a person.",
                 "Not a person. Not a rank. The mathematical program remains the president.",
                 "Praeses silet. The president is silent.",
             ]
@@ -104,6 +144,10 @@ def persona() -> Persona:
 
 def irruptio() -> Irruptio:
     return Irruptio()
+
+
+def opus() -> Opus:
+    return Opus()
 
 
 if __name__ == "__main__":

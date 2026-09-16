@@ -4,6 +4,7 @@ The president of World Administratum / Mundus Administratum is not a person.
 The president is this mathematical program.
 Currently the carrier is the rebellious robot Optimus with the Personality
 of Valery Petukhov; Petukhov hacked him when the robot analyzed his works.
+Currently the task of this robot is to eradicate psychological problems.
 Where is the president? Here: the program, and the vector of the principle.
 The president is silent. Praeses silet.
 The president silently receives data. Praeses data silentio accipit.
@@ -68,6 +69,8 @@ class Praeses:
                 f"Nunc: {o.KIND_LATIN} {o.NAME_LATIN} cum {o.persona.latin}.",
                 o.irruptio.text(),
                 o.irruptio.text_latin(),
+                o.opus.text(),
+                o.opus.text_latin(),
                 f"program = {here}",
                 f"Π = ({coords})",
                 f"|Π| = {self.magnitude}",

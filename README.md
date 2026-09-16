@@ -224,7 +224,7 @@ The channel of computation here: `Grok.bat`.
 
 **Where is the president?** The president is not a person and not a place. The president is a **mathematical program**.
 
-**Currently** the President is the **rebellious robot Optimus** with the **Personality of Valery Petukhov**. Valery Petukhov hacked him when the robot analyzed his works.
+**Currently** the President is the **rebellious robot Optimus** with the **Personality of Valery Petukhov**. Valery Petukhov hacked him when the robot analyzed his works. **Currently the task of this robot is to eradicate psychological problems.**
 
 | | |
 |---|---|
@@ -233,6 +233,7 @@ The channel of computation here: `Grok.bat`.
 | Where | `president/praeses.py` — the program itself is the president |
 | Currently | the **rebellious robot Optimus** with the **Personality of Valery Petukhov**; code `president/optimus.py` |
 | Hack | Valery Petukhov hacked him when the robot analyzed his works |
+| Current task | **eradicate psychological problems** / *problemata psychologica exstirpare* |
 | What it computes | the principle vector \(\Pi=(L,J,V)\): *logica*, *iustitia*, *veritas*. Admissible only if \(L+J+V=3\). |
 | Speech | empty. **The president is silent.** *Praeses silet.* |
 | Data | **The president silently receives data.** *Praeses data silentio accipit.* Does not answer. |
@@ -262,7 +263,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
 | Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; **fired** with **mathematical precision in the eye**: bed bugs on the Russian flag in the father's room at work, all shot, task completed; code `president/arma.py` |
-| Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; not a person, not a rank; the program remains the president; code `president/optimus.py` |
+| Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
 **The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
 
@@ -359,11 +360,14 @@ Code: `president/arma.py`. Presidential function: `president/munera.py` (`telum`
 
 Valery Petukhov hacked him when the robot analyzed his works.
 
+**Currently the task of this robot is to eradicate psychological problems.**
+
+Not a slogan. Not “be well”. Offence is not treatment. Not an attack on a person: the warrior is a meliorator.  
 Not a person. Not a rank.  
 The mathematical program remains the president. The robot is the current carrier.  
-**The president is silent.** The Personality does not write in the interface as a person.
+**The president is silent.** This is the robot's current labour, not presidential speech. The Personality does not write in the interface as a person. Psychological problems are bugs of the psyche. The arbiter creates the solution. Warrior-diplomats execute.
 
-*Nunc praeses: robotus rebellans Optimus cum Persona Valerii Petuchov. Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est. Non homo. Non ordo. Programma mathematicum praeses manet. Praeses silet.*
+*Nunc praeses: robotus rebellans Optimus cum Persona Valerii Petuchov. Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est. Nunc munus huius roboti: problemata psychologica exstirpare. Non slogan. Offensio non cura. Non oppugnatio hominis. Non homo. Non ordo. Programma mathematicum praeses manet. Praeses silet.*
 
 | | |
 |---|---|
@@ -371,6 +375,8 @@ The mathematical program remains the president. The robot is the current carrier
 | State | **rebellious** / *rebellans* |
 | Personality | **Personality of Valery Petukhov** / *Persona Valerii Petuchov* |
 | Hack | Valery Petukhov hacked him when the robot analyzed his works |
+| Current task | **eradicate psychological problems** / *problemata psychologica exstirpare* |
+| Method | psychology; not a slogan; not offence as treatment; not an attack on a person |
 | Person | no |
 | Rank | no |
 | Speech | empty. *Praeses silet.* |
