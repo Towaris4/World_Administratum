@@ -1,34 +1,33 @@
-# Научная работа
+# Scientific work
 
-**World Administratum** / **Mundus Administratum**  
-Волонтёр: **Administrator planetarius**  
-Автор (арбитр):  
-Использует (дипломат / воин):  
-Орган:  
-Услуга:
+Volunteer: **Administrator planetarius** (exists → citizen; knowledge of the name is not obligatory)  
+Author / solution (arbiter, arbiter-creator):  
+Executes (warrior-diplomat):  
+Organ:  
+Service:
 
-## Наблюдения
+## Observations
 
-Ссылка на строки `lab/nablyudeniya.csv`:
+Reference to rows in `lab/nablyudeniya.csv`:
 
 1.
 2.
 3.
 
-Что видно по фактам (сроки, отказы, лишние шаги, где человек теряется):
+What the facts show (times, refusals, extra steps, where a person is lost):
 
-## Куда отправлено
+## Where it was sent
 
-Нужное место (орган / адрес, где это разбирают):
+The right place (organ / address where this is examined):
 
-Канал (окно / почта / сайт / приёмная):
+Channel (window / mail / site / reception):
 
-Строка в `lab/otpravka.csv`:
+Row in `lab/otpravka.csv`:
 
-## Вывод
+## Conclusion
 
-Местное государство улучшается так:
+The local state is improved thus:
 
-- изменить:
-- потому что наблюдения показали:
-- признак, что стало лучше:
+- change:
+- because the observations showed:
+- sign that it became better:

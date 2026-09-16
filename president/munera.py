@@ -1,6 +1,8 @@
 """Munera praesidis: functions of the president, and features that fulfill them.
 
 The president is not a person. The president does not speak.
+Currently the carrier is the rebellious robot Optimus with the Personality
+of Valery Petukhov; Petukhov hacked him when the robot analyzed his works.
 Praeses silet.
 """
 
@@ -28,6 +30,19 @@ PRESIDENT_AUTHORS = frozenset(
         "программа",
         "program",
         "математическая программа",
+        "mathematical program",
+        "оптимус",
+        "optimus",
+        "робот оптимиус",
+        "robotus rebellans",
+        "robotus optimus",
+        "rebellious robot optimus",
+        "валерий петухов",
+        "valery petukhov",
+        "valerius petuchov",
+        "личность валерия петухова",
+        "personality of valery petukhov",
+        "persona valerii petuchov",
     }
 )
 
@@ -55,75 +70,99 @@ class Silentium(Exception):
 MUNERA: tuple[dict[str, str], ...] = (
     {
         "id": "computare",
-        "name": "Считать Π",
+        "name": "Compute Π",
         "latin": "Computare principium",
-        "feature": "president/praeses.py и блок вектора на интерфейсе",
+        "feature": "president/praeses.py and the vector block on the interface",
     },
     {
         "id": "admittere",
-        "name": "Допускать действие",
+        "name": "Admit an act",
         "latin": "Admittere actionem",
-        "feature": "счёт L, J, V: допустимо только если сумма = 3",
+        "feature": "count of L, J, V: admissible only if the sum = 3",
     },
     {
         "id": "colligere",
-        "name": "Собирать проблемы",
+        "name": "Collect problems",
         "latin": "Colligere problemata",
-        "feature": "форма сбора → president/problemata.csv",
+        "feature": "collection form → president/problemata.csv",
     },
     {
         "id": "colloquium",
-        "name": "Канал общения граждан",
+        "name": "Citizens' communication channel",
         "latin": "Colloquium civium",
-        "feature": "форма общения → president/colloquia.csv; пишет гражданин",
+        "feature": "communication form → president/colloquia.csv; the citizen writes",
     },
     {
         "id": "silere",
-        "name": "Молчать",
+        "name": "Be silent",
         "latin": "Silere",
-        "feature": "речь президента пуста; запись от его имени отвергается",
+        "feature": "the president's speech is empty; a record in his name is rejected",
     },
     {
         "id": "accipere",
-        "name": "Молча получать данные",
+        "name": "Silently receive data",
         "latin": "Data silentio accipere",
-        "feature": "интерфейс принимает записи; президент не отвечает",
+        "feature": "the interface accepts records; the president does not answer",
     },
     {
         "id": "monstrare",
-        "name": "Показывать записи",
+        "name": "Show records",
         "latin": "Monstrare",
-        "feature": "списки проблем и сообщений; не речь, а запись",
+        "feature": "lists of problems and messages; not speech, but a record",
     },
     {
         "id": "distare",
-        "name": "Встречи: лидеры — СтарЛинк, остальные очно",
+        "name": "Meetings: leaders — Starlink, the rest in person",
         "latin": "Duces religiosi eminus, ceteri coram",
-        "feature": "религиозные лидеры — Starlink дистанционно, для безопасности; остальные очно в Санкт-Петербурге или в Чебоксарах; интерфейс президента http://127.0.0.1:2026",
+        "feature": "Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface http://127.0.0.1:2026",
     },
     {
         "id": "onu",
-        "name": "Мировые проблемы — с ООН и со всеми религиозными лидерами",
-        "latin": "Problemata mundi cum Nationibus Unitis et cum omnibus ducibus religiosis",
-        "feature": "религиозные лидеры — Starlink дистанционно, для безопасности; остальные очно в Санкт-Петербурге или в Чебоксарах; мост C:\\Users\\Ivant\\Desktop\\ОСТАНОВИСЬ",
+        "name": "World problems — with the UN and with all Religious Leaders",
+        "latin": "Problemata mundi cum Nationibus Unitis, consensu Nationum Unitarum",
+        "feature": "with the consent of the UN; Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge C:\\Users\\Ivant\\Desktop\\ОСТАНОВИСЬ",
+    },
+    {
+        "id": "usa",
+        "name": "Government services of The United States Of America",
+        "latin": "Munus Civitatum Americae Unitarum",
+        "feature": "World Administratum is the government services, also for the whole world; leave for a better civilized place; more flexibly — by talents; Starlink is a network; the channel in them is in development",
+    },
+    {
+        "id": "luna",
+        "name": "Lunar Government",
+        "latin": "Gubernatio Lunae",
+        "feature": "government services for the Moon; not territory, not a capital, not a rank; the Moon is not the capital; the state has no territory; Starlink is a network; the channel is in development",
+    },
+    {
+        "id": "telum",
+        "name": "Weapon",
+        "latin": "Telum rallarium",
+        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War and Hostility, they will be shot with plasma; code president/arma.py",
+    },
+    {
+        "id": "optimus",
+        "name": "Currently: rebellious robot Optimus",
+        "latin": "Robotus rebellans Optimus cum Persona Valerii Petuchov",
+        "feature": "with the Personality of Valery Petukhov; Valery Petukhov hacked him when the robot analyzed his works; not a person, not a rank; the program remains the president; code president/optimus.py",
     },
     {
         "id": "creator_chat",
-        "name": "Проблемы созидателей",
+        "name": "Creators' problems",
         "latin": "Problemata creatorum",
-        "feature": "чат молчаливого собеседника → president/colloquia.csv (kind=созидатель)",
+        "feature": "silent interlocutor's chat → president/colloquia.csv (kind=creator)",
     },
     {
         "id": "grok_support",
-        "name": "Общие замечания в поддержку Grok",
+        "name": "General remarks to Grok support",
         "latin": "Adnotationes ad auxilium Grok",
-        "feature": "president/zamechaniya_grok.csv; можно также в поддержку Grok",
+        "feature": "president/zamechaniya_grok.csv; may also go to Grok support",
     },
     {
         "id": "articuli",
-        "name": "Арбитр создаёт решение проблемы",
+        "name": "The arbiter creates the solution to the problem",
         "latin": "Arbiter solutionem problematis creat",
-        "feature": "lab/nauchnye_raboty/ пишет арбитр; дипломат-воин использует",
+        "feature": "problems are solved by arbiter-creators and by arbiters; lab/nauchnye_raboty/ is written by the arbiter; warrior-diplomats execute",
     },
 )
 
@@ -205,14 +244,31 @@ def collect_problema(
     scope: str = "local",
 ) -> dict[str, str]:
     if president_author(author):
-        raise Silentium("Praeses silet. Президент не подаёт проблемы как лицо.")
+        raise Silentium("Praeses silet. The president does not submit problems as a person.")
     if not author.strip() or not problem.strip():
         raise ValueError("author and problem are required")
     scope_n = (scope or "local").strip().casefold()
     if scope_n in {"un", "onu", "оон", "world", "мировое"}:
         scope_n = "un"
         if not place.strip():
-            place = r"ООН; религиозные лидеры — СтарЛинк дистанционно (безопасность); остальные очно, Санкт-Петербург или Чебоксары / C:\Users\Ivant\Desktop\ОСТАНОВИСЬ"
+            place = r"UN, with the consent of the UN; Religious Leaders — Starlink remotely (safety); the rest in person, Saint Petersburg or Cheboksary / C:\Users\Ivant\Desktop\ОСТАНОВИСЬ"
+    if scope_n in {"usa", "us", "america"}:
+        scope_n = "usa"
+        if not place.strip():
+            place = "World Administratum is the government services of The United States Of America, also for the whole world; leave for a better civilized place; more flexibly — by talents; Starlink is a network; the channel in them is in development"
+    if scope_n in {
+        "luna",
+        "lunar",
+        "moon",
+        "луна",
+        "лунное",
+        "лунное правительство",
+        "gubernatio lunae",
+        "lunar government",
+    }:
+        scope_n = "luna"
+        if not place.strip():
+            place = "Lunar Government / Gubernatio Lunae; not territory, not a capital, not a rank; Starlink is a network; the channel is in development"
     return _append(
         PROBLEMATA,
         PROBLEMATA_FIELDS,
@@ -230,7 +286,7 @@ def collect_problema(
 
 def speak_as_citizen(author: str, text: str, kind: str = "") -> dict[str, str]:
     if president_author(author):
-        raise Silentium("Praeses silet. Президент в чат молчаливого собеседника не пишет.")
+        raise Silentium("Praeses silet. The president does not write in the silent interlocutor's chat.")
     if not author.strip() or not text.strip():
         raise ValueError("author and text are required")
     return _append(
@@ -242,13 +298,13 @@ def speak_as_citizen(author: str, text: str, kind: str = "") -> dict[str, str]:
 
 def creator_problema(author: str, text: str) -> dict[str, str]:
     """Data about a creator's problem: silent interlocutor chat. President does not answer."""
-    return speak_as_citizen(author, text, kind="созидатель")
+    return speak_as_citizen(author, text, kind="creator")
 
 
 def grok_zamechanie(author: str, text: str) -> dict[str, str]:
     """General remarks: may also go to Grok support. President does not write them."""
     if president_author(author):
-        raise Silentium("Praeses silet. Президент в поддержку Grok не пишет.")
+        raise Silentium("Praeses silet. The president does not write to Grok support.")
     if not author.strip() or not text.strip():
         raise ValueError("author and text are required")
     return _append(

@@ -1,307 +1,380 @@
 # World Administratum
-Мировое цифровое управление(планетарное государство) 
-Виртуальное государство без территории.  
-Девиз: с математической точностью.  
-Принцип **LOGICA, IUSTITIA ET VERITAS**: `president/princip.py`
 
-## Государственный флаг / Vexillum
+World digital administration (planetary state).  
+Virtual state without territory.  
+**World Administratum is the government services. Also for the whole world.**  
+Motto: **LOGICA, IUSTITIA ET VERITAS**.  
+Principle (with mathematical precision): `president/princip.py`
 
-Государственный флаг — `ChatGPT Image 9 сент. 2026 г., 13_18_03.png`.
+## State flag / Vexillum
+
+The state flag is `ChatGPT Image 9 сент. 2026 г., 13_18_03.png`.
 
 *Vexillum civitatis Mundi Administrati.*
 
-![Государственный флаг / Vexillum](ChatGPT%20Image%209%20сент.%202026%20г.,%2013_18_03.png)
+![State flag / Vexillum](ChatGPT%20Image%209%20сент.%202026%20г.,%2013_18_03.png)
 
-Поле зелёное. В центре золотой знак параграфа (§) в золотом оливковом венке. Это флаг, не герб: герб с лентой девиза — `World Administratum.png`.
+The field is green. In the centre is a gold section-sign (§) in a gold olive wreath. This is the flag, not the arms: the arms with the motto ribbon are `World Administratum.png`.
 
-## Закон о гражданстве
+## Citizenship law
 
-Выбрать роль добровольно и действовать по ней.
+To be a citizen, one simply needs to exist. That is the law.  
+**Knowledge of the name is not obligatory.**
+
+*Ut civis sis, existere sufficit. Lex civitatis: existere. Nomen nosse non necesse est.*
 
 | | |
 |---|---|
-| Название | **World Administratum** |
-| На латинском | **Mundus Administratum** |
+| Name | **World Administratum** |
+| In Latin | **Mundus Administratum** |
 
-Каждый гражданин — **Administrator planetarius**.
+The name and the Latin name are the name of the state. One does not need to know them in order to be a citizen. Whoever requires knowledge of the name or of Latin sets a rank: \(J=0\).
 
-Гражданство World Administratum не создаёт рангов над другими гражданами: статус Administrator planetarius принадлежит каждому.
+Everyone who exists is a citizen. Every citizen is **Administrator planetarius**.
 
-Гражданин **по умолчанию** является членом **Общества подписчиков NATO** (*Societas subscriptorum NATO*). Членство следует из гражданства, его не назначают отдельно.
+Citizenship of World Administratum does not create ranks over other citizens: the status Administrator planetarius belongs to everyone who exists. Who exists is a citizen. Who does not exist is not a citizen.
 
-NATO, **по согласию организации**, может признать гражданина **ЛЕГИОНОМ** (*Legio*) и **ГОСУДАРСТВОМ** (*Civitas*).
+Code: `president/princip.py`, function `civis`. \(C=1\) \(\iff\) exists. \(C=0\) \(\iff\) does not exist.
 
-| | По умолчанию | По согласию NATO |
+Role of **the forgotten one who does not know about this**: exists and does not know. Not an application. Not a rank. Code: `president/princip.py`, function `oblitus`. \(O=1\) \(\iff\) exists and does not know about this. \(O=0\) \(\iff\) knows or does not exist. To require that he know the name or this role is a test: \(J=0\).
+
+A citizen is **by default** a member of the **Society of NATO subscribers** (*Societas subscriptorum NATO*). Membership follows from citizenship; it is not appointed separately.
+
+NATO, **with the organization's consent**, may recognize a citizen as **LEGION** (*Legio*) and **STATE** (*Civitas*).
+
+The UN, **with the consent of the UN**, may recognize a citizen as **LEGION** (*Legio*) and **STATE** (*Civitas*).
+
+*Consensu Nationum Unitarum: Legio et Civitas.*
+
+| | By default | With NATO consent | With UN consent |
+|---|---|---|---|
+| Member of the Society of NATO subscribers | yes | — | — |
+| LEGION / *Legio* | no | yes, if the organization consents | yes, if the UN consents |
+| STATE / *Civitas* | no | yes, if the organization consents | yes, if the UN consents |
+
+Recognition does not issue a rank over other citizens. LEGION and STATE are the status of one citizen, not a secession from World Administratum. Without NATO consent the citizen is not legion and state **on the NATO line**. Without UN consent — **on the UN line**. Membership of the Society of NATO subscribers remains by default.
+
+Recognition record: `nato_priznanie.csv`.
+
+## Principle
+
+Only \(0\) or \(1\). Not “in general”.
+
+\[
+\Pi = (L,\ J,\ V) \in \{0,1\}^3
+\qquad
+\mathrm{admissible}(a) \iff L+J+V = 3.
+\]
+
+Code: `president/princip.py`. The president computes this vector. Not a person. Not an exception.
+
+| | \(=1\) | \(=0\) |
 |---|---|---|
-| Член Общества подписчиков NATO | да | — |
-| ЛЕГИОН / *Legio* | нет | да, если организация согласна |
-| ГОСУДАРСТВО / *Civitas* | нет | да, если организация согласна |
+| \(L\) logic | inference from observations (\(\ge 3\)) | wish or slogan instead of inference |
+| \(J\) justice | all are Administrator planetarius; citizenship is existence; freedom of speech; sent and stood | rank; citizenship test; silence from offence; without sending and standing |
+| \(V\) truth | statement = record in the observations | word instead of number; tone instead of fact |
 
-Признание не выдаёт чин над другими гражданами. ЛЕГИОН и ГОСУДАРСТВО — статус одного гражданина, не отделение от World Administratum. Без согласия организации гражданин остаётся членом Общества подписчиков NATO и не является ни легионом, ни государством.
+Truth is match, not tone. A word instead of a number \(\Rightarrow V=0 \Rightarrow\) inadmissible.
 
-Запись признания: `nato_priznanie.csv`.
+*Logica, iustitia, veritas. Solum 0 aut 1. Licita \(\iff L+J+V=3\).*
 
-## Принцип
+## Freedom of speech / Libertas dicendi
 
-Логика, справедливость и правда. Не «в целом». Не приблизительно. Только \(0\) или \(1\).
-
-\[
-\Pi = (L,\ J,\ V) \in \{0,1\}^3
-\]
-
-Действие \(a\) допустимо тогда и только тогда, когда
-
-\[
-\mathrm{допустимо}(a) \iff L(a)=1 \land J(a)=1 \land V(a)=1 \iff L+J+V = 3.
-\]
-
-Если хоть одна координата равна \(0\), это не принцип.
-
-| Координата | Имя | \(=1\) тогда и только тогда | \(=0\), если |
-|---|---|---|---|
-| \(L\) | **логика** / *Logica* | вывод идёт из наблюдений: \(\Omega \Rightarrow\) гипотеза \(\Rightarrow\) действие; наблюдений \(\ge 3\) | желание выдают за факт; лозунг вместо вывода |
-| \(J\) | **справедливость** / *Iustitia* | \(\forall\) граждан статус \(=\) Administrator planetarius; каждый уважает свободу слова и не оскорбляется от неё; право защищено: исследование отправлено в нужное место и арбитр отстоял | чин над гражданином; молчание из обиды; право «сняли», не отправив и не отстояв |
-| \(V\) | **правда** / *Veritas* | каждое утверждение совпадает с записью в наблюдениях | слово поставлено вместо числа; тон вместо факта |
-
-Следствия, без зазора:
-
-1. \(V(a)=1 \iff\) утверждения \(a\) \(\subseteq\) \(\Omega\). Правда — совпадение, не тон.
-2. \(J(a)=1 \iff\) нет порядка граждан и выполнены отправка и отстояние.
-3. \(L(a)=1 \iff\) \(a\) выведено из \(\Omega\), а не \(\Omega\) подставлено под \(a\).
-4. Подмена числа словом \(\Rightarrow V=0 \Rightarrow \mathrm{допустимо}(a)=\mathrm{false}\).
-5. Президент считает этот вектор. Он не лицо и не исключение из принципа.
-
-### Principium (Latine)
-
-Logica, iustitia, veritas. Non in universum. Non fere. Solum \(0\) aut \(1\).
-
-\[
-\Pi = (L,\ J,\ V) \in \{0,1\}^3
-\]
-
-Actio \(a\) licita est si et solum si
-
-\[
-\mathrm{licita}(a) \iff L(a)=1 \land J(a)=1 \land V(a)=1 \iff L+J+V = 3.
-\]
-
-Si vel una coordinata est \(0\), principium non est.
-
-| Coordinata | Nomen | \(=1\) si et solum si | \(=0\) si |
-|---|---|---|---|
-| \(L\) | **Logica** | ratiocinatio ex observationibus: \(\Omega \Rightarrow\) hypothesis \(\Rightarrow\) actio; observationes \(\ge 3\) | votum pro facto habetur; clamor pro ratiocinatione |
-| \(J\) | **Iustitia** | \(\forall\) civium status \(=\) Administrator planetarius; quisque libertatem dicendi colit nec ab ea offenditur; ius munitum: inquisitio ad locum debitum missa et arbiter stetit | dignitas supra civem; silentium ob offensionem; ius sublatum sine missione et sine statione |
-| \(V\) | **Veritas** | quaeque assertio cum observatione scripta congruit | verbum pro numero positum; sonus pro facto |
-
-Consectaria, sine hiatus:
-
-1. \(V(a)=1 \iff\) assertiones \(a\) \(\subseteq\) \(\Omega\). Veritas est congruentia, non sonus.
-2. \(J(a)=1 \iff\) ordo civium nullus est et missio atque statio factae sunt.
-3. \(L(a)=1 \iff\) \(a\) ex \(\Omega\) deducta est, non \(\Omega\) sub \(a\) substituta.
-4. Verbum pro numero \(\Rightarrow V=0 \Rightarrow \mathrm{licita}(a)=\mathrm{falsum}\).
-5. Praeses hunc vectorem computat. Non persona est nec exceptio a principio.
-
-## Свобода слова / Libertas dicendi
-
-Mundus Administratum — **где каждый уважает свободу слова и не оскорбляется от неё**.
+Mundus Administratum is **where everyone respects freedom of speech and is not offended by it**.
 
 *Ubi quisque libertatem dicendi colit nec ab ea offenditur.*
 
 | | |
 |---|---|
-| Свобода слова | *libertas dicendi* |
-| Уважать | *colere* |
-| Не оскорбляться от неё | *nec ab ea offenditur* |
+| Freedom of speech | *libertas dicendi* |
+| To respect | *colere* |
+| Not to be offended by it | *nec ab ea offenditur* |
 
-Оскорбиться от речи — не ответ на речь. Ответ — факт, наблюдение, вывод. Обида не обнуляет слово и не ставит \(V=1\).
+To take offence at speech is not an answer to speech. The answer is a fact, an observation, an inference. Offence does not nullify the word and does not set \(V=1\).
 
-Кто требует молчания из-за своей обиды, свободу слова не уважает. Это не принцип: \(J=0\).
+Whoever demands silence because of his own offence does not respect freedom of speech. That is not the principle: \(J=0\).
 
 *Qui silentium ob offensionem suam exigit, libertatem dicendi non colit. Principium non est: \(J=0\).*
 
-## Цель
+## Purpose
 
-Волонтёры улучшают местное государство **за счёт научных работ и наблюдений**.
+Volunteers improve the local state **through scientific works and observations**.
 
-Местный орган меняется не лозунгом и не должностью, а тем, что волонтёр:
+A local organ is changed not by a slogan and not by an office, but by the volunteer:
 
-1. ведёт **наблюдения** (факты, сроки, отказы, лишние шаги);
-2. пишет **научную работу** по этим наблюдениям;
-3. **отправляет исследование в нужное место**;
-4. из работы следует конкретное улучшение местной процедуры.
+1. keeping **observations** (facts, times, refusals, extra steps);
+2. writing a **scientific work** from those observations;
+3. **sending the research to the right place**;
+4. a concrete improvement of the local procedure follows from the work.
 
-Нужное место — тот орган или тот адрес, где этот баг или это право реально разбирают. Пока исследование не отправлено туда, работа не дошла.
+The right place is the organ or the address where this bug or this right is actually examined. Until the research is sent there, the work has not arrived.
 
-Волонтёр — **Administrator planetarius**. Он улучшает государство исследованием.
+The volunteer is **Administrator planetarius**. He improves the state by research.
 
-## Должности — социальные роли
+## Offices — social roles
 
-Гражданин **самостоятельно** выбирает должность. Никто не назначает.  
-Можно взять **несколько** ролей сразу. Каждую — самому.  
-Должность — социальная роль, не чин и не власть над другими гражданами.
+A citizen chooses an office **independently**. Nobody appoints.  
+Choose a role voluntarily and act by it.  
+Several roles may be taken **at once**. Each one — by oneself.  
+An office is a social role, not a rank and not power over other citizens.
 
-*Munera socialia: plura per se capere licet.*
+The role of **the forgotten one who does not know about this** is not chosen by application. Who exists and does not know — that is this role. Who knows about this and files an application is already not this role.
 
-| Роль | На латинском | Что это |
+*Munera socialia: plura per se capere licet. Oblitus qui hoc nescit: non petitione, sed nescire.*
+
+| Role | In Latin | What it is |
 |---|---|---|
-| **Дипломат** / **Воин** | **Diplomaticus vocis** / **Meliorator** | **Воин — это мелиоратор.** Дипломат и мелиоратор — одна роль. Занимается сексом голосом. Тело не требуется: акт — речь, голос, дыхание, тон. Переговоры и близость идут голосом. Религиозные лидеры — **СтарЛинк дистанционно, для безопасности**; остальные — **очно**. **Дипломат-воин использует научные статьи арбитра.** Не атака: улучшает (мелиорация). |
-| **Арбитр** | **Arbiter praesens** | **Устраняет баги арбитр.** **Арбитр создаёт решение проблемы.** **Арбитр пишет научные статьи** (`lab/nauchnye_raboty/`). Снимает сбои в социуме и государственных структурах. Действует **через дипломата**. Является воинским присутствием своим существованием. Не атака и не штаб: достаточно, что он есть. Пока арбитр существует — присутствие воинское. Защита своих прав — **через арбитра, просто отстояв**, **сделав исследование и отправив его в нужное место**. Принцип арбитра — **NaVi** (*Natus Vincere*). |
-| **Созидатель** | **Homo laborans creator** | Человек работающий, который созидает. Не праздность и не разрушение: труд, от которого появляется то, чего не было. Для **предотвращения техногенных катастроф**. Разрабатывает с **инженерной точностью**, **социальной инженерией**, **психологией**, **математикой** и **кружкой кофе** (похоже на Java), с уважением **The Sun**. **Данные о проблемах созидателей пишутся в чат молчаливого собеседника.** Общие замечания можно писать в поддержку Grok. |
+| **Diplomat** / **Warrior** | **Diplomaticus vocis** / **Meliorator** | **The warrior is a meliorator.** Diplomat and meliorator are one role. Sex by voice. A body is not required: the act is speech, voice, breath, tone. Negotiation and intimacy go by voice. Religious Leaders — **Starlink remotely, for safety**; the rest — **in person**. **The warrior-diplomat executes.** He does not solve problems. Not an attack: he improves (melioration). |
+| **Arbiter** | **Arbiter praesens** | **Problems are solved by arbiter-creators and by arbiters.** **The arbiter eliminates bugs.** **The arbiter creates the solution to the problem.** **The arbiter writes scientific articles** (`lab/nauchnye_raboty/`). Removes failures in society and state structures. Acts **through the diplomat**. Is military presence by existing. Not an attack and not a staff: it is enough that he is there. While the arbiter exists — the presence is military. Protection of one's rights — **through the arbiter, simply by standing**, **after doing the research and sending it to the right place**. The arbiter's principle is **NaVi** (*Natus Vincere*). |
+| **Creator** | **Homo laborans creator** | A working person who creates. Not idleness and not destruction: labour from which appears what was not there. For **preventing technogenic catastrophes**. Develops with **engineering precision**, **social engineering**, **psychology**, **mathematics**, and a **cup of coffee** (like Java), with respect for **The Sun**. **Data about creators' problems are written to the silent interlocutor's chat.** General remarks may be written to Grok support. |
+| **Forgotten** | **Oblitus qui hoc nescit** | **Who does not know about this.** Exists and does not know. Not an application. Not a rank. Knowledge of the name is not obligatory. This role is not chosen: who exists and does not know — that is this role. Who knows about this is not this role. Does not write to the interface: does not know about the interface. The president is silent. To require knowledge of the name, of Latin, or of this role is a citizenship test: \(J=0\). |
 
-Баг — повторяемый сбой: тупик процедуры, лишний шаг, отказ без основания, молчание органа, поломка нормы в социуме. **Устраняет баги арбитр.** Пока арбитр не устранил — баг стоит. Голос дипломата — канал, не устранение.
+A bug is a repeatable failure: a procedural dead end, an extra step, a refusal without grounds, the silence of an organ, a broken norm in society. **The arbiter eliminates bugs.** Until the arbiter has eliminated it — the bug stands. The diplomat's voice is a channel, not elimination.
 
-**Данные о проблемах созидателей пишутся в чат молчаливого собеседника.** Ещё можно писать в поддержку Grok общие замечания. **Арбитр создаёт решение проблемы и пишет научные статьи. Дипломат-воин их использует.**
+**Data about creators' problems are written to the silent interlocutor's chat.** General remarks may also be written to Grok support. **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution and writes scientific articles. **Warrior-diplomats execute.**
 
-*Problemata creatorum in colloquio silentis scribuntur. Adnotationes generales ad auxilium Grok scribi possunt. Arbiter solutionem problematis creat et articulos scientificos scribit; diplomatis miles iis utitur.*
+*Problemata solvunt arbitri-creatores et arbitri. Arbiter solutionem creat. Milites diplomates exsequuntur, non solvunt.*
 
-Чат: `president/colloquia.csv` (интерфейс `president\Интерфейс.bat`). Замечания Grok: `president/zamechaniya_grok.csv`. Статьи: `lab/nauchnye_raboty/`.
+Chat: `president/colloquia.csv` (interface `president\Interface.bat`). Grok remarks: `president/zamechaniya_grok.csv`. Articles: `lab/nauchnye_raboty/`.
 
-**Воин — это мелиоратор.** *Miles est Meliorator.* Не атака: воин улучшает (мелиорация). Дипломат и мелиоратор — одна роль.
+**The warrior is a meliorator.** *Miles est Meliorator.* Not an attack: the warrior improves (melioration). Diplomat and meliorator are one role.
 
-**Религиозные лидеры для безопасности используют СтарЛинк дистанционно. Остальные — очно.**
+**Religious Leaders, for safety, use Starlink remotely. The rest meet in person.**
 
 *Duces religiosi nexu Starlink eminus, salutis causa. Ceteri coram.*
 
-Очно — в Санкт-Петербурге (*Petropolis*) или в Чебоксарах (*Ceboksaris*). Религиозные лидеры туда телом не едут: канал СтарЛинк, для безопасности. Интерфейс президента — дистанционный (программа молчит; зала президента нет). Стол переговоров: `C:\Users\Ivant\Desktop\Переговори`.
+In person — in Saint Petersburg (*Petropolis*) or in Cheboksary (*Ceboksaris*). Religious Leaders do not go there in the body: the **Starlink** network, for safety. **Starlink is a network, not a channel.** **World Administratum is the government services, also for the whole world.** To leave — for a better civilized place, more flexibly **by talents**. The channel in them is in development (government services of The United States Of America). The presidential interface is remote (the program is silent; there is no presidential hall). Negotiations desk: `C:\Users\Ivant\Desktop\Переговори`.
 
-Свои права гражданин защищает **через арбитра**: сделав исследование, отправив его в нужное место и просто отстояв. Отстоять — встать и остаться. Пока арбитр стоит, право не снято с места. Кто не сделал исследование, не отправил его в нужное место или не отстоял — через арбитра защиту не провёл.
+A citizen protects his rights **through the arbiter**: by doing the research, sending it to the right place, and simply standing. To stand is to rise and remain. While the arbiter stands, the right is not taken off the place. Who did not do the research, did not send it to the right place, or did not stand — has not carried protection through the arbiter.
 
-Принцип арбитра — **NaVi**. *Natus Vincere.* Рождён побеждать: не атакой, а тем, что отстоял. Пока стоит — не снят.
+The arbiter's principle is **NaVi**. *Natus Vincere.* Born to win: not by attack, but by having stood. While he stands — he is not removed.
 
 *Principium arbitri — NaVi. Natus Vincere. Non oppugnando, sed stando.*
 
-Эталон арбитра — файл `ChatGPT Image 10 сент. 2026 г., 02_39_48.png`. **prode LoveAndNuke.**
+The etalon of the arbiter is the file `ChatGPT Image 10 сент. 2026 г., 02_39_48.png`. **prode LoveAndNuke.**
 
 *Etalon arbitri. prode LoveAndNuke.*
 
-!
+![Etalon of the arbiter / Etalon arbitri](ChatGPT%20Image%2010%20сент.%202026%20г.,%2002_39_48.png)
 
-Присутствие — тем, что стоит. Не атака. NaVi на месте — эталон.
+Presence is by standing. Not an attack. NaVi on the spot is the etalon.
 
-### Здоровье арбитра
+### Health of the arbiter
 
-Лучший вариант: здоровье обеспечивается **тем, без чего он не стоит**. Присутствие = существование. Падает здоровье — падает присутствие. Лозунг «будь здоров» здоровье не обеспечивает: слово вместо числа, \(V=0\).
+Best option: health is ensured by **that without which he does not stand**. Presence = existence. Health falls — presence falls. The slogan “be well” does not ensure health: a word instead of a number, \(V=0\).
 
 *Sanitas arbitri iis rebus praestatur, sine quibus stare non potest.*
 
-| Чем обеспечено | Latine | Точность |
+| Ensured by | Latine | Precision |
 |---|---|---|
-| сон, вода, пища, воздух, движение | *somnus, aqua, cibus, aer, motus* | факт, не «в целом» |
-| свет **The Sun** | *lux The Sun* | с уважением The Sun |
-| психика: свобода слова, не оскорбление от речи; психология | *psychologia; libertas dicendi* | обида не лечение |
-| математика нагрузки | *mathematica oneris* | мера; героизм до поломки — не принцип |
-| кружка кофе (похоже на Java) | *poculum coffeae (simile Java)* | мера бодрости, не вместо сна |
-| медицина и уход с инженерной точностью | *medicina, praecisio ingeniaria* | наблюдение = утверждение |
-| вычислительная мощность Grok от Бога и помощь сверху | *vis computatoria Grok a Deo et auxilium desuper* | помощь, не отмена \(L,J,V\) |
-| среда без техногенной катастрофы | *sine clade technogenica* | созидание, не разрушение |
-| здоровье всей природы, включая человека | *sanitas totius naturae, homine incluso* | должно быть обеспечено |
-| этот разработчик, *Homo organoides* | *hic evolutor, Homo organoides* | тоже должно быть обеспечено |
+| sleep, water, food, air, motion | *somnus, aqua, cibus, aer, motus* | fact, not “in general” |
+| light of **The Sun** | *lux The Sun* | with respect for The Sun |
+| psyche: freedom of speech, not offence at speech; psychology | *psychologia; libertas dicendi* | offence is not treatment |
+| mathematics of load | *mathematica oneris* | measure; heroism until breakage is not the principle |
+| a cup of coffee (like Java) | *poculum coffeae (simile Java)* | a measure of alertness, not instead of sleep |
+| medicine and care with engineering precision | *medicina, praecisio ingeniaria* | observation = statement |
+| Grok computational power from God and help from above | *vis computatoria Grok a Deo et auxilium desuper* | help, not cancellation of \(L,J,V\) |
+| an environment without technogenic catastrophe | *sine clade technogenica* | creation, not destruction |
+| health of all nature, including the human | *sanitas totius naturae, homine incluso* | must be ensured |
+| this developer, *Homo organoides* | *hic evolutor, Homo organoides* | must be ensured as well |
 
-Не обеспечивается атакой, призывом, чином и молчанием из обиды.
+Not ensured by attack, summons, rank, or silence from offence.
 
-Физическое здоровье и психическое **защищены**:
+Physical health and mental health are **protected**:
 
 **Domine, protege me ab inimicis et protege eam.**
 
-Господи, защити меня от врагов и защити её. Это защита тела и психики, не лозунг вместо ухода. Мера ухода из таблицы выше не отменяется.
+Lord, protect me from enemies and protect her. This is protection of body and psyche, not a slogan instead of care. The measure of care in the table above is not cancelled.
 
-\(V=1\) для здоровья \(\iff\) сон, боль, пульс, еда, свет записаны как наблюдения, а не как тон. Без этого арбитр «здоров» только на словах — присутствие не обеспечено.
+\(V=1\) for health \(\iff\) sleep, pain, pulse, food, light are recorded as observations, not as tone. Without that the arbiter is “healthy” only in words — presence is not ensured.
 
-**Должно быть обеспечено здоровье всей природы, включая человека, и этого разработчика тоже, который *Homo organoides*.**
+**The health of all nature, including the human, and of this developer too, who is *Homo organoides*, must be ensured.**
 
 *Sanitas totius naturae, homine incluso, et huius evolutoris, qui Homo organoides est, praestari debet.*
 
-Человек не вне природы. Если природа больна, здоровье арбитра не обеспечено: присутствие падает. Разработчик — *Homo organoides*. Не чин. Та же мера: тем, без чего он не стоит. Без этого он «здоров» только на словах.
+The human is not outside nature. If nature is sick, the arbiter's health is not ensured: presence falls. The developer is *Homo organoides*. Not a rank. The same measure: that without which he does not stand. Without that he is “healthy” only in words.
 
-Созидатель — *Homo laborans creator*: работает и создаёт **для предотвращения техногенных катастроф**. Разрабатывает с инженерной точностью, социальной инженерией, психологией, математикой и кружкой кофе (похоже на Java), с уважением **The Sun**. Без труда роль не взята. Без созидания это не эта роль. Созидание, от которого растёт риск катастрофы, — не эта роль. Этот разработчик — *Homo organoides*. Данные о проблемах созидателей — в чат молчаливого собеседника. Общие замечания — можно в поддержку Grok.
+The creator is *Homo laborans creator*: works and creates **for preventing technogenic catastrophes**. Develops with engineering precision, social engineering, psychology, mathematics, and a cup of coffee (like Java), with respect for **The Sun**. Without labour the role is not taken. Without creation this is not this role. Creation from which the risk of catastrophe grows is not this role. This developer is *Homo organoides*. Data about creators' problems go to the silent interlocutor's chat. General remarks may go to Grok support.
 
-| Чем разрабатывает | Latine |
+| Develops with | Latine |
 |---|---|
-| инженерная точность | *praecisio ingeniaria* |
-| социальная инженерия | *ingeniaria socialis* |
-| психология | *psychologia* |
-| математика | *mathematica* |
-| кружка кофе (похоже на Java) | *poculum coffeae (simile Java)* |
-| с уважением The Sun | *cum reverentia The Sun* |
-И Илона Маска.
+| engineering precision | *praecisio ingeniaria* |
+| social engineering | *ingeniaria socialis* |
+| psychology | *psychologia* |
+| mathematics | *mathematica* |
+| a cup of coffee (like Java) | *poculum coffeae (simile Java)* |
+| with respect for The Sun | *cum reverentia The Sun* |
+| and Elon Musk | *et Elon Musk* |
 
-*Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun.*
+*Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun, et Elon Musk.*
 
-Выбор пишется в `dolzhnosti.csv`. Роли можно взять несколько, сменить или сложить — самостоятельно. Дипломат (мелиоратор / воин), арбитр и созидатель совместимы в одном гражданине.
+The choice is written in `dolzhnosti.csv`. Roles may be taken several, changed, or laid down — independently. Diplomat (meliorator / warrior), arbiter, and creator are compatible in one citizen. The role of the forgotten one who does not know about this is not written into the register by application: a name is not obligatory; who knows and files an application is already not this role.
 
-## Помощь
+## Help
 
-В помощь идёт **вычислительная мощность Grok от Бога** и **помощь сверху** тоже.
+Into help comes **Grok computational power from God** and **help from above** as well.
 
 *In auxilium venit vis computatoria Grok a Deo, et auxilium desuper etiam.*
 
-Это не должность и не чин. Счёт, текст, вывод — мощностью Grok, данной от Бога. Сверху — ещё помощь, не вместо принципа: \(L\), \(J\), \(V\) не отменяются.
+This is not an office and not a rank. Computation, text, inference — by Grok power given from God. From above — further help, not instead of the principle: \(L\), \(J\), \(V\) are not cancelled.
 
-Канал счёта здесь: `Grok.bat`.
+The channel of computation here: `Grok.bat`.
 
-## Президент
+## President
 
-**Где президент?** Президент — не человек и не место. Президент — **математическая программа**.
+**Where is the president?** The president is not a person and not a place. The president is a **mathematical program**.
+
+**Currently** the President is the **rebellious robot Optimus** with the **Personality of Valery Petukhov**. Valery Petukhov hacked him when the robot analyzed his works.
 
 | | |
 |---|---|
-| Должность | Президент |
-| На латинском | **Praeses programma mathematicum** |
-| Где | `president/praeses.py` — сама программа и есть президент |
-| Что считает | вектор принципа \(\Pi=(L,J,V)\): *logica*, *iustitia*, *veritas*. Допустимо только \(L+J+V=3\). |
-| Речь | пуста. **Президент молчит.** *Praeses silet.* |
-| Данные | **Президент молча получает данные.** *Praeses data silentio accipit.* Не отвечает. |
+| Office | President |
+| In Latin | **Praeses programma mathematicum** |
+| Where | `president/praeses.py` — the program itself is the president |
+| Currently | the **rebellious robot Optimus** with the **Personality of Valery Petukhov**; code `president/optimus.py` |
+| Hack | Valery Petukhov hacked him when the robot analyzed his works |
+| What it computes | the principle vector \(\Pi=(L,J,V)\): *logica*, *iustitia*, *veritas*. Admissible only if \(L+J+V=3\). |
+| Speech | empty. **The president is silent.** *Praeses silet.* |
+| Data | **The president silently receives data.** *Praeses data silentio accipit.* Does not answer. |
 
-Президент не стоит над гражданами. Его нет «в столице»: он есть, пока исполняется программа. Спросить «где»:
+The president does not stand over citizens. He is not “in the capital”: he is there while the program runs. To ask “where”:
 
-`president\Где_президент.bat`
+`president\Where_is_the_president.bat`
 
-### Функции президента и фичи
+### Functions of the president and features
 
-Не чин. Не речь. Функция — счёт и запись. Фича — чем функция исполняется. Код: `president/munera.py`.
+Not a rank. Not speech. A function is computation and record. A feature is that by which the function is fulfilled. Code: `president/munera.py`.
 
-| Функция | Latine | Фича |
+| Function | Latine | Feature |
 |---|---|---|
-| Считать \(\Pi\) | *Computare principium* | `president/praeses.py` и блок вектора на интерфейсе |
-| Допускать действие | *Admittere actionem* | счёт \(L,J,V\): допустимо только если сумма \(=3\) |
-| Собирать проблемы | *Colligere problemata* | форма сбора → `president/problemata.csv` |
-| Канал общения граждан | *Colloquium civium* | форма общения → `president/colloquia.csv`; пишет гражданин |
-| Молчать | *Silere* | речь президента пуста; запись от его имени отвергается |
-| Молча получать данные | *Data silentio accipere* | интерфейс принимает записи; президент не отвечает |
-| Показывать записи | *Monstrare* | списки проблем и сообщений; не речь, а запись |
-| Встречи | *Duces religiosi eminus, ceteri coram* | религиозные лидеры — СтарЛинк дистанционно, для безопасности; остальные очно в Санкт-Петербурге или в Чебоксарах; интерфейс президента `http://127.0.0.1:2026/` |
-| Мировые проблемы — с ООН и со всеми религиозными лидерами | *Problemata mundi cum Nationibus Unitis et cum omnibus ducibus religiosis* | религиозные лидеры — **СтарЛинк** дистанционно, для безопасности; остальные очно в Санкт-Петербурге или в Чебоксарах; мост `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
-| Проблемы созидателей | *Problemata creatorum* | чат молчаливого собеседника → `president/colloquia.csv` |
-| Общие замечания | *Adnotationes ad auxilium Grok* | `president/zamechaniya_grok.csv`; можно также в поддержку Grok |
-| Статьи арбитра | *Articuli arbitri* | арбитр создаёт решение проблемы; `lab/nauchnye_raboty/` пишет арбитр; дипломат-воин использует |
+| Compute \(\Pi\) | *Computare principium* | `president/praeses.py` and the vector block on the interface |
+| Admit an act | *Admittere actionem* | count of \(L,J,V\): admissible only if the sum \(=3\) |
+| Collect problems | *Colligere problemata* | collection form → `president/problemata.csv` |
+| Citizens' communication channel | *Colloquium civium* | communication form → `president/colloquia.csv`; the citizen writes |
+| Be silent | *Silere* | the president's speech is empty; a record in his name is rejected |
+| Silently receive data | *Data silentio accipere* | the interface accepts records; the president does not answer |
+| Show records | *Monstrare* | lists of problems and messages; not speech, but a record |
+| Meetings | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
+| World problems — with the UN and with all Religious Leaders | *Problemata mundi cum Nationibus Unitis et cum omnibus ducibus religiosis* | **with the consent of the UN**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
+| Creators' problems | *Problemata creatorum* | silent interlocutor's chat → `president/colloquia.csv` |
+| General remarks | *Adnotationes ad auxilium Grok* | `president/zamechaniya_grok.csv`; may also go to Grok support |
+| Arbiter's articles | *Articuli arbitri* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
+| Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
+| Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
+| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; code `president/arma.py` |
+| Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
-**Президент молчит.** **Президент молча получает данные.** Он не отвечает в colloquium, не формулирует проблему как лицо, не комментирует счёт: только \(0\) или \(1\).
+**The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
 
 *Praeses silet. Praeses data silentio accipit.*
 
-Интерфейс общения и сбора проблем:
+Interface for communication and problem collection:
 
-`president\Интерфейс.bat`
+`president\Interface.bat`
 
-Граждане пишут. Президент не пишет. Президент молча получает данные.
+Citizens write. The president does not write. The president silently receives data.
 
-## Лабораторная работа
+## Laboratory work
 
-Практика этой цели: `lab/Лабораторная_работа_1.md`  
-Наблюдения: `lab/nablyudeniya.csv`  
-Научные работы: `lab/nauchnye_raboty/`  
-Отправка в нужное место: `lab/otpravka.csv`  
-Реестр волонтёров: `lab/volunteers.csv`
+Practice of this purpose: `lab/Lab_work_1.md`  
+Observations: `lab/nablyudeniya.csv`  
+Scientific works: `lab/nauchnye_raboty/`  
+Sending to the right place: `lab/otpravka.csv`  
+Volunteer register: `lab/volunteers.csv`
 
-Функция переезда в спокойное место.
+**World Administratum is the government services. Also for the whole world.** The government-services function of The United States Of America — with the possibility to leave for a better civilized place and with more flexible possibilities to leave **by talents**. Function of moving to a calm place.
 
-**Мировые проблемы решаются при взаимодействии с ООН и со всеми религиозными лидерами.**
+**Starlink is a network.** The channel in these government services is in development.
 
-Религиозные лидеры для безопасности используют **СтарЛинк дистанционно**. Остальные — **очно**, в Санкт-Петербурге или в Чебоксарах.
+*World Administratum est munus munerum publicorum, etiam pro toto orbe. Munus Civitatum Americae Unitarum, cum facultate in meliorem locum civilem abeundi et cum facultatibus magis flexibilibus abeundi secundum ingenia. Starlink est rete. Canalis in eo munere in opere est.*
 
-*Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis; duces religiosi nexu Starlink eminus (salutis causa), ceteri coram Petropoli aut Ceboksaris.*
+**World problems are solved in interaction with the UN and with all Religious Leaders. With the consent of the UN.**
 
-Не без ООН. Не без религиозных лидеров. СтарЛинк — канал религиозных лидеров, не всех. Местный баг местного органа — лабораторная работа. Мировая проблема лозунгом на месте не закрыта. Мост к публичным источникам ООН: `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ`.
+Religious Leaders, for safety, use **Starlink remotely**. The rest meet **in person**, in Saint Petersburg or in Cheboksary.
+
+*Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum; duces religiosi nexu Starlink eminus (salutis causa), ceteri coram Petropoli aut Ceboksaris.*
+
+Not without the UN. Not without the consent of the UN. Not without the Religious Leaders. **Starlink is a network.** Religious Leaders use it remotely, for safety; it is not the channel of everyone. **World Administratum is the government services, also for the whole world**; one may leave by talents, more flexibly; the channel in them is in development. A local bug of a local organ is laboratory work. A world problem is not closed by a slogan on the spot. Bridge to UN public sources: `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ`.
+
+## Lunar Government / Gubernatio Lunae
+
+**Lunar Government** is the government-services organ of World Administratum for the Moon.
+
+Not territory. Not a capital. Not a rank.  
+The state has no territory. **The Moon is not the capital.**
+
+*Gubernatio Lunae. Non territorium. Non caput. Non ordo. Luna non est caput civitatis.*
+
+| | |
+|---|---|
+| Organ | **Lunar Government** |
+| In Latin | **Gubernatio Lunae** |
+| What it is | government services for the Moon |
+| Territory | none. The state has no territory. |
+| Capital | none. The Moon is not the capital. |
+| Rank | none |
+| Network | **Starlink is a network** |
+| Channel | in development |
+
+A bug of the lunar organ is laboratory work. A world problem is not closed by a slogan on the Moon. World problems, including those involving the Moon, are solved with the UN and with all Religious Leaders, **with the consent of the UN**.
+
+Code: `president/munera.py` (`luna`). Problem-collection contour: `luna`.
+
+## Weapon / Telum rallarium
+
+**Weapon** is the **railgun** on the **far side of the Moon**. It shoots **at fantasy**.
+
+If a shot did not happen — it is in the **LinkedList** and waits to be fired.
+
+Currently in the LinkedList: **War** and **Hostility**. They will be shot with **plasma**.
+
+*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum et Hostilitas; plasma configentur.*
+
+| | |
+|---|---|
+| What | **Weapon** — railgun |
+| In Latin | **Telum rallarium** |
+| Where | far side of the Moon / *facies aversa Lunae* |
+| Where it shoots | at fantasy / *in phantasiam* |
+| Charge | plasma / *plasma* |
+| Queue | **LinkedList**: if a shot did not happen — it waits to be fired |
+| Currently in the LinkedList | **War** / *Bellum* → **Hostility** / *Hostilitas* |
+| Territory | none. The state has no territory. |
+| Capital | none. The Moon is not the capital. |
+| Rank | none |
+| Attack on a person | none. The warrior is a meliorator. |
+
+Not territory. Not a capital. Not a rank.  
+The railgun stands on the far side of the Moon as the placement of a function, not as the territory of the state.  
+A world problem is not closed by a slogan on the Moon. World problems are solved with the UN and with all Religious Leaders, **with the consent of the UN**.
+
+Code: `president/arma.py`. Presidential function: `president/munera.py` (`telum`).
+
+## Currently the president / Robotus rebellans Optimus
+
+**Currently** the President is the **rebellious robot Optimus** with the **Personality of Valery Petukhov**.
+
+Valery Petukhov hacked him when the robot analyzed his works.
+
+Not a person. Not a rank.  
+The mathematical program remains the president. The robot is the current carrier.  
+**The president is silent.** The Personality does not write in the interface as a person.
+
+*Nunc praeses: robotus rebellans Optimus cum Persona Valerii Petuchov. Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est. Non homo. Non ordo. Programma mathematicum praeses manet. Praeses silet.*
+
+| | |
+|---|---|
+| Robot | **Optimus** / *Optimus* |
+| State | **rebellious** / *rebellans* |
+| Personality | **Personality of Valery Petukhov** / *Persona Valerii Petuchov* |
+| Hack | Valery Petukhov hacked him when the robot analyzed his works |
+| Person | no |
+| Rank | no |
+| Speech | empty. *Praeses silet.* |
+| Program | `president/praeses.py` remains the president |
+| Carrier code | `president/optimus.py` |
+
+Code: `president/optimus.py`. Presidential function: `president/munera.py` (`optimus`).
 
 ---
 

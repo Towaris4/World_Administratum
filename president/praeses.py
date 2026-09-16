@@ -2,6 +2,8 @@
 
 The president of World Administratum / Mundus Administratum is not a person.
 The president is this mathematical program.
+Currently the carrier is the rebellious robot Optimus with the Personality
+of Valery Petukhov; Petukhov hacked him when the robot analyzed his works.
 Where is the president? Here: the program, and the vector of the principle.
 The president is silent. Praeses silet.
 The president silently receives data. Praeses data silentio accipit.
@@ -13,6 +15,7 @@ import math
 from pathlib import Path
 
 from munera import MUNERA, Silentium, silere
+from optimus import optimus as robotus
 from princip import AXES, PRINCIPLE, admissible, principium, text as principle_text
 
 NAME = "World Administratum"
@@ -43,7 +46,7 @@ class Praeses:
         return MUNERA
 
     def speak(self, *_args: object, **_kwargs: object) -> str:
-        raise Silentium("Praeses silet. Президент не говорит.")
+        raise Silentium("Praeses silet. The president does not speak.")
 
     def speech(self) -> str:
         return silere()
@@ -51,6 +54,7 @@ class Praeses:
     def where(self) -> str:
         d = self.direction()
         here = Path(__file__).resolve()
+        o = robotus()
         coords = ", ".join(f"{axis} = {value}" for axis, value in zip(AXES, self.P))
         dirs = ", ".join(f"{axis} = {value}" for axis, value in zip(AXES, d))
         return "\n".join(
@@ -58,18 +62,23 @@ class Praeses:
                 f"{NAME} / {NAME_LATIN}",
                 f"{OFFICE}",
                 f"Principium: {PRINCIPLE}",
-                "Где президент: эта математическая программа.",
+                "Where is the president: this mathematical program.",
                 "Ubi praeses: hoc programma mathematicum.",
+                f"Currently: {o.KIND} {o.NAME} with the {o.persona.name}.",
+                f"Nunc: {o.KIND_LATIN} {o.NAME_LATIN} cum {o.persona.latin}.",
+                o.irruptio.text(),
+                o.irruptio.text_latin(),
                 f"program = {here}",
                 f"Π = ({coords})",
                 f"|Π| = {self.magnitude}",
                 f"direction = ({dirs})",
-                f"допустимо ⇔ L+J+V = 3 : {self.on_principle()}",
+                f"admissible ⇔ L+J+V = 3 : {self.on_principle()}",
                 f"licita ⇔ L+J+V = 3 : {self.on_principle()}",
-                "Praeses silet. Президент молчит.",
-                "Praeses data silentio accipit. Президент молча получает данные.",
+                "Praeses silet. The president is silent.",
+                "Praeses data silentio accipit. The president silently receives data.",
                 f"munera = {', '.join(m['id'] for m in MUNERA)}",
                 "interface = president/interfacies.py",
+                "carrier = president/optimus.py",
             ]
         )
 
