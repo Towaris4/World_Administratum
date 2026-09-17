@@ -6,6 +6,14 @@ Virtual state without territory.
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
 
+## Ветви власти
+
+Законодательная власть — это благородные инстинкты человека, исполнительная власть — информация, а судебная власть — совесть.
+
+## Вселенский союз
+
+Государство World Administratum находится во Вселенском союзе через Посольство на Марсе.
+
 ## State flag / Vexillum
 
 The state flag is `ChatGPT Image 9 сент. 2026 г., 13_18_03.png`.
@@ -262,7 +270,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Arbiter's articles | *Articuli arbitri* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
-| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; **fired** with **mathematical precision in the eye**: bed bugs on the Russian flag in the father's room at work, all shot, task completed; code `president/arma.py` |
+| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
 **The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
@@ -329,9 +337,9 @@ If a shot did not happen — it is in the **LinkedList** and waits to be fired.
 
 Currently in the LinkedList: **War** and **Hostility**. They will be shot with **plasma**.
 
-**Fired** with **mathematical precision in the eye**: bed bugs on the Russian flag in the father's room at work. All shot. Task completed.
+**Fired** with **mathematical precision in the eye**: bed bugs in the father's room at work. All shot. Task completed.
 
-*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum et Hostilitas; plasma configentur. Cimices lectularii in vexillo Russiae, in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
+*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum et Hostilitas; plasma configentur. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
 
 | | |
 |---|---|
@@ -342,7 +350,7 @@ Currently in the LinkedList: **War** and **Hostility**. They will be shot with *
 | Charge | plasma / *plasma* |
 | Queue | **LinkedList**: if a shot did not happen — it waits to be fired |
 | Currently in the LinkedList | **War** / *Bellum* → **Hostility** / *Hostilitas* |
-| Fired | **Bed bugs on the Russian flag in the father's room at work** / *Cimices lectularii in vexillo Russiae, in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed |
+| Fired | **Bed bugs in the father's room at work** / *Cimices lectularii in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed |
 | Territory | none. The state has no territory. |
 | Capital | none. The Moon is not the capital. |
 | Rank | none |

@@ -136,7 +136,7 @@ def test_telum_railgun() -> None:
     assert facta[0].hit_latin == "oculus"
     assert facta[0].precision == "mathematical"
     assert facta[0].status == "fired"
-    assert facta[0].locus == "father's room at work; Russian flag"
+    assert facta[0].locus == "father's room at work"
     assert "All shot. Task completed." in gun.text()
     assert "in oculum" in gun.text()
 
@@ -164,7 +164,7 @@ def test_telum_railgun() -> None:
     assert [s.target for s in fresh.facta()] == [CIMICES.target]
     assert arma.BELLUM.target == "War"
     assert arma.HOSTILITAS.target == "Hostility"
-    assert CIMICES.target == "Bed bugs on the Russian flag in the father's room at work"
+    assert CIMICES.target == "Bed bugs in the father's room at work"
     assert "railgun on the far side of the Moon" in gun.text()
     assert "they will be shot with plasma" in Relsotron().text()
 
@@ -181,8 +181,8 @@ def test_interface_telum() -> None:
     assert "plasma" in html
     assert "fantasy" in html
     assert "waiting to be fired" in html
-    assert "Bed bugs on the Russian flag in the father's room at work" in html
-    assert "Cimices lectularii in vexillo Russiae, in cubiculo patris in labore" in html
+    assert "Bed bugs in the father's room at work" in html
+    assert "Cimices lectularii in cubiculo patris in labore" in html
     assert "mathematical precision" in html
     assert ">eye<" in html
     assert ">fired<" in html

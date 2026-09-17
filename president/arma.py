@@ -3,7 +3,7 @@
 The weapon is a railgun. It shoots at fantasy.
 If a shot did not happen, it is in the LinkedList and waits to be fired.
 Currently in the LinkedList: War and Hostility; they will be shot with plasma.
-Fired: bed bugs on the Russian flag in the father's room at work;
+Fired: bed bugs in the father's room at work;
 all shot with mathematical precision in the eye. Task completed.
 
 Not territory. Not a capital. Not a rank. The Moon is not the capital.
@@ -119,14 +119,14 @@ class LinkedList:
 BELLUM = Ictus("War", "Bellum")
 HOSTILITAS = Ictus("Hostility", "Hostilitas")
 CIMICES = Ictus(
-    target="Bed bugs on the Russian flag in the father's room at work",
-    latin="Cimices lectularii in vexillo Russiae, in cubiculo patris in labore",
+    target="Bed bugs in the father's room at work",
+    latin="Cimices lectularii in cubiculo patris in labore",
     charge="plasma",
     destination="fantasy",
     hit="eye",
     hit_latin="oculus",
     precision="mathematical",
-    locus="father's room at work; Russian flag",
+    locus="father's room at work",
     status="fired",
 )
 
@@ -214,12 +214,12 @@ class Relsotron:
                 f"LinkedList: {self.chain()}",
                 (
                     "Fired with mathematical precision in the eye: "
-                    "Bed bugs on the Russian flag in the father's room at work. "
+                    "Bed bugs in the father's room at work. "
                     "All shot. Task completed."
                 ),
                 (
                     "Disparata subtilitate mathematica in oculum: "
-                    "Cimices lectularii in vexillo Russiae, in cubiculo patris in labore. "
+                    "Cimices lectularii in cubiculo patris in labore. "
                     "Omnes disparati. Munus perfectum."
                 ),
                 f"Fired: {fired}.",

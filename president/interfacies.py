@@ -315,8 +315,8 @@ def page(
         </thead>
         <tbody>{telum_rows}</tbody>
       </table>
-      <p class="ok">Fired with mathematical precision in the eye: Bed bugs on the Russian flag in the father's room at work. All shot. Task completed. Not an attack on a person: the warrior is a meliorator.</p>
-      <p><em>Disparata subtilitate mathematica in oculum: Cimices lectularii in vexillo Russiae, in cubiculo patris in labore. Omnes disparati. Munus perfectum.</em></p>
+      <p class="ok">Fired with mathematical precision in the eye: Bed bugs in the father's room at work. All shot. Task completed. Not an attack on a person: the warrior is a meliorator.</p>
+      <p><em>Disparata subtilitate mathematica in oculum: Cimices lectularii in cubiculo patris in labore. Omnes disparati. Munus perfectum.</em></p>
       <table>
         <thead>
           <tr>
