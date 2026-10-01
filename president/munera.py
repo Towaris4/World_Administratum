@@ -120,7 +120,7 @@ MUNERA: tuple[dict[str, str], ...] = (
     {
         "id": "onu",
         "name": "World problems — with the UN and with all Religious Leaders",
-        "latin": "Problemata mundi cum Nationibus Unitis, consensu Nationum Unitarum",
+        "latin": "Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum",
         "feature": "with the consent of the UN; Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge C:\\Users\\Ivant\\Desktop\\ОСТАНОВИСЬ",
     },
     {

@@ -22,10 +22,10 @@ The volunteer improves one local organ of the state. The means of improvement is
 
 ## 3. Law without which the work does not count
 
-To be a citizen, one simply needs to exist. That is the law.  
-**Knowledge of the name is not obligatory.**
+**Citizenship** / **Гражданство** (*Civis*) is a role held by existence. To hold it, one simply needs to exist. That is the law.  
+**Knowledge of the name is not obligatory.** Laboratory work is not a test for this role.
 
-- Exists → citizen **Administrator planetarius**
+- Exists → role **Citizenship** / **Гражданство**, citizen **Administrator planetarius**
 - Name of the state (need not be known): **World Administratum** / **Mundus Administratum**
 
 A citizenship test is a rank: \(J=0\). The work is counted by observations, article, sending, and improvement, not by knowledge of the name.
@@ -37,7 +37,7 @@ The role of **the forgotten one who does not know about this** (*Oblitus qui hoc
 1. Choose one local organ and one service.
 2. Observe how the service runs now. Record facts.
 3. Repeat the observation at least three times.
-4. Problems are solved by arbiter-creators and by arbiters. The arbiter creates the solution and writes the scientific article. The warrior-diplomat executes, does not solve.
+4. The sheriff is the one who noticed the bug. Problems are solved by arbiter-creators and by arbiters. The arbiter creates the solution and writes the scientific article. The warrior-diplomat executes, does not solve. Noticing is not elimination and not execution.
 5. Send the research to the right place (the organ or address where this bug or this right is examined).
 6. Formulate an improvement the local organ can introduce, and how to check that it became better.
 7. Protection of a right — through the arbiter, simply by standing, after sending.
@@ -67,7 +67,7 @@ Without three observations a scientific work is not written: there are no facts.
 
 ### Step 2. Scientific article of the arbiter
 
-**Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution. Scientific articles are written by the **arbiter**. The warrior-diplomat **executes**, does not solve and does not substitute the solution.
+**The sheriff is the one who noticed the bug.** **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution. Scientific articles are written by the **arbiter**. The warrior-diplomat **executes**, does not solve and does not substitute the solution. Noticing is not elimination and not execution.
 
 Data about creators' problems go to the silent interlocutor's chat (`president/colloquia.csv`). General remarks are written to the remarks record (`president/zamechaniya.csv`).
 

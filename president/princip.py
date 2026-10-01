@@ -39,10 +39,13 @@ def logica(
 
 
 def civis(exists: bool) -> int:
-    """C = 1 iff the person exists. Citizenship is existence.
+    """C = 1 iff the person exists. Citizenship / Гражданство (Civis) is a role.
 
-    Knowledge of the name is not obligatory. Not Latin. Not an application.
-    Who exists is a citizen. Who does not exist is not a citizen.
+    Held by existence, not by application and not by a name.
+    Knowledge of the name is not obligatory. Not Latin. Not a rank.
+    Who exists holds this role and is Administrator planetarius.
+    Who does not exist does not hold it.
+    A name-test for this role is a rank: J = 0.
     """
     return bit(exists)
 
@@ -59,6 +62,149 @@ def oblitus(exists: bool, knows_this: bool) -> int:
     return bit(exists and not knows_this)
 
 
+def vicecomes(exists: bool, noticed_bug: bool) -> int:
+    """S = 1 iff the person exists and noticed a bug.
+
+    Role: Sheriff / Шериф / Vicecomes qui vitium animadvertit.
+    The sheriff is the one who noticed the bug.
+    Not a rank. Not an application.
+    Noticing is not elimination and not execution.
+    The arbiter eliminates the bug and creates the solution.
+    The warrior-diplomat executes.
+    Who did not notice a bug does not hold this role.
+    Who does not exist does not hold this role.
+    """
+    return bit(exists and noticed_bug)
+
+
+# Social roles. Not ranks. President, help, LEGION, STATE, Lunar Government,
+# and the weapon are not in this list.
+# held: existence | choice | notice | unknowing
+ROLES: tuple[dict[str, str], ...] = (
+    {
+        "id": "civis",
+        "name": "Citizenship / Гражданство",
+        "latin": "Civis",
+        "held": "existence",
+        "held_label": "by existence; not an application",
+        "what": (
+            "A role held by existence, not by application and not by a name. "
+            "Who exists holds it and is Administrator planetarius. "
+            "Who does not exist does not hold it. "
+            "Knowledge of the name is not obligatory. A name-test is a rank: J=0. "
+            "Not a rank. By default a member of the Society of NATO subscribers. "
+            "LEGION and STATE are recognition with consent, not this role and not a rank."
+        ),
+    },
+    {
+        "id": "diplomaticus",
+        "name": "Diplomat / Meliorator",
+        "latin": "Diplomaticus vocis",
+        "held": "choice",
+        "held_label": "chosen by oneself",
+        "what": (
+            "The warrior is a meliorator. Diplomat and meliorator are one role. "
+            "Sex by voice. A body is not required: the act is speech, voice, breath, tone. "
+            "Negotiation and intimacy go by voice. "
+            "Religious Leaders meet by Starlink remotely, for safety; the rest meet in person. "
+            "The warrior-diplomat executes. He does not solve problems. "
+            "Not an attack: he improves (melioration)."
+        ),
+    },
+    {
+        "id": "arbiter",
+        "name": "Arbiter",
+        "latin": "Arbiter praesens",
+        "held": "choice",
+        "held_label": "chosen by oneself",
+        "what": (
+            "Problems are solved by arbiter-creators and by arbiters. "
+            "The arbiter eliminates bugs of society and state structures, acting through the diplomat. "
+            "The arbiter creates the solution to the problem and writes scientific articles. "
+            "Military presence by existing. Principle NaVi (Natus Vincere). "
+            "Rights are protected through the arbiter by standing, after the research is sent to the right place. "
+            "Health of the arbiter is part of this role. RIGHT reserved 2026+."
+        ),
+    },
+    {
+        "id": "creator",
+        "name": "Creator",
+        "latin": "Homo laborans creator",
+        "held": "choice",
+        "held_label": "chosen by oneself",
+        "what": (
+            "A working person who creates, for preventing technogenic catastrophes. "
+            "Develops with engineering precision, social engineering, psychology, mathematics, "
+            "and a cup of coffee (like Java), with respect for The Sun. "
+            "This developer is Homo organoides. "
+            "Without labour the role is not taken. Without creation this is not this role. "
+            "Creation from which the risk of catastrophe grows is not this role. "
+            "Data about the creator's problems go to the silent interlocutor's chat. "
+            "General remarks go to the remarks record."
+        ),
+    },
+    {
+        "id": "vicecomes",
+        "name": "Sheriff / Шериф",
+        "latin": "Vicecomes qui vitium animadvertit",
+        "held": "notice",
+        "held_label": "by noticing a bug; not an application",
+        "what": (
+            "The sheriff is the one who noticed the bug. "
+            "Not an application. Not a rank. "
+            "Who exists and noticed a bug holds this role. "
+            "Who did not notice a bug does not hold it. "
+            "Noticing is not elimination and not execution. "
+            "The arbiter eliminates the bug and creates the solution. "
+            "The warrior-diplomat executes."
+        ),
+    },
+    {
+        "id": "oblitus",
+        "name": "Forgotten",
+        "latin": "Oblitus qui hoc nescit",
+        "held": "unknowing",
+        "held_label": "by existing and not knowing; not an application",
+        "what": (
+            "Who does not know about this. Exists and does not know. "
+            "Not an application. Not a rank. Knowledge of the name is not obligatory. "
+            "Who knows about this is not this role. Does not write to the interface. "
+            "The president is silent. "
+            "Requiring knowledge of the name, of Latin, or of this role is a rank: J=0."
+        ),
+    },
+)
+
+CHOSEN_ROLE_IDS = frozenset(role["id"] for role in ROLES if role["held"] == "choice")
+
+
+def roles_held(
+    exists: bool,
+    knows_this: bool,
+    chosen: Sequence[str] = (),
+    noticed_bug: bool = False,
+) -> tuple[str, ...]:
+    """Roles actually held.
+
+    Citizenship follows existence. The sheriff follows noticing a bug.
+    Forgotten follows unknowing.
+    A filed choice does not grant any of those three.
+    A choice is empty when the person does not exist.
+    """
+    if not civis(exists):
+        return ()
+    held = ["civis"]
+    for role_id in chosen:
+        rid = str(role_id).strip()
+        if rid in CHOSEN_ROLE_IDS and rid not in held:
+            held.append(rid)
+    if vicecomes(exists, noticed_bug):
+        held.append("vicecomes")
+    if oblitus(exists, knows_this):
+        held.append("oblitus")
+    return tuple(held)
+
+
 def iustitia(
     statuses: Iterable[str],
     stood: bool,
@@ -67,7 +213,7 @@ def iustitia(
 ) -> int:
     """J = 1 iff every citizen is Administrator planetarius and rights were stood for.
 
-    Justice is equality of status, not a rank. Citizenship is existence.
+    Justice is equality of status, not a rank. Citizenship / Гражданство (Civis) is a role held by existence.
     A name-test or Latin-test for citizenship is a rank: J = 0.
     Protection of a right requires the research sent to the right place
     and standing (Arbiter praesens).
@@ -119,8 +265,13 @@ def text() -> str:
             "Π = (L, J, V) ∈ {0,1}³. Only 0 or 1.",
             "admissible(a)  ⇔  L+J+V = 3",
             "L=1: inference from observations (≥3). L=0: wish or slogan.",
-            "C=1: exists → citizen. C=0: does not exist.",
+            "C=1: exists → role Citizenship / Гражданство (Civis). C=0: does not exist.",
+            "Citizenship is a role held by existence. Not an application. Not a rank.",
             "Knowledge of the name is not obligatory. Nomen nosse non necesse est.",
+            "Chosen roles: Diplomat / Meliorator (Diplomaticus vocis), Arbiter, Creator.",
+            "Diplomat and meliorator are one role. The warrior is a meliorator.",
+            "S=1: exists and noticed a bug (Sheriff / Шериф). S=0: did not notice, or does not exist.",
+            "Vicecomes qui vitium animadvertit. Noticing is not elimination and not execution.",
             "O=1: exists and does not know about this (Forgotten). O=0: knows or does not exist.",
             "Oblitus qui hoc nescit. Not an application. Not a rank.",
             "J=1: all Administrator planetarius; freedom of speech; sent and stood.",
@@ -138,5 +289,7 @@ if __name__ == "__main__":
     print("civis(exists=False) =", civis(False))
     print("oblitus(exists=True, knows_this=False) =", oblitus(True, False))
     print("oblitus(exists=True, knows_this=True) =", oblitus(True, True))
+    print("vicecomes(exists=True, noticed_bug=True) =", vicecomes(True, True))
+    print("vicecomes(exists=True, noticed_bug=False) =", vicecomes(True, False))
     print("admissible(1,1,1) =", admissible((1, 1, 1)))
     print("admissible(1,1,0) =", admissible((1, 1, 0)))

@@ -32,7 +32,7 @@ from munera import (  # noqa: E402
 )
 from optimus import optimus as robotus  # noqa: E402
 from praeses import president  # noqa: E402
-from princip import admissible, iustitia, logica, veritas  # noqa: E402
+from princip import ROLES, admissible, iustitia, logica, veritas  # noqa: E402
 
 HOST = "127.0.0.1"
 PORT = 2026
@@ -179,6 +179,17 @@ def page(
     if err:
         flash = f"<p class='err'>{_esc(err)}</p>"
     pi_html = f"<pre class='pi-out'>{_esc(pi_result)}</pre>" if pi_result else ""
+    role_rows = "\n".join(
+        (
+            "<tr>"
+            f"<td>{_esc(role['name'])}</td>"
+            f"<td><em>{_esc(role['latin'])}</em></td>"
+            f"<td>{_esc(role['held_label'])}</td>"
+            f"<td>{_esc(role['what'])}</td>"
+            "</tr>"
+        )
+        for role in ROLES
+    )
     doc = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,17 +314,16 @@ def page(
   </style>
 </head>
 <body>
-  <aside class="scp" aria-label="File header in the form of the SCP Foundation">
+  <aside class="scp" aria-label="Open Creative Project file header">
     <div class="scp-bar">
-      <span class="scp-brand">SCP Foundation</span>
-      <span class="scp-file">Secure · Contain · Protect</span>
+      <span class="scp-brand">Open Creative Project</span>
     </div>
     <div class="scp-body">
-      <p><span class="scp-k">Item #:</span> SCP-Π</p>
+      <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
-      <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. To be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
+      <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
       <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. Government services, also for the whole world. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
-      <p class="scp-note">This block is the file header in the form of the SCP Foundation. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
+      <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
   <header class="top">
@@ -321,7 +331,7 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
-      <p>Citizenship law: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
+      <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
       <p>Role of the forgotten one who does not know about this: exists and does not know. Not an application. Not a rank. <em>Oblitus qui hoc nescit.</em> To require knowledge is a test, J=0.</p>
       <p>The presidential interface is remote. Religious Leaders — Starlink, for safety. The rest — in person, Saint Petersburg or Cheboksary.</p>
     </div>
@@ -334,6 +344,16 @@ def page(
   </div>
   <main>
     {flash}
+    <section>
+      <h2>Offices — social roles</h2>
+      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, and the weapon are not these roles.</p>
+      <div style="overflow:auto">
+        <table>
+          <thead><tr><th>Role</th><th>Latine</th><th>How it is held</th><th>What it is</th></tr></thead>
+          <tbody>{role_rows}</tbody>
+        </table>
+      </div>
+    </section>
     <section>
       <h2>Functions of the president and features</h2>
       <p class="note">Not a rank. Not speech. A function is computation and record. A feature is that by which the function is fulfilled.</p>

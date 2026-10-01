@@ -10,7 +10,7 @@ import munera
 from arma import CIMICES, Relsotron, telum
 from munera import Silentium, president_author, silere
 from praeses import Praeses, president
-from princip import admissible, civis, iustitia, oblitus
+from princip import ROLES, admissible, civis, iustitia, oblitus, roles_held, vicecomes
 
 
 def test_silent() -> None:
@@ -174,10 +174,12 @@ def test_interface_scp_header() -> None:
 
     html = page().decode("utf-8")
     top = html.split("<header class=\"top\">", 1)[0]
-    assert "SCP Foundation" in top
-    assert "Secure · Contain · Protect" in top
+    assert "Open Creative Project" in top
+    readme = Path(__file__).resolve().parent.parent.joinpath("README.md").read_text(encoding="utf-8")
+    assert "Open Creative Project" in readme
+    assert "SCP" not in top
     assert "Item #:" in top
-    assert "SCP-Π" in top
+    assert "Item #:</span> Π" in top
     assert "Object Class:" in top
     assert "Explained" in top
     assert "Not a rank." in top
@@ -303,6 +305,89 @@ def test_oblitus() -> None:
     assert iustitia(["Administrator planetarius"], True, True, name_test=True) == 0
 
 
+def test_roles_match_description() -> None:
+    ids = [role["id"] for role in ROLES]
+    assert ids == ["civis", "diplomaticus", "arbiter", "creator", "vicecomes", "oblitus"]
+    by_id = {role["id"]: role for role in ROLES}
+    assert by_id["civis"]["name"] == "Citizenship / Гражданство"
+    assert by_id["civis"]["latin"] == "Civis"
+    assert by_id["civis"]["held"] == "existence"
+    assert by_id["diplomaticus"]["name"] == "Diplomat / Meliorator"
+    assert by_id["diplomaticus"]["latin"] == "Diplomaticus vocis"
+    assert "Warrior" not in by_id["diplomaticus"]["name"]
+    assert "one role" in by_id["diplomaticus"]["what"]
+    assert by_id["arbiter"]["latin"] == "Arbiter praesens"
+    assert by_id["arbiter"]["held"] == "choice"
+    assert by_id["creator"]["latin"] == "Homo laborans creator"
+    assert by_id["vicecomes"]["name"] == "Sheriff / Шериф"
+    assert by_id["vicecomes"]["latin"] == "Vicecomes qui vitium animadvertit"
+    assert by_id["vicecomes"]["held"] == "notice"
+    assert "noticed the bug" in by_id["vicecomes"]["what"]
+    assert vicecomes(True, True) == 1
+    assert vicecomes(True, False) == 0
+    assert vicecomes(False, True) == 0
+    assert by_id["oblitus"]["latin"] == "Oblitus qui hoc nescit"
+    assert by_id["oblitus"]["held"] == "unknowing"
+    assert roles_held(False, False, ["diplomaticus", "civis"]) == ()
+    assert roles_held(True, True) == ("civis",)
+    assert roles_held(True, False) == ("civis", "oblitus")
+    assert roles_held(True, True, ["diplomaticus", "arbiter", "civis", "oblitus"]) == (
+        "civis",
+        "diplomaticus",
+        "arbiter",
+    )
+    assert roles_held(True, True, ["vicecomes"], noticed_bug=False) == ("civis",)
+    assert roles_held(True, False, noticed_bug=True) == ("civis", "vicecomes", "oblitus")
+    assert roles_held(False, False, noticed_bug=True) == ()
+    root = Path(__file__).resolve().parent.parent
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    register = (root / "dolzhnosti.csv").read_text(encoding="utf-8")
+    lab = (root / "lab" / "Lab_work_1.md").read_text(encoding="utf-8")
+    assert "**Citizenship** / **Гражданство**" in readme
+    assert "| **Civis** |" in readme
+    assert "**Diplomat** / **Meliorator**" in readme
+    assert "**Diplomat** / **Warrior**" not in readme
+    assert "Articuli arbitri" not in readme
+    assert "The arbiter creates the solution to the problem" in readme
+    assert "Citizenship / Гражданство (Civis) is a role" in agents
+    assert "Together with Citizenship, the roles are:" in agents
+    assert "Citizenship;Diplomat / Meliorator;Arbiter;Creator" in register
+    assert "Civis;Diplomaticus vocis;Arbiter praesens;Homo laborans creator" in register
+    assert "Citizenship;Forgotten" in register
+    assert "Citizenship;Sheriff / Шериф" in register
+    assert "Vicecomes qui vitium animadvertit" in register
+    assert "Vicecomes qui vitium animadvertit" in readme
+    assert "the sheriff is the one who noticed the bug" in agents.casefold()
+    assert "noticed the bug" in lab.casefold()
+    assert "Гражданство" in lab
+    onu = next(item for item in munera.MUNERA if item["id"] == "onu")
+    assert onu["latin"] == (
+        "Problemata mundi solvuntur cum Nationibus Unitis "
+        "et cum omnibus ducibus religiosis, consensu Nationum Unitarum"
+    )
+    assert onu["latin"] in readme
+
+
+def test_interface_roles() -> None:
+    from interfacies import page
+
+    html = page().decode("utf-8")
+    assert "Offices — social roles" in html
+    assert "Citizenship / Гражданство" in html
+    assert "Diplomat / Meliorator" in html
+    assert "Diplomaticus vocis" in html
+    assert "by existence; not an application" in html
+    assert "Arbiter praesens" in html
+    assert "Homo laborans creator" in html
+    assert "Oblitus qui hoc nescit" in html
+    assert "Sheriff / Шериф" in html
+    assert "Vicecomes qui vitium animadvertit" in html
+    assert "by noticing a bug; not an application" in html
+    assert "Diplomat / Warrior" not in html
+    assert "Citizenship (Гражданство, Civis) is a role held by existence" in html
+
+
 if __name__ == "__main__":
     test_silent()
     test_president_author()
@@ -311,6 +396,8 @@ if __name__ == "__main__":
     test_vector()
     test_civis()
     test_oblitus()
+    test_roles_match_description()
+    test_interface_roles()
     with tempfile.TemporaryDirectory() as d:
         test_luna_government(Path(d))
     test_telum_railgun()

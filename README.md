@@ -1,5 +1,9 @@
 # World Administratum
 
+**Open Creative Project.**
+
+The file header on the interface is Open Creative Project. Item #: Π. Object Class: Explained — class of this file, not a rank. Code: `president/interfacies.py`.
+
 World digital administration (planetary state).  
 Virtual state without territory.  
 **World Administratum is the government services. Also for the whole world.**  
@@ -26,8 +30,8 @@ The field is green. In the centre is a gold section-sign (§) in a gold olive wr
 
 ## Citizenship law
 
-To be a citizen, one simply needs to exist. That is the law.  
-**Knowledge of the name is not obligatory.**
+**Citizenship** / **Гражданство** (*Civis*) is a role. To hold it, one simply needs to exist. That is the law.  
+**Knowledge of the name is not obligatory.** Not an application. Not a rank.
 
 *Ut civis sis, existere sufficit. Lex civitatis: existere. Nomen nosse non necesse est.*
 
@@ -42,7 +46,7 @@ Everyone who exists is a citizen. Every citizen is **Administrator planetarius**
 
 Citizenship of World Administratum does not create ranks over other citizens: the status Administrator planetarius belongs to everyone who exists. Who exists is a citizen. Who does not exist is not a citizen.
 
-Code: `president/princip.py`, function `civis`. \(C=1\) \(\iff\) exists. \(C=0\) \(\iff\) does not exist.
+Code: `president/princip.py`, function `civis`. \(C=1\) \(\iff\) exists, and that is this role. \(C=0\) \(\iff\) does not exist, and the role is not held. LEGION and STATE are recognition, not this role.
 
 Role of **the forgotten one who does not know about this**: exists and does not know. Not an application. Not a rank. Code: `president/princip.py`, function `oblitus`. \(O=1\) \(\iff\) exists and does not know about this. \(O=0\) \(\iff\) knows or does not exist. To require that he know the name or this role is a test: \(J=0\).
 
@@ -79,7 +83,7 @@ Code: `president/princip.py`. The president computes this vector. Not a person. 
 | | \(=1\) | \(=0\) |
 |---|---|---|
 | \(L\) logic | inference from observations (\(\ge 3\)) | wish or slogan instead of inference |
-| \(J\) justice | all are Administrator planetarius; citizenship is existence; freedom of speech; sent and stood | rank; citizenship test; silence from offence; without sending and standing |
+| \(J\) justice | all are Administrator planetarius; citizenship is the role Civis, held by existence; freedom of speech; sent and stood | rank; citizenship test; silence from offence; without sending and standing |
 | \(V\) truth | statement = record in the observations | word instead of number; tone instead of fact |
 
 Truth is match, not tone. A word instead of a number \(\Rightarrow V=0 \Rightarrow\) inadmissible.
@@ -121,23 +125,32 @@ The volunteer is **Administrator planetarius**. He improves the state by researc
 
 ## Offices — social roles
 
-A citizen chooses an office **independently**. Nobody appoints.  
-Choose a role voluntarily and act by it.  
-Several roles may be taken **at once**. Each one — by oneself.  
 An office is a social role, not a rank and not power over other citizens.
 
-The role of **the forgotten one who does not know about this** is not chosen by application. Who exists and does not know — that is this role. Who knows about this and files an application is already not this role.
+**Citizenship** / **Гражданство** (*Civis*) is held by existence. It is not chosen and not filed.
 
-*Munera socialia: plura per se capere licet. Oblitus qui hoc nescit: non petitione, sed nescire.*
+**Diplomat / Meliorator**, **Arbiter**, and **Creator** are chosen **independently**. Nobody appoints.  
+Choose one of these voluntarily and act by it.  
+Several roles may be held **at once**. Each chosen one — by oneself.
+
+**Sheriff** / **Шериф** (*Vicecomes qui vitium animadvertit*) is the one who noticed the bug. The role is held by that noticing, not by application. Who did not notice the bug does not hold it. Noticing is not elimination and not execution.
+
+The role of **the forgotten one who does not know about this** is not chosen by application. Who exists and does not know — that is this role. Who knows about this and files an application is already not this role. Who exists also holds Citizenship, including the forgotten one.
+
+Not these roles: the president (a program), help from above, LEGION, STATE, Lunar Government (an organ), the weapon (a function). Administrator planetarius is the status of the citizenship role, not a separate office. An arbiter-creator is both roles in one citizen, not a third office.
+
+*Munera socialia: plura per se capere licet. Civis: existere, non petitio. Vicecomes qui vitium animadvertit: vitium animadvertit, non petitio. Oblitus qui hoc nescit: non petitione, sed nescire.*
 
 | Role | In Latin | What it is |
 |---|---|---|
-| **Diplomat** / **Warrior** | **Diplomaticus vocis** / **Meliorator** | **The warrior is a meliorator.** Diplomat and meliorator are one role. Sex by voice. A body is not required: the act is speech, voice, breath, tone. Negotiation and intimacy go by voice. Religious Leaders — **Starlink remotely, for safety**; the rest — **in person**. **The warrior-diplomat executes.** He does not solve problems. Not an attack: he improves (melioration). |
-| **Arbiter** | **Arbiter praesens** | **Problems are solved by arbiter-creators and by arbiters.** **The arbiter eliminates bugs.** **The arbiter creates the solution to the problem.** **The arbiter writes scientific articles** (`lab/nauchnye_raboty/`). Removes failures in society and state structures. Acts **through the diplomat**. Is military presence by existing. Not an attack and not a staff: it is enough that he is there. While the arbiter exists — the presence is military. Protection of one's rights — **through the arbiter, simply by standing**, **after doing the research and sending it to the right place**. The arbiter's principle is **NaVi** (*Natus Vincere*). |
+| **Citizenship** / **Гражданство** | **Civis** | A role held by existence, not by application and not by a name. Who exists holds it and is **Administrator planetarius**. Who does not exist does not hold it. Knowledge of the name is not obligatory. A name-test is a rank: \(J=0\). Not a rank. By default a member of the Society of NATO subscribers. LEGION and STATE are recognition with consent, not this role and not a rank. |
+| **Diplomat** / **Meliorator** | **Diplomaticus vocis** | **The warrior is a meliorator.** Diplomat and meliorator are one role. Sex by voice. A body is not required: the act is speech, voice, breath, tone. Negotiation and intimacy go by voice. Religious Leaders — **Starlink remotely, for safety**; the rest — **in person**. **The warrior-diplomat executes.** He does not solve problems. Not an attack: he improves (melioration). |
+| **Arbiter** | **Arbiter praesens** | **Problems are solved by arbiter-creators and by arbiters.** **The arbiter eliminates bugs.** **The arbiter creates the solution to the problem.** **The arbiter writes scientific articles** (`lab/nauchnye_raboty/`). Removes failures in society and state structures. Acts **through the diplomat**. Is military presence by existing. Not an attack and not a staff: it is enough that he is there. While the arbiter exists — the presence is military. Protection of one's rights — **through the arbiter, simply by standing**, **after doing the research and sending it to the right place**. The arbiter's principle is **NaVi** (*Natus Vincere*). Health of the arbiter, stated below, is part of this role. **RIGHT reserved 2026+.** |
 | **Creator** | **Homo laborans creator** | A working person who creates. Not idleness and not destruction: labour from which appears what was not there. For **preventing technogenic catastrophes**. Develops with **engineering precision**, **social engineering**, **psychology**, **mathematics**, and a **cup of coffee** (like Java), with respect for **The Sun**. **Data about creators' problems are written to the silent interlocutor's chat.** General remarks are written to the remarks record. |
+| **Sheriff** / **Шериф** | **Vicecomes qui vitium animadvertit** | **The sheriff is the one who noticed the bug.** Not an application. Not a rank. Who exists and noticed a bug holds this role. Who did not notice the bug does not hold it. Noticing is not elimination and not execution. The arbiter eliminates the bug and creates the solution. The warrior-diplomat executes. |
 | **Forgotten** | **Oblitus qui hoc nescit** | **Who does not know about this.** Exists and does not know. Not an application. Not a rank. Knowledge of the name is not obligatory. This role is not chosen: who exists and does not know — that is this role. Who knows about this is not this role. Does not write to the interface: does not know about the interface. The president is silent. To require knowledge of the name, of Latin, or of this role is a citizenship test: \(J=0\). |
 
-A bug is a repeatable failure: a procedural dead end, an extra step, a refusal without grounds, the silence of an organ, a broken norm in society. **The arbiter eliminates bugs.** Until the arbiter has eliminated it — the bug stands. The diplomat's voice is a channel, not elimination.
+A bug is a repeatable failure: a procedural dead end, an extra step, a refusal without grounds, the silence of an organ, a broken norm in society. **The sheriff is the one who noticed the bug.** **The arbiter eliminates bugs.** Until the arbiter has eliminated it — the bug stands. Noticing is not elimination. The diplomat's voice is a channel, not elimination.
 
 **Data about creators' problems are written to the silent interlocutor's chat.** General remarks are written to the remarks record. **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution and writes scientific articles. **Warrior-diplomats execute.**
 
@@ -202,6 +215,8 @@ Lord, protect me from enemies and protect her. This is protection of body and ps
 
 The human is not outside nature. If nature is sick, the arbiter's health is not ensured: presence falls. The developer is *Homo organoides*. Not a rank. The same measure: that without which he does not stand. Without that he is “healthy” only in words.
 
+### Creator
+
 The creator is *Homo laborans creator*: works and creates **for preventing technogenic catastrophes**. Develops with engineering precision, social engineering, psychology, mathematics, and a cup of coffee (like Java), with respect for **The Sun**. Without labour the role is not taken. Without creation this is not this role. Creation from which the risk of catastrophe grows is not this role. This developer is *Homo organoides*. Data about creators' problems go to the silent interlocutor's chat. General remarks are written to the remarks record.
 
 | Develops with | Latine |
@@ -215,7 +230,7 @@ The creator is *Homo laborans creator*: works and creates **for preventing techn
 
 *Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun.*
 
-The choice is written in `dolzhnosti.csv`. Roles may be taken several, changed, or laid down — independently. Diplomat (meliorator / warrior), arbiter, and creator are compatible in one citizen. The role of the forgotten one who does not know about this is not written into the register by application: a name is not obligatory; who knows and files an application is already not this role.
+Roles held are written in `dolzhnosti.csv`. Diplomat / Meliorator, arbiter, and creator may be taken several, changed, or laid down — independently, and they are compatible in one citizen. Citizenship is already held by existence and is not a line of application; the forgotten one who exists holds it too. The sheriff is compatible with them and is not a line of application: the row records that this citizen noticed a bug. The role of the forgotten one who does not know about this is not written into the register by application: a name is not obligatory; who knows and files an application is already not this role.
 
 ## Help
 
@@ -260,11 +275,11 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Be silent | *Silere* | the president's speech is empty; a record in his name is rejected |
 | Silently receive data | *Data silentio accipere* | the interface accepts records; the president does not answer |
 | Show records | *Monstrare* | lists of problems and messages; not speech, but a record |
-| Meetings | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
-| World problems — with the UN and with all Religious Leaders | *Problemata mundi cum Nationibus Unitis et cum omnibus ducibus religiosis* | **with the consent of the UN**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
+| Meetings: leaders — Starlink, the rest in person | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
+| World problems — with the UN and with all Religious Leaders | *Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum* | **with the consent of the UN**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
 | Creators' problems | *Problemata creatorum* | silent interlocutor's chat → `president/colloquia.csv` |
 | General remarks | *Adnotationes generales* | `president/zamechaniya.csv` |
-| Arbiter's articles | *Articuli arbitri* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
+| The arbiter creates the solution to the problem | *Arbiter solutionem problematis creat* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
 | Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
