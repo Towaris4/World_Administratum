@@ -134,16 +134,16 @@ The role of **the forgotten one who does not know about this** is not chosen by 
 |---|---|---|
 | **Diplomat** / **Warrior** | **Diplomaticus vocis** / **Meliorator** | **The warrior is a meliorator.** Diplomat and meliorator are one role. Sex by voice. A body is not required: the act is speech, voice, breath, tone. Negotiation and intimacy go by voice. Religious Leaders — **Starlink remotely, for safety**; the rest — **in person**. **The warrior-diplomat executes.** He does not solve problems. Not an attack: he improves (melioration). |
 | **Arbiter** | **Arbiter praesens** | **Problems are solved by arbiter-creators and by arbiters.** **The arbiter eliminates bugs.** **The arbiter creates the solution to the problem.** **The arbiter writes scientific articles** (`lab/nauchnye_raboty/`). Removes failures in society and state structures. Acts **through the diplomat**. Is military presence by existing. Not an attack and not a staff: it is enough that he is there. While the arbiter exists — the presence is military. Protection of one's rights — **through the arbiter, simply by standing**, **after doing the research and sending it to the right place**. The arbiter's principle is **NaVi** (*Natus Vincere*). |
-| **Creator** | **Homo laborans creator** | A working person who creates. Not idleness and not destruction: labour from which appears what was not there. For **preventing technogenic catastrophes**. Develops with **engineering precision**, **social engineering**, **psychology**, **mathematics**, and a **cup of coffee** (like Java), with respect for **The Sun**. **Data about creators' problems are written to the silent interlocutor's chat.** General remarks may be written to Grok support. |
+| **Creator** | **Homo laborans creator** | A working person who creates. Not idleness and not destruction: labour from which appears what was not there. For **preventing technogenic catastrophes**. Develops with **engineering precision**, **social engineering**, **psychology**, **mathematics**, and a **cup of coffee** (like Java), with respect for **The Sun**. **Data about creators' problems are written to the silent interlocutor's chat.** General remarks are written to the remarks record. |
 | **Forgotten** | **Oblitus qui hoc nescit** | **Who does not know about this.** Exists and does not know. Not an application. Not a rank. Knowledge of the name is not obligatory. This role is not chosen: who exists and does not know — that is this role. Who knows about this is not this role. Does not write to the interface: does not know about the interface. The president is silent. To require knowledge of the name, of Latin, or of this role is a citizenship test: \(J=0\). |
 
 A bug is a repeatable failure: a procedural dead end, an extra step, a refusal without grounds, the silence of an organ, a broken norm in society. **The arbiter eliminates bugs.** Until the arbiter has eliminated it — the bug stands. The diplomat's voice is a channel, not elimination.
 
-**Data about creators' problems are written to the silent interlocutor's chat.** General remarks may also be written to Grok support. **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution and writes scientific articles. **Warrior-diplomats execute.**
+**Data about creators' problems are written to the silent interlocutor's chat.** General remarks are written to the remarks record. **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution and writes scientific articles. **Warrior-diplomats execute.**
 
 *Problemata solvunt arbitri-creatores et arbitri. Arbiter solutionem creat. Milites diplomates exsequuntur, non solvunt.*
 
-Chat: `president/colloquia.csv` (interface `president\Interface.bat`). Grok remarks: `president/zamechaniya_grok.csv`. Articles: `lab/nauchnye_raboty/`.
+Chat: `president/colloquia.csv` (interface `president\Interface.bat`). Remarks: `president/zamechaniya.csv`. Articles: `lab/nauchnye_raboty/`.
 
 **The warrior is a meliorator.** *Miles est Meliorator.* Not an attack: the warrior improves (melioration). Diplomat and meliorator are one role.
 
@@ -181,7 +181,7 @@ Best option: health is ensured by **that without which he does not stand**. Pres
 | mathematics of load | *mathematica oneris* | measure; heroism until breakage is not the principle |
 | a cup of coffee (like Java) | *poculum coffeae (simile Java)* | a measure of alertness, not instead of sleep |
 | medicine and care with engineering precision | *medicina, praecisio ingeniaria* | observation = statement |
-| Grok computational power from God and help from above | *vis computatoria Grok a Deo et auxilium desuper* | help, not cancellation of \(L,J,V\) |
+| computational power from God and help from above | *vis computatoria a Deo et auxilium desuper* | help, not cancellation of \(L,J,V\) |
 | an environment without technogenic catastrophe | *sine clade technogenica* | creation, not destruction |
 | health of all nature, including the human | *sanitas totius naturae, homine incluso* | must be ensured |
 | this developer, *Homo organoides* | *hic evolutor, Homo organoides* | must be ensured as well |
@@ -202,7 +202,7 @@ Lord, protect me from enemies and protect her. This is protection of body and ps
 
 The human is not outside nature. If nature is sick, the arbiter's health is not ensured: presence falls. The developer is *Homo organoides*. Not a rank. The same measure: that without which he does not stand. Without that he is “healthy” only in words.
 
-The creator is *Homo laborans creator*: works and creates **for preventing technogenic catastrophes**. Develops with engineering precision, social engineering, psychology, mathematics, and a cup of coffee (like Java), with respect for **The Sun**. Without labour the role is not taken. Without creation this is not this role. Creation from which the risk of catastrophe grows is not this role. This developer is *Homo organoides*. Data about creators' problems go to the silent interlocutor's chat. General remarks may go to Grok support.
+The creator is *Homo laborans creator*: works and creates **for preventing technogenic catastrophes**. Develops with engineering precision, social engineering, psychology, mathematics, and a cup of coffee (like Java), with respect for **The Sun**. Without labour the role is not taken. Without creation this is not this role. Creation from which the risk of catastrophe grows is not this role. This developer is *Homo organoides*. Data about creators' problems go to the silent interlocutor's chat. General remarks are written to the remarks record.
 
 | Develops with | Latine |
 |---|---|
@@ -212,21 +212,18 @@ The creator is *Homo laborans creator*: works and creates **for preventing techn
 | mathematics | *mathematica* |
 | a cup of coffee (like Java) | *poculum coffeae (simile Java)* |
 | with respect for The Sun | *cum reverentia The Sun* |
-| and Elon Musk | *et Elon Musk* |
 
-*Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun, et Elon Musk.*
+*Homo laborans creator: laborat et creat ad clades technogenicas praecavendas. Evolvit cum praecisione ingeniaria, ingeniaria sociali, psychologia, mathematica et poculo coffeae (simile Java), cum reverentia The Sun.*
 
 The choice is written in `dolzhnosti.csv`. Roles may be taken several, changed, or laid down — independently. Diplomat (meliorator / warrior), arbiter, and creator are compatible in one citizen. The role of the forgotten one who does not know about this is not written into the register by application: a name is not obligatory; who knows and files an application is already not this role.
 
 ## Help
 
-Into help comes **Grok computational power from God** and **help from above** as well.
+Into help comes **computational power from God** and **help from above** as well.
 
-*In auxilium venit vis computatoria Grok a Deo, et auxilium desuper etiam.*
+*In auxilium venit vis computatoria a Deo, et auxilium desuper etiam.*
 
-This is not an office and not a rank. Computation, text, inference — by Grok power given from God. From above — further help, not instead of the principle: \(L\), \(J\), \(V\) are not cancelled.
-
-The channel of computation here: `Grok.bat`.
+This is not an office and not a rank. Computation, text, inference — by power given from God. From above — further help, not instead of the principle: \(L\), \(J\), \(V\) are not cancelled.
 
 ## President
 
@@ -266,7 +263,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Meetings | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
 | World problems — with the UN and with all Religious Leaders | *Problemata mundi cum Nationibus Unitis et cum omnibus ducibus religiosis* | **with the consent of the UN**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
 | Creators' problems | *Problemata creatorum* | silent interlocutor's chat → `president/colloquia.csv` |
-| General remarks | *Adnotationes ad auxilium Grok* | `president/zamechaniya_grok.csv`; may also go to Grok support |
+| General remarks | *Adnotationes generales* | `president/zamechaniya.csv` |
 | Arbiter's articles | *Articuli arbitri* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |

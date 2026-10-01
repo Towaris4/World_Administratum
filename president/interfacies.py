@@ -23,9 +23,9 @@ from munera import (  # noqa: E402
     Silentium,
     collect_problema,
     creator_problema,
-    grok_zamechanie,
+    zamechanie,
     list_colloquia,
-    list_grok_zamechaniya,
+    list_zamechaniya,
     list_problemata,
     silere,
     speak_as_citizen,
@@ -160,19 +160,19 @@ def page(
         )
     else:
         talk_rows = "<p class='empty'>Citizens have not written yet. The president will not start.</p>"
-    grok_rows_data = list_grok_zamechaniya()
-    if grok_rows_data:
-        grok_rows = "\n".join(
+    remark_rows_data = list_zamechaniya()
+    if remark_rows_data:
+        remark_rows = "\n".join(
             (
                 "<article class='msg'>"
                 f"<header>{_esc(r['author'])} · {_esc(r['date'])}</header>"
                 f"<p>{_esc(r['text'])}</p>"
                 "</article>"
             )
-            for r in grok_rows_data
+            for r in remark_rows_data
         )
     else:
-        grok_rows = "<p class='empty'>No general remarks yet.</p>"
+        remark_rows = "<p class='empty'>No general remarks yet.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -263,9 +263,59 @@ def page(
     a {{ color: var(--gold); }}
     .check {{ display: flex; gap: .4rem; align-items: center; margin: .4rem 0; }}
     .check label {{ margin: 0; color: var(--paper); }}
+    .scp {{
+      background: #f7f7f5;
+      color: #1a1a1a;
+      border-bottom: 4px solid #8b1e1e;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }}
+    .scp-bar {{
+      background: #111;
+      color: #f2f2f2;
+      padding: .55rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem 1.5rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }}
+    .scp-brand {{
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .95rem;
+    }}
+    .scp-file {{
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .72rem;
+      color: #c8c8c8;
+    }}
+    .scp-body {{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: .85rem 1.25rem 1rem;
+    }}
+    .scp-body p {{ margin: .4rem 0; }}
+    .scp-k {{ font-weight: 700; }}
+    .scp-note {{ color: #333; font-size: .92rem; }}
   </style>
 </head>
 <body>
+  <aside class="scp" aria-label="File header in the form of the SCP Foundation">
+    <div class="scp-bar">
+      <span class="scp-brand">SCP Foundation</span>
+      <span class="scp-file">Secure · Contain · Protect</span>
+    </div>
+    <div class="scp-body">
+      <p><span class="scp-k">Item #:</span> SCP-Π</p>
+      <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
+      <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. To be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. Government services, also for the whole world. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p class="scp-note">This block is the file header in the form of the SCP Foundation. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
+    </div>
+  </aside>
   <header class="top">
     <img src="/vexillum.png" alt="Vexillum Mundi Administrati">
     <div>
@@ -372,16 +422,16 @@ def page(
         </form>
         <h3>Records</h3>
         {talk_rows}
-        <h3>General remarks to Grok support</h3>
-        <p class="note">May be written here and to Grok support. The president does not write.</p>
-        <form method="post" action="/grok">
+        <h3>General remarks</h3>
+        <p class="note">Written here. The president does not write.</p>
+        <form method="post" action="/zamechanie">
           <label for="g_author">Who writes</label>
           <input id="g_author" name="author" required maxlength="120">
           <label for="g_text">General remark</label>
           <textarea id="g_text" name="text" required></textarea>
           <button type="submit">Record the remark</button>
         </form>
-        {grok_rows}
+        {remark_rows}
       </section>
     </div>
     <section>
@@ -495,9 +545,9 @@ class Handler(BaseHTTPRequestHandler):
                 speak_as_citizen(_first(form, "author"), _first(form, "text"))
                 self._redirect("/?ok=" + quote("Message recorded. The president did not answer."))
                 return
-            if path == "/grok":
-                grok_zamechanie(_first(form, "author"), _first(form, "text"))
-                self._redirect("/?ok=" + quote("Remark recorded. It may also be sent to Grok support."))
+            if path == "/zamechanie":
+                zamechanie(_first(form, "author"), _first(form, "text"))
+                self._redirect("/?ok=" + quote("Remark recorded. The president did not answer."))
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

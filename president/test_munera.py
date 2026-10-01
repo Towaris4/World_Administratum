@@ -55,16 +55,16 @@ def test_collect_and_colloquium(tmp_path: Path) -> None:
     talk = munera.speak_as_citizen("civis", "meeting remotely")
     assert talk["text"] == "meeting remotely"
     assert munera.list_colloquia()[0]["author"] == "civis"
-    munera.GROK_ZAMECHANIYA = tmp_path / "zamechaniya_grok.csv"
+    munera.ZAMECHANIYA = tmp_path / "zamechaniya.csv"
     cr = munera.creator_problema("creator", "failure in labour")
     assert cr["kind"] == "creator"
     try:
-        munera.grok_zamechanie("praeses", "remark")
+        munera.zamechanie("praeses", "remark")
     except Silentium:
         pass
     else:
-        raise AssertionError("president must not write grok remarks")
-    gz = munera.grok_zamechanie("civis", "general remark")
+        raise AssertionError("president must not write general remarks")
+    gz = munera.zamechanie("civis", "general remark")
     assert gz["text"] == "general remark"
 
 
@@ -167,6 +167,26 @@ def test_telum_railgun() -> None:
     assert CIMICES.target == "Bed bugs in the father's room at work"
     assert "railgun on the far side of the Moon" in gun.text()
     assert "they will be shot with plasma" in Relsotron().text()
+
+
+def test_interface_scp_header() -> None:
+    from interfacies import page
+
+    html = page().decode("utf-8")
+    top = html.split("<header class=\"top\">", 1)[0]
+    assert "SCP Foundation" in top
+    assert "Secure · Contain · Protect" in top
+    assert "Item #:" in top
+    assert "SCP-Π" in top
+    assert "Object Class:" in top
+    assert "Explained" in top
+    assert "Not a rank." in top
+    assert "Special Containment Procedures:" in top
+    assert "Knowledge of the name is not obligatory." in top
+    assert "Description:" in top
+    assert "Mundus Administratum" in top
+    assert "LOGICA, IUSTITIA ET VERITAS" in top
+    assert "Level" not in top
 
 
 def test_interface_telum() -> None:
@@ -294,6 +314,7 @@ if __name__ == "__main__":
     with tempfile.TemporaryDirectory() as d:
         test_luna_government(Path(d))
     test_telum_railgun()
+    test_interface_scp_header()
     test_interface_telum()
     test_optimus_persona()
     test_interface_optimus()

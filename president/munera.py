@@ -18,7 +18,7 @@ from typing import Any, Mapping
 HERE = Path(__file__).resolve().parent
 PROBLEMATA = HERE / "problemata.csv"
 COLLOQUIA = HERE / "colloquia.csv"
-GROK_ZAMECHANIYA = HERE / "zamechaniya_grok.csv"
+ZAMECHANIYA = HERE / "zamechaniya.csv"
 LOCK = threading.Lock()
 
 PRESIDENT_AUTHORS = frozenset(
@@ -60,7 +60,7 @@ PROBLEMATA_FIELDS = (
 )
 
 COLLOQUIA_FIELDS = ("id", "date", "author", "text", "kind")
-GROK_FIELDS = ("id", "date", "author", "text")
+ZAMECHANIYA_FIELDS = ("id", "date", "author", "text")
 
 
 class Silentium(Exception):
@@ -154,10 +154,10 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "silent interlocutor's chat → president/colloquia.csv (kind=creator)",
     },
     {
-        "id": "grok_support",
-        "name": "General remarks to Grok support",
-        "latin": "Adnotationes ad auxilium Grok",
-        "feature": "president/zamechaniya_grok.csv; may also go to Grok support",
+        "id": "adnotationes",
+        "name": "General remarks",
+        "latin": "Adnotationes generales",
+        "feature": "president/zamechaniya.csv",
     },
     {
         "id": "articuli",
@@ -229,8 +229,8 @@ def list_colloquia() -> list[dict[str, str]]:
     return rows
 
 
-def list_grok_zamechaniya() -> list[dict[str, str]]:
-    rows = _read(GROK_ZAMECHANIYA, GROK_FIELDS)
+def list_zamechaniya() -> list[dict[str, str]]:
+    rows = _read(ZAMECHANIYA, ZAMECHANIYA_FIELDS)
     rows.reverse()
     return rows
 
@@ -302,14 +302,14 @@ def creator_problema(author: str, text: str) -> dict[str, str]:
     return speak_as_citizen(author, text, kind="creator")
 
 
-def grok_zamechanie(author: str, text: str) -> dict[str, str]:
-    """General remarks: may also go to Grok support. President does not write them."""
+def zamechanie(author: str, text: str) -> dict[str, str]:
+    """General remarks. President does not write them."""
     if president_author(author):
-        raise Silentium("Praeses silet. The president does not write to Grok support.")
+        raise Silentium("Praeses silet. The president does not write general remarks.")
     if not author.strip() or not text.strip():
         raise ValueError("author and text are required")
     return _append(
-        GROK_ZAMECHANIYA,
-        GROK_FIELDS,
+        ZAMECHANIYA,
+        ZAMECHANIYA_FIELDS,
         {"author": author, "text": text},
     )

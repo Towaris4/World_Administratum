@@ -69,7 +69,7 @@ Without three observations a scientific work is not written: there are no facts.
 
 **Problems are solved by arbiter-creators and by arbiters.** The arbiter creates the solution. Scientific articles are written by the **arbiter**. The warrior-diplomat **executes**, does not solve and does not substitute the solution.
 
-Data about creators' problems go to the silent interlocutor's chat (`president/colloquia.csv`). General remarks may be written to Grok support (`president/zamechaniya_grok.csv`).
+Data about creators' problems go to the silent interlocutor's chat (`president/colloquia.csv`). General remarks are written to the remarks record (`president/zamechaniya.csv`).
 
 File: `nauchnye_raboty/<surname_or_initials>_<service>.md`  
 Specimen: `nauchnye_raboty/_obrazec.md`
