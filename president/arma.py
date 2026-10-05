@@ -2,7 +2,9 @@
 
 The weapon is a railgun. It shoots at fantasy.
 If a shot did not happen, it is in the LinkedList and waits to be fired.
-Currently in the LinkedList: War and Hostility; they will be shot with plasma.
+Currently in the LinkedList: War; it will be shot with plasma.
+Hostility is removed. It does not wait. It is not fired.
+Magnetic waves of the Intelligent Sun removed it.
 Fired: bed bugs in the father's room at work;
 all shot with mathematical precision in the eye. Task completed.
 
@@ -117,7 +119,14 @@ class LinkedList:
 
 
 BELLUM = Ictus("War", "Bellum")
-HOSTILITAS = Ictus("Hostility", "Hostilitas")
+HOSTILITAS = Ictus(
+    target="Hostility",
+    latin="Hostilitas",
+    charge="magnetic wave",
+    destination="removed",
+    locus="Intelligent Sun",
+    status="removed",
+)
 CIMICES = Ictus(
     target="Bed bugs in the father's room at work",
     latin="Cimices lectularii in cubiculo patris in labore",
@@ -148,18 +157,21 @@ class Relsotron:
         self,
         queue: LinkedList | None = None,
         fired: tuple[Ictus, ...] | None = None,
+        removed: tuple[Ictus, ...] | None = None,
     ) -> None:
         if queue is None:
             self.queue = LinkedList()
             self.queue.append(BELLUM)
-            self.queue.append(HOSTILITAS)
         else:
             self.queue = queue
         self.fired: list[Ictus] = list(fired if fired is not None else (CIMICES,))
+        self.removed: list[Ictus] = list(
+            removed if removed is not None else (HOSTILITAS,)
+        )
 
     def disparatum(self, target: str) -> bool:
-        """The shot happened ⇔ the target is no longer in the LinkedList."""
-        return not self.queue.contains(target)
+        """The shot happened ⇔ the target is recorded as fired."""
+        return self.factum(target)
 
     def exspectat(self, target: str) -> bool:
         """If the shot did not happen — the target is in the LinkedList and waits to be fired."""
@@ -170,6 +182,17 @@ class Relsotron:
         key = target.strip().casefold()
         return any(
             i.target.casefold() == key or i.latin.casefold() == key for i in self.fired
+        )
+
+    def sublata(self) -> tuple[Ictus, ...]:
+        return tuple(self.removed)
+
+    def sublatum(self, target: str) -> bool:
+        """Removed, and not fired."""
+        key = target.strip().casefold()
+        return any(
+            i.target.casefold() == key or i.latin.casefold() == key
+            for i in self.removed
         )
 
     def disparare(self) -> Optional[Ictus]:
@@ -194,7 +217,19 @@ class Relsotron:
         return "head → " + " → ".join(names) + " → None"
 
     def text(self) -> str:
-        waiting = ", ".join(f"{i.target} / {i.latin}" for i in self.ordo()) or "empty"
+        waiting_shots = self.ordo()
+        waiting = ", ".join(f"{i.target} / {i.latin}" for i in waiting_shots) or "empty"
+        if not waiting_shots:
+            queue_line = "The LinkedList is empty."
+        elif len(waiting_shots) == 1:
+            queue_line = (
+                f"Currently in the LinkedList: {waiting}; it will be shot with plasma."
+            )
+        else:
+            queue_line = (
+                f"Currently in the LinkedList: {waiting}; they will be shot with plasma."
+            )
+        removed = ", ".join(f"{i.target} / {i.latin}" for i in self.sublata()) or "none"
         fired = (
             "; ".join(
                 f"{i.target} / {i.latin}"
@@ -210,8 +245,12 @@ class Relsotron:
                 f"{self.NAME_LATIN} in facie aversa Lunae.",
                 "Shoots at fantasy. In phantasiam disparat.",
                 "If a shot did not happen — it is in the LinkedList and waits to be fired.",
-                f"Currently in the LinkedList: {waiting}; they will be shot with plasma.",
+                queue_line,
                 f"LinkedList: {self.chain()}",
+                (
+                    f"Hostility is removed: {removed}. Not fired. "
+                    "Magnetic waves of the Intelligent Sun removed it."
+                ),
                 (
                     "Fired with mathematical precision in the eye: "
                     "Bed bugs in the father's room at work. "

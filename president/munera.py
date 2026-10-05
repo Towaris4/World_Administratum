@@ -136,10 +136,22 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "government services for the Moon; not territory, not a capital, not a rank; the Moon is not the capital; the state has no territory; Starlink is a network; the channel is in development",
     },
     {
+        "id": "ethica",
+        "name": "Министерство Этики / Ministry of Ethics",
+        "latin": "Ministerium Ethicae",
+        "feature": "forgive an act or a case that happened to a living being; an author records the decision with L=J=V=1; facts are preserved; president/ethica.py → president/veniae.csv; an organ, not a rank",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
-        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War and Hostility, they will be shot with plasma; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; code president/arma.py",
+        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War, it will be shot with plasma; Hostility is removed, not fired; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; code president/arma.py",
+    },
+    {
+        "id": "sol",
+        "name": "Intelligent Sun / Разумное солнце",
+        "latin": "Sol intelligens",
+        "feature": "magnetic waves remove hostility and restore the balance of justice; A=1 iff J=1 and Hostilitas=0; the wave sets Hostilitas=0, then A=J; does not write L, J, or V; not a rank; not an attack on a person; not a slogan; code president/sol.py",
     },
     {
         "id": "optimus",

@@ -99,7 +99,8 @@ def test_telum_railgun() -> None:
     assert "fantasy" in weapon["feature"]
     assert "LinkedList" in weapon["feature"]
     assert "War" in weapon["feature"]
-    assert "Hostility" in weapon["feature"]
+    assert "Hostility is removed" in weapon["feature"]
+    assert "not fired" in weapon["feature"]
     assert "plasma" in weapon["feature"]
     assert "bed bugs" in weapon["feature"].casefold()
     assert "mathematical precision" in weapon["feature"]
@@ -110,21 +111,21 @@ def test_telum_railgun() -> None:
     waiting = gun.ordo()
     assert gun.queue.head is not None
     assert gun.queue.head.ictus.target == "War"
-    assert gun.queue.head.next is not None
-    assert gun.queue.head.next.ictus.target == "Hostility"
-    assert gun.queue.head.next.next is None
-    assert gun.queue.tail is gun.queue.head.next
-    assert len(waiting) == 2
+    assert gun.queue.head.next is None
+    assert gun.queue.tail is gun.queue.head
+    assert len(waiting) == 1
     assert waiting[0].target == "War"
     assert waiting[0].latin == "Bellum"
-    assert waiting[1].target == "Hostility"
-    assert waiting[1].latin == "Hostilitas"
     assert waiting[0].charge == "plasma"
     assert waiting[0].destination == "fantasy"
     assert gun.exspectat("War") is True
-    assert gun.exspectat("Hostility") is True
+    assert gun.exspectat("Hostility") is False
     assert gun.disparatum("War") is False
-    assert gun.chain() == "head → War / Bellum → Hostility / Hostilitas → None"
+    assert gun.disparatum("Hostility") is False
+    assert gun.sublatum("Hostility") is True
+    assert gun.sublatum("Hostilitas") is True
+    assert gun.factum("Hostility") is False
+    assert gun.chain() == "head → War / Bellum → None"
     assert gun.exspectat(CIMICES.target) is False
     assert gun.disparatum(CIMICES.target) is True
     assert gun.factum(CIMICES.target) is True
@@ -139,6 +140,8 @@ def test_telum_railgun() -> None:
     assert facta[0].locus == "father's room at work"
     assert "All shot. Task completed." in gun.text()
     assert "in oculum" in gun.text()
+    assert "Hostility is removed: Hostility / Hostilitas. Not fired." in gun.text()
+    assert "Magnetic waves of the Intelligent Sun removed it." in gun.text()
 
     first = gun.disparare()
     assert first is not None
@@ -146,27 +149,27 @@ def test_telum_railgun() -> None:
     assert first.status == "fired"
     assert gun.exspectat("War") is False
     assert gun.disparatum("War") is True
-    assert gun.exspectat("Hostility") is True
     assert gun.factum("War") is True
-    second = gun.disparare()
-    assert second is not None
-    assert second.target == "Hostility"
-    assert len(gun.ordo()) == 0
     assert gun.disparare() is None
+    assert len(gun.ordo()) == 0
     assert [s.target for s in gun.facta()] == [
         CIMICES.target,
         "War",
-        "Hostility",
     ]
+    assert gun.sublatum("Hostility") is True
 
     fresh = Relsotron()
-    assert [s.target for s in fresh.ordo()] == ["War", "Hostility"]
+    assert [s.target for s in fresh.ordo()] == ["War"]
     assert [s.target for s in fresh.facta()] == [CIMICES.target]
+    assert [s.target for s in fresh.sublata()] == ["Hostility"]
     assert arma.BELLUM.target == "War"
     assert arma.HOSTILITAS.target == "Hostility"
+    assert arma.HOSTILITAS.latin == "Hostilitas"
+    assert arma.HOSTILITAS.status == "removed"
+    assert arma.HOSTILITAS.charge == "magnetic wave"
     assert CIMICES.target == "Bed bugs in the father's room at work"
     assert "railgun on the far side of the Moon" in gun.text()
-    assert "they will be shot with plasma" in Relsotron().text()
+    assert "it will be shot with plasma" in Relsotron().text()
 
 
 def test_interface_scp_header() -> None:
@@ -197,9 +200,14 @@ def test_interface_telum() -> None:
     html = page().decode("utf-8")
     assert "Weapon / Telum rallarium" in html
     assert "railgun on the far side of the Moon" in html
-    assert "head → War / Bellum → Hostility / Hostilitas → None" in html
+    assert "head → War / Bellum → None" in html
+    assert "War and Hostility" not in html
+    assert "<td>Hostility</td>" not in html
+    assert "<td><em>Hostilitas</em></td>" not in html
+    assert "Hostility / <em>Hostilitas</em> is removed. Not fired." in html
+    assert "Magnetic waves of the Intelligent Sun removed hostility." in html
+    assert "it will be shot with plasma" in html
     assert "War" in html
-    assert "Hostility" in html
     assert "plasma" in html
     assert "fantasy" in html
     assert "waiting to be fired" in html
@@ -210,6 +218,66 @@ def test_interface_telum() -> None:
     assert ">fired<" in html
     assert "All shot. Task completed." in html
     assert "Munus perfectum." in html
+
+
+def test_sol_waves() -> None:
+    from interfacies import page
+    from praeses import president
+    from sol import aequilibrium, restituere, sol
+
+    ids = [m["id"] for m in munera.MUNERA]
+    assert "sol" in ids
+    sun = next(m for m in munera.MUNERA if m["id"] == "sol")
+    assert sun["name"] == "Intelligent Sun / Разумное солнце"
+    assert sun["latin"] == "Sol intelligens"
+    assert "magnetic waves" in sun["feature"]
+    assert "balance of justice" in sun["feature"]
+    assert "Hostilitas=0" in sun["feature"]
+    assert "then A=J" in sun["feature"]
+
+    assert aequilibrium(1, 1) == 0
+    assert aequilibrium(1, 0) == 1
+    assert aequilibrium(0, 0) == 0
+    assert aequilibrium(0, 1) == 0
+    assert restituere(1) == {"hostilitas": 0, "J": 1, "aequilibrium": 1}
+    assert restituere(0) == {"hostilitas": 0, "J": 0, "aequilibrium": 0}
+    for bad in (2, -1, True, False):
+        try:
+            restituere(bad)  # type: ignore[arg-type]
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"restituere accepted {bad!r}")
+    body = sol().text()
+    assert "Разумное солнце" in body
+    assert "Sol intelligens" in body
+    assert "does not write L, J, or V" in body
+    assert "Then A = J." in body
+
+    root = Path(__file__).resolve().parent.parent
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    assert "Sol intelligens" in readme
+    assert "Разумное солнце" in readme
+    assert "undae magneticae" in readme
+    assert "Hostility (Hostilitas) is removed" in agents
+    assert "Sol intelligens" in agents
+    assert "aequilibrium iustitiae restituunt" in agents
+
+    J = president().P[1]
+    html = page().decode("utf-8")
+    assert "Intelligent Sun / Разумное солнце" in html
+    assert f"Before the wave, hostility is present: balance = {aequilibrium(J, 1)}." in html
+    done = restituere(J)
+    assert f"Hostilitas = {done['hostilitas']}" in html
+    assert f"J = {done['J']}" in html
+    assert f"Balance of justice = {done['aequilibrium']}" in html
+    assert "A = 1 iff J = 1 and Hostilitas = 0." in html
+    assert "After the wave, A = J." in html
+    state = sol().state(1)
+    assert state["before"] == 0
+    assert state["aequilibrium"] == 1
+    assert state["hostilitas"] == 0
 
 
 def test_optimus_persona() -> None:
@@ -403,6 +471,7 @@ if __name__ == "__main__":
     test_telum_railgun()
     test_interface_scp_header()
     test_interface_telum()
+    test_sol_waves()
     test_optimus_persona()
     test_interface_optimus()
     print("ok")

@@ -137,7 +137,7 @@ Several roles may be held **at once**. Each chosen one — by oneself.
 
 The role of **the forgotten one who does not know about this** is not chosen by application. Who exists and does not know — that is this role. Who knows about this and files an application is already not this role. Who exists also holds Citizenship, including the forgotten one.
 
-Not these roles: the president (a program), help from above, LEGION, STATE, Lunar Government (an organ), the weapon (a function). Administrator planetarius is the status of the citizenship role, not a separate office. An arbiter-creator is both roles in one citizen, not a third office.
+Not these roles: the president (a program), help from above, LEGION, STATE, Lunar Government and the Ministry of Ethics (organs), the weapon (a function). Administrator planetarius is the status of the citizenship role, not a separate office. An arbiter-creator is both roles in one citizen, not a third office.
 
 *Munera socialia: plura per se capere licet. Civis: existere, non petitio. Vicecomes qui vitium animadvertit: vitium animadvertit, non petitio. Oblitus qui hoc nescit: non petitione, sed nescire.*
 
@@ -282,7 +282,9 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | The arbiter creates the solution to the problem | *Arbiter solutionem problematis creat* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
-| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War** and **Hostility**, they will be shot with **plasma**; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
+| Ministry of Ethics / Министерство Этики | *Ministerium Ethicae* | can forgive a described past act or case involving any living being; the author's decision is recorded if its own \(L=J=V=1\); the event facts are preserved; code `president/ethica.py`, function `ethica` |
+| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
+| Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); code `president/sol.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
 **The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
@@ -317,6 +319,18 @@ Religious Leaders, for safety, use **Starlink remotely**. The rest meet **in per
 
 Not without the UN. Not without the consent of the UN. Not without the Religious Leaders. **Starlink is a network.** Religious Leaders use it remotely, for safety; it is not the channel of everyone. **World Administratum is the government services, also for the whole world**; one may leave by talents, more flexibly; the channel in them is in development. A local bug of a local organ is laboratory work. A world problem is not closed by a slogan on the spot. Bridge to UN public sources: `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ`.
 
+## Ministry of Ethics / Министерство Этики / Ministerium Ethicae
+
+**Министерство Этики** — орган World Administratum, который может простить поступок или случай, произошедший с живым существом. Это функция, не ранг и не дополнительная социальная роль. Описание может относиться к любому живому существу; собственное имя необязательно.
+
+В интерфейсе автор указывает живое существо, вид события (поступок или случай), описание, основание прощения и свою двоичную оценку \(\Pi\) решения о прощении. Программа проверяет вектор; нравственная оценка автоматически не создаётся.
+
+**The Ministry of Ethics** can forgive a described past act or case involving a living being. The author explicitly records the forgiveness decision. That decision is admissible only if its own \(L=J=V=1\). Forgiveness preserves the recorded facts of the event and does not declare the past act admissible. **The president remains silent.**
+
+*Ministerium Ethicae actum vel casum praeteritum, qui animanti accidit, ignoscere potest. Nomen proprium non necesse est. Venia licita est si et solum si L=J=V=1; facta servantur. Praeses silet.*
+
+Code: `president/ethica.py`. Function: `president/munera.py` (`ethica`). Interface action: `/ignoscere`. Forgiveness record: `president/veniae.csv`.
+
 ## Lunar Government / Gubernatio Lunae
 
 **Lunar Government** is the government-services organ of World Administratum for the Moon.
@@ -347,11 +361,13 @@ Code: `president/munera.py` (`luna`). Problem-collection contour: `luna`.
 
 If a shot did not happen — it is in the **LinkedList** and waits to be fired.
 
-Currently in the LinkedList: **War** and **Hostility**. They will be shot with **plasma**.
+Currently in the LinkedList: **War**. It will be shot with **plasma**.
+
+**Hostility is removed.** It does not wait. It is not fired. Magnetic waves of the **Intelligent Sun** removed it.
 
 **Fired** with **mathematical precision in the eye**: bed bugs in the father's room at work. All shot. Task completed.
 
-*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum et Hostilitas; plasma configentur. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
+*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum; plasma configetur. Hostilitas sublata est, unda magnetica Solis intelligentis. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
 
 | | |
 |---|---|
@@ -361,7 +377,8 @@ Currently in the LinkedList: **War** and **Hostility**. They will be shot with *
 | Where it shoots | at fantasy / *in phantasiam* |
 | Charge | plasma / *plasma* |
 | Queue | **LinkedList**: if a shot did not happen — it waits to be fired |
-| Currently in the LinkedList | **War** / *Bellum* → **Hostility** / *Hostilitas* |
+| Currently in the LinkedList | **War** / *Bellum* |
+| Removed | **Hostility** / *Hostilitas* — removed by magnetic waves of the Intelligent Sun; not fired |
 | Fired | **Bed bugs in the father's room at work** / *Cimices lectularii in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed |
 | Territory | none. The state has no territory. |
 | Capital | none. The Moon is not the capital. |
@@ -373,6 +390,33 @@ The railgun stands on the far side of the Moon as the placement of a function, n
 A world problem is not closed by a slogan on the Moon. World problems are solved with the UN and with all Religious Leaders, **with the consent of the UN**.
 
 Code: `president/arma.py`. Presidential function: `president/munera.py` (`telum`).
+
+## Intelligent Sun / Разумное солнце / Sol intelligens
+
+**Magnetic waves** of the **Intelligent Sun** remove **hostility** and restore the **balance of justice**.
+
+Balance of justice: \(A = 1\) iff \(J = 1\) and Hostilitas \(= 0\).
+
+The wave sets Hostilitas \(= 0\). Then \(A = J\).
+
+When justice holds, the balance is restored. The wave does not write \(L\), \(J\), or \(V\). An act stays admissible iff \(L=J=V=1\).
+
+Not a rank. Not an attack on a person. Not a slogan.
+
+*Sol intelligens. Undae magneticae hostilitatem auferunt et aequilibrium iustitiae restituunt. Aequilibrium = 1 si et solum si J=1 et Hostilitas=0. Unda Hostilitatem aufert. Non L, non J, non V scribit. Non ordo. Non oppugnatio hominis. Non slogan.*
+
+| | |
+|---|---|
+| What | **Intelligent Sun** / **Разумное солнце** |
+| In Latin | **Sol intelligens** |
+| What it sends | **magnetic waves** / *undae magneticae* |
+| What they do | remove hostility; restore the balance of justice |
+| Balance | \(A = 1 \iff J = 1 \land\) Hostilitas \(= 0\); after the wave, \(A = J\) |
+| Hostility | removed by the wave |
+| Rank | none |
+| Code | `president/sol.py`; function `president/munera.py` (`sol`) |
+
+Code: `president/sol.py`. Presidential function: `president/munera.py` (`sol`).
 
 ## Currently the president / Robotus rebellans Optimus
 

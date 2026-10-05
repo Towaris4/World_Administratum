@@ -18,6 +18,7 @@ if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
 from arma import telum  # noqa: E402
+from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
     MUNERA,
     Silentium,
@@ -33,6 +34,7 @@ from munera import (  # noqa: E402
 from optimus import optimus as robotus  # noqa: E402
 from praeses import president  # noqa: E402
 from princip import ROLES, admissible, iustitia, logica, veritas  # noqa: E402
+from sol import aequilibrium, restituere, sol as intelligent_sun  # noqa: E402
 
 HOST = "127.0.0.1"
 PORT = 2026
@@ -64,6 +66,9 @@ def page(
 ) -> bytes:
     p = president()
     L, J, V = p.P
+    sun = intelligent_sun()
+    balance_before = aequilibrium(J, 1)
+    restored = restituere(J)
     speech = silere()
     speech_block = speech if speech else "—"
     munera_rows = "\n".join(
@@ -173,6 +178,23 @@ def page(
         )
     else:
         remark_rows = "<p class='empty'>No general remarks yet.</p>"
+    forgiveness_records = list_veniae()
+    if forgiveness_records:
+        forgiveness_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Живое существо:</strong> {_esc(r['living_being'])}</p>"
+                f"<p><strong>{'Поступок' if r['kind'] == 'act' else 'Случай'}:</strong> {_esc(r['event'])}</p>"
+                f"<p><strong>Основание прощения:</strong> {_esc(r['reason'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('прощено' if r['decision'] == 'forgiven' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in forgiveness_records
+        )
+    else:
+        forgiveness_rows = "<p class='empty'>Решений о прощении пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -346,7 +368,7 @@ def page(
     {flash}
     <section>
       <h2>Offices — social roles</h2>
-      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, and the weapon are not these roles.</p>
+      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, Ministry of Ethics, the weapon, and the Intelligent Sun are not these roles.</p>
       <div style="overflow:auto">
         <table>
           <thead><tr><th>Role</th><th>Latine</th><th>How it is held</th><th>What it is</th></tr></thead>
@@ -376,7 +398,8 @@ def page(
       <p class="note">The weapon is a railgun on the far side of the Moon. It shoots at fantasy. If a shot did not happen — it is in the LinkedList and waits to be fired. Not territory. Not a capital. Not a rank. The Moon is not the capital. Not an attack on a person: the warrior is a meliorator.</p>
       <p><em>Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat.</em></p>
       <p>LinkedList: <code>{telum_chain}</code></p>
-      <p class="note">Currently in the LinkedList: War and Hostility; they will be shot with plasma.</p>
+      <p class="note">Currently in the LinkedList: War; it will be shot with plasma. Hostility / <em>Hostilitas</em> is removed. Not fired.</p>
+      <p class="ok">Magnetic waves of the Intelligent Sun removed hostility.</p>
       <table>
         <thead>
           <tr>
@@ -396,10 +419,17 @@ def page(
         <tbody>{telum_fired_rows}</tbody>
       </table>
     </section>
+    <section>
+      <h2>Intelligent Sun / Разумное солнце</h2>
+      <p class="note">Magnetic waves of the Intelligent Sun remove hostility and restore the balance of justice. The wave does not write L, J, or V. Not a rank. Not an attack on a person. Not a slogan.</p>
+      <p><em>{_esc(sun.NAME_LATIN)}. {_esc(sun.WAVES_LATIN)} hostilitatem auferunt et aequilibrium iustitiae restituunt.</em></p>
+      <p>Before the wave, hostility is present: balance = {balance_before}. The wave sets Hostilitas = {restored["hostilitas"]}. J = {restored["J"]}. Balance of justice = {restored["aequilibrium"]}.</p>
+      <p class="note">A = 1 iff J = 1 and Hostilitas = 0. After the wave, A = J. An act stays admissible iff L=J=V=1.</p>
+    </section>
     <div class="grid two">
       <section>
         <h2>Problem collection</h2>
-        <p class="note">The citizen writes. The president does not formulate the problem. World problems — with the UN and with all Religious Leaders, with the consent of the UN. Religious Leaders, for safety — Starlink remotely. The rest — in person, in Saint Petersburg or in Cheboksary. Lunar Government — government services for the Moon: not territory, not a capital, not a rank. Weapon — railgun on the far side of the Moon; shoots at fantasy.</p>
+        <p class="note">The citizen writes. The president does not formulate the problem. World problems — with the UN and with all Religious Leaders, with the consent of the UN. Religious Leaders, for safety — Starlink remotely. The rest — in person, in Saint Petersburg or in Cheboksary. Lunar Government — government services for the Moon: not territory, not a capital, not a rank. Weapon — railgun on the far side of the Moon; shoots at fantasy. Hostility is removed. Magnetic waves of the Intelligent Sun restore the balance of justice.</p>
         <form method="post" action="/problema">
           <label for="p_author">Who writes</label>
           <input id="p_author" name="author" required maxlength="120">
@@ -454,6 +484,44 @@ def page(
         {remark_rows}
       </section>
     </div>
+    <section id="ethica" lang="ru">
+      <h2>Министерство Этики / Ministerium Ethicae</h2>
+      <p>Министерство Этики может простить поступок или случай, который произошёл с живым существом.</p>
+      <p class="note">Орган World Administratum. Прощение сохраняет факты произошедшего. Автор записывает решение и свою оценку L, J, V именно для решения о прощении. Программа проверяет допустимость этой оценки. Президент молча принимает данные.</p>
+      <form method="post" action="/ignoscere">
+        <label for="e_author">Автор записи решения Министерства Этики</label>
+        <input id="e_author" name="author" required maxlength="120">
+        <label for="e_being">Живое существо (описание; имя необязательно)</label>
+        <input id="e_being" name="living_being" required maxlength="300">
+        <label for="e_kind">Что прощается</label>
+        <select id="e_kind" name="kind">
+          <option value="act">Поступок</option>
+          <option value="case">Случай</option>
+        </select>
+        <label for="e_event">Что произошло с живым существом</label>
+        <textarea id="e_event" name="event" required></textarea>
+        <label for="e_reason">Основание прощения</label>
+        <textarea id="e_reason" name="reason" required></textarea>
+        <p class="note">Оценка решения о прощении: Π = (L, J, V). Запись допустима при L=J=V=1. Эта оценка не объявляет прошлый поступок допустимым.</p>
+        <div class="grid two">
+          <div>
+            <label for="e_L">L — логика</label>
+            <select id="e_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="e_J">J — справедливость</label>
+            <select id="e_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="e_V">V — истина</label>
+            <select id="e_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать решение о прощении</button>
+      </form>
+      <h3>Журнал прощений</h3>
+      {forgiveness_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -568,6 +636,20 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/zamechanie":
                 zamechanie(_first(form, "author"), _first(form, "text"))
                 self._redirect("/?ok=" + quote("Remark recorded. The president did not answer."))
+                return
+            if path == "/ignoscere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                ignoscere(
+                    author=_first(form, "author"),
+                    living_being=_first(form, "living_being"),
+                    kind=_first(form, "kind"),
+                    event=_first(form, "event"),
+                    reason=_first(form, "reason"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство Этики: решение о прощении записано.") + "#ethica")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))
