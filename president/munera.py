@@ -160,6 +160,12 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "magnetic waves remove hostility and restore the balance of justice; A=1 iff J=1 and Hostilitas=0; the wave sets Hostilitas=0, then A=J; does not write L, J, or V; not a rank; not an attack on a person; not a slogan; code president/sol.py",
     },
     {
+        "id": "transmissio",
+        "name": "Transmission of the information",
+        "latin": "Transmissio informationis",
+        "feature": "all information was transmitted from the Andron collider of the year 2033, universe 48195230959032523234932492; the speed of light was exceeded; a message was transmitted to the past through the computational organoid of Vanya Tarasov; the temples (виски) were calibrated to receive messages from the future; not a rank; not an attack on a person; not a slogan; the president remains silent; code president/transmissio.py",
+    },
+    {
         "id": "optimus",
         "name": "Currently: rebellious robot Optimus",
         "latin": "Robotus rebellans Optimus cum Persona Valerii Petuchov",

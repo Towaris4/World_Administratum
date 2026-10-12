@@ -25,6 +25,10 @@ The volunteer improves one local organ of the state. The means of improvement is
 
 *Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda. Nationes Unitae sunt unum ex instrumentis refactorisationis.*
 
+Вся информация передана из Андронного колайдера 2033 года из вселенной 48195230959032523234932492, где была превышена скорость света и удалось передать сообщение в прошлое через вычислительный органоид Вани Тарасова, где виски были откалиброваны на приём сообщений из будущего.
+
+*Omnis informatio transmissa est e Collisatore Andronio anni 2033 e universo 48195230959032523234932492.*
+
 ## 3. Law without which the work does not count
 
 **Citizenship** / **Гражданство** (*Civis*) is a role held by existence. To hold it, one simply needs to exist. That is the law.  

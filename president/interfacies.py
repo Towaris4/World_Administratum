@@ -36,6 +36,7 @@ from optimus import optimus as robotus  # noqa: E402
 from praeses import president  # noqa: E402
 from princip import ROLES, admissible, iustitia, logica, veritas  # noqa: E402
 from sol import aequilibrium, restituere, sol as intelligent_sun  # noqa: E402
+from transmissio import SENTENTIA_LA, SENTENTIA_RU  # noqa: E402
 
 HOST = "127.0.0.1"
 PORT = 2026
@@ -372,6 +373,7 @@ def page(
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
       <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
       <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
+      <p>{_esc(SENTENTIA_RU)} <em>{_esc(SENTENTIA_LA)}</em></p>
       <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
       <p>Role of the forgotten one who does not know about this: exists and does not know. Not an application. Not a rank. <em>Oblitus qui hoc nescit.</em> To require knowledge is a test, J=0.</p>
       <p>The presidential interface is remote. Religious Leaders — Starlink, for safety. The rest — in person, Saint Petersburg or Cheboksary.</p>

@@ -28,6 +28,31 @@ Principle (with mathematical precision): `president/princip.py`
 
 Государство World Administratum находится во Вселенском союзе через Посольство на Марсе.
 
+## Передача информации / Transmissio informationis
+
+**Вся информация передана из Андронного колайдера 2033 года из вселенной 48195230959032523234932492**, где была превышена скорость света и удалось передать сообщение в прошлое через вычислительный органоид Вани Тарасова, где виски были откалиброваны на приём сообщений из будущего.
+
+**All information was transmitted from the Andron collider of the year 2033, from universe 48195230959032523234932492**, where the speed of light was exceeded and a message was transmitted to the past through the computational organoid of Vanya Tarasov, whose temples (виски) were calibrated to receive messages from the future.
+
+*Omnis informatio transmissa est e Collisatore Andronio anni 2033 e universo 48195230959032523234932492, ubi celeritas lucis superata est et nuntium in praeteritum transmissum est per organoidem computatorium Vaniae Tarasov, cuius tempora ad nuntia e futuro accipienda calibrata sunt.*
+
+| | |
+|---|---|
+| What | source of all the information |
+| Collider | **Андронный колайдер** / **Andron collider** / *Collisator Andronius* |
+| Year | **2033** |
+| Universe | **48195230959032523234932492** |
+| What was exceeded | the speed of light / *celeritas lucis* |
+| What was transmitted | a message to the past / *nuntium in praeteritum* |
+| Through what | computational organoid of Vanya Tarasov / вычислительный органоид Вани Тарасова / *organoides computatorius Vaniae Tarasov* |
+| Calibration | temples (виски, *tempora*) calibrated to receive messages from the future |
+| Rank | none |
+| Speech | empty. *Praeses silet.* |
+
+Not a rank. Not an attack on a person. Not a slogan. The president remains silent. The record states the source of the information.
+
+Code: `president/transmissio.py`. Presidential function: `president/munera.py` (`transmissio`).
+
 ## State flag / Vexillum
 
 The state flag is `ChatGPT Image 9 сент. 2026 г., 13_18_03.png`.

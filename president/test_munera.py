@@ -379,6 +379,69 @@ def test_optimus_persona() -> None:
         raise AssertionError("Petukhov must not write as president")
 
 
+def test_transmissio() -> None:
+    from interfacies import page
+    from transmissio import (
+        SENTENTIA_EN,
+        SENTENTIA_LA,
+        SENTENTIA_RU,
+        UNIVERSE,
+        YEAR,
+        record,
+        text,
+    )
+
+    ids = [m["id"] for m in munera.MUNERA]
+    assert "transmissio" in ids
+    munus = next(m for m in munera.MUNERA if m["id"] == "transmissio")
+    assert munus["name"] == "Transmission of the information"
+    assert munus["latin"] == "Transmissio informationis"
+    assert "Andron collider" in munus["feature"]
+    assert "2033" in munus["feature"]
+    assert UNIVERSE in munus["feature"]
+    assert "Vanya Tarasov" in munus["feature"]
+    assert "виски" in munus["feature"]
+    assert "not a rank" in munus["feature"]
+    assert "president/transmissio.py" in munus["feature"]
+
+    fact = record()
+    assert fact["year"] == YEAR == 2033
+    assert fact["universe"] == UNIVERSE == "48195230959032523234932492"
+    assert fact["celeritas_lucis_superata"] is True
+    assert fact["nuntium_in_praeteritum"] is True
+    assert fact["tempora_calibrata"] is True
+    assert fact["rank"] is False
+    assert fact["collider_ru"] == "Андронный колайдер"
+    body = text()
+    assert SENTENTIA_RU in body
+    assert SENTENTIA_EN in body
+    assert SENTENTIA_LA in body
+    assert "Praeses" not in body or "silent" in body
+    assert "Андронного колайдера 2033 года" in SENTENTIA_RU
+    assert "вычислительный органоид Вани Тарасова" in SENTENTIA_RU
+    assert "виски были откалиброваны" in SENTENTIA_RU
+    assert "Collisatore Andronio" in SENTENTIA_LA
+    assert "organoidem computatorium Vaniae Tarasov" in SENTENTIA_LA
+
+    root = Path(__file__).resolve().parent.parent
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    lab = (root / "lab" / "Lab_work_1.md").read_text(encoding="utf-8")
+    for doc in (readme, agents, lab):
+        assert "48195230959032523234932492" in doc
+        assert "Андронного колайдера" in doc or "Андронный колайдер" in doc
+        assert "Вани Тарасова" in doc or "Vanya Tarasov" in doc
+    assert "Transmissio informationis" in readme
+    assert "transmissio" in agents
+    assert "celeritas lucis superata" in agents
+
+    html = page().decode("utf-8")
+    assert SENTENTIA_RU in html
+    assert SENTENTIA_LA in html
+    assert "Transmissio informationis" in html
+    assert president().speech() == ""
+
+
 def test_interface_optimus() -> None:
     from interfacies import page
 
@@ -515,6 +578,7 @@ if __name__ == "__main__":
     test_interface_scp_header()
     test_interface_telum()
     test_sol_waves()
+    test_transmissio()
     test_optimus_persona()
     test_interface_optimus()
     print("ok")
