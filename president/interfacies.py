@@ -361,7 +361,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -371,6 +371,7 @@ def page(
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
       <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
+      <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
       <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
       <p>Role of the forgotten one who does not know about this: exists and does not know. Not an application. Not a rank. <em>Oblitus qui hoc nescit.</em> To require knowledge is a test, J=0.</p>
       <p>The presidential interface is remote. Religious Leaders — Starlink, for safety. The rest — in person, Saint Petersburg or Cheboksary.</p>
@@ -447,7 +448,7 @@ def page(
     <div class="grid two">
       <section>
         <h2>Problem collection</h2>
-        <p class="note">The citizen writes. The president does not formulate the problem. World problems — with the UN and with all Religious Leaders, with the consent of the UN. Religious Leaders, for safety — Starlink remotely. The rest — in person, in Saint Petersburg or in Cheboksary. Lunar Government — government services for the Moon: not territory, not a capital, not a rank. Weapon — railgun on the far side of the Moon; shoots at fantasy. Hostility is removed. Magnetic waves of the Intelligent Sun restore the balance of justice.</p>
+        <p class="note">The citizen writes. The president does not formulate the problem. World problems — with the UN and with all Religious Leaders, with the consent of the UN. The UN is one of the refactoring tools. Religious Leaders, for safety — Starlink remotely. The rest — in person, in Saint Petersburg or in Cheboksary. Lunar Government — government services for the Moon: not territory, not a capital, not a rank. Weapon — railgun on the far side of the Moon; shoots at fantasy. Hostility is removed. Magnetic waves of the Intelligent Sun restore the balance of justice.</p>
         <form method="post" action="/problema">
           <label for="p_author">Who writes</label>
           <input id="p_author" name="author" required maxlength="120">

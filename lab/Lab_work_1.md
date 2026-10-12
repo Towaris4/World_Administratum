@@ -21,8 +21,9 @@ The volunteer improves one local organ of the state. The means of improvement is
 | What is improved | the local state (one organ, one service at a time). A lunar organ is also a local contour, not a world problem. |
 | Whose planet | The planet belongs to people. |
 | What World Administratum is | World Administratum is a tool for fixing bugs of the system. |
+| What the UN is | The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. |
 
-*Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda.*
+*Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda. Nationes Unitae sunt unum ex instrumentis refactorisationis.*
 
 ## 3. Law without which the work does not count
 

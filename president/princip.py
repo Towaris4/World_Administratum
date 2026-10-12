@@ -18,6 +18,11 @@ INSTRUMENTUM = "World Administratum is a tool for fixing bugs of the system."
 INSTRUMENTUM_LATIN = (
     "Mundus Administratum est instrumentum ad vitia systematis emendanda."
 )
+ONU_REFACTOR = "The UN is one of the refactoring tools."
+ONU_REFACTOR_RU = "ООН — один из инструментов рефакторинга."
+ONU_REFACTOR_LATIN = (
+    "Nationes Unitae sunt unum ex instrumentis refactorisationis."
+)
 
 
 def bit(ok: bool) -> int:
@@ -280,6 +285,7 @@ def text() -> str:
             f"Principium: {PRINCIPLE}",
             f"{PLANETA} {PLANETA_LATIN}",
             f"{INSTRUMENTUM} {INSTRUMENTUM_LATIN}",
+            f"{ONU_REFACTOR} {ONU_REFACTOR_RU} {ONU_REFACTOR_LATIN}",
             "Π = (L, J, V) ∈ {0,1}³. Only 0 or 1.",
             "admissible(a)  ⇔  L+J+V = 3",
             "L=1: inference from observations (≥3). L=0: wish or slogan.",

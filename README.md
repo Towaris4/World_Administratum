@@ -12,6 +12,10 @@ Virtual state without territory.
 
 *Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda.*
 
+**The UN is one of the refactoring tools.** ООН — один из инструментов рефакторинга.
+
+*Nationes Unitae sunt unum ex instrumentis refactorisationis.*
+
 Code: `president/princip.py`, function `planeta_hominibus`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
@@ -282,7 +286,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Silently receive data | *Data silentio accipere* | the interface accepts records; the president does not answer |
 | Show records | *Monstrare* | lists of problems and messages; not speech, but a record |
 | Meetings: leaders — Starlink, the rest in person | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
-| World problems — with the UN and with all Religious Leaders | *Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum* | **with the consent of the UN**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
+| World problems — with the UN and with all Religious Leaders | *Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum* | **with the consent of the UN**; **the UN is one of the refactoring tools**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
 | Creators' problems | *Problemata creatorum* | silent interlocutor's chat → `president/colloquia.csv` |
 | General remarks | *Adnotationes generales* | `president/zamechaniya.csv` |
 | The arbiter creates the solution to the problem | *Arbiter solutionem problematis creat* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
@@ -319,6 +323,10 @@ Volunteer register: `lab/volunteers.csv`
 *World Administratum est munus munerum publicorum, etiam pro toto orbe. Munus Civitatum Americae Unitarum, cum facultate in meliorem locum civilem abeundi et cum facultatibus magis flexibilibus abeundi secundum ingenia. Starlink est rete. Canalis in eo munere in opere est.*
 
 **World problems are solved in interaction with the UN and with all Religious Leaders. With the consent of the UN.**
+
+**The UN is one of the refactoring tools.** ООН — один из инструментов рефакторинга.
+
+*Nationes Unitae sunt unum ex instrumentis refactorisationis.*
 
 Religious Leaders, for safety, use **Starlink remotely**. The rest meet **in person**, in Saint Petersburg or in Cheboksary.
 

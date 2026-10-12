@@ -176,6 +176,9 @@ def test_planeta_hominibus() -> None:
     from princip import (
         INSTRUMENTUM,
         INSTRUMENTUM_LATIN,
+        ONU_REFACTOR,
+        ONU_REFACTOR_LATIN,
+        ONU_REFACTOR_RU,
         PLANETA,
         PLANETA_LATIN,
         planeta_hominibus,
@@ -189,16 +192,25 @@ def test_planeta_hominibus() -> None:
     assert PLANETA_LATIN in body
     assert INSTRUMENTUM in body
     assert INSTRUMENTUM_LATIN in body
+    assert ONU_REFACTOR in body
+    assert ONU_REFACTOR_RU in body
+    assert ONU_REFACTOR_LATIN in body
     root = Path(__file__).resolve().parent.parent
     for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
         doc = (root / name).read_text(encoding="utf-8")
         assert "The planet belongs to people" in doc
         assert "tool for fixing bugs of the system" in doc
+        assert "The UN is one of the refactoring tools." in doc
+        assert "ООН — один из инструментов рефакторинга." in doc
+        assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in doc
     html = page().decode("utf-8")
     assert "The planet belongs to people." in html
     assert "Planeta hominibus pertinet." in html
     assert "World Administratum is a tool for fixing bugs of the system." in html
     assert "Mundus Administratum est instrumentum ad vitia systematis emendanda." in html
+    assert "The UN is one of the refactoring tools." in html
+    assert "ООН — один из инструментов рефакторинга." in html
+    assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in html
 
 
 def test_interface_scp_header() -> None:
@@ -464,6 +476,7 @@ def test_roles_match_description() -> None:
         "et cum omnibus ducibus religiosis, consensu Nationum Unitarum"
     )
     assert onu["latin"] in readme
+    assert "the UN is one of the refactoring tools" in onu["feature"]
 
 
 def test_interface_roles() -> None:
