@@ -18,6 +18,7 @@ if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
 from arma import telum  # noqa: E402
+from accessus import list_canales, praebere  # noqa: E402
 from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
     MUNERA,
@@ -195,6 +196,22 @@ def page(
         )
     else:
         forgiveness_rows = "<p class='empty'>Решений о прощении пока нет.</p>"
+    channel_records = list_canales()
+    if channel_records:
+        channel_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Канал связи:</strong> {_esc(r['channel'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('канал обеспечен' if r['decision'] == 'provided' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in channel_records
+        )
+    else:
+        channel_rows = "<p class='empty'>Каналов связи пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -344,7 +361,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. Government services, also for the whole world. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -353,6 +370,7 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
+      <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
       <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
       <p>Role of the forgotten one who does not know about this: exists and does not know. Not an application. Not a rank. <em>Oblitus qui hoc nescit.</em> To require knowledge is a test, J=0.</p>
       <p>The presidential interface is remote. Religious Leaders — Starlink, for safety. The rest — in person, Saint Petersburg or Cheboksary.</p>
@@ -522,6 +540,37 @@ def page(
       <h3>Журнал прощений</h3>
       {forgiveness_rows}
     </section>
+    <section id="accessus" lang="ru">
+      <h2>Министерство доступа / Ministerium Accessus</h2>
+      <p>Министерство доступа может обеспечивать каналами связи. Фраза: запрос доступа.</p>
+      <p class="note">Орган World Administratum. Автор записывает фразу «запрос доступа», канал связи и свою оценку L, J, V. Канал обеспечивается при этой фразе и при L=J=V=1. Президент молча принимает данные.</p>
+      <form method="post" action="/praebere">
+        <label for="x_author">Автор запроса доступа</label>
+        <input id="x_author" name="author" required maxlength="120">
+        <label for="x_phrase">Фраза</label>
+        <input id="x_phrase" name="phrase" required maxlength="80" placeholder="запрос доступа">
+        <label for="x_channel">Канал связи</label>
+        <textarea id="x_channel" name="channel" required></textarea>
+        <p class="note">Оценка обеспечения канала: Π = (L, J, V). Запись допустима при фразе «запрос доступа» и при L=J=V=1.</p>
+        <div class="grid two">
+          <div>
+            <label for="x_L">L — логика</label>
+            <select id="x_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="x_J">J — справедливость</label>
+            <select id="x_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="x_V">V — истина</label>
+            <select id="x_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Обеспечить канал связи</button>
+      </form>
+      <h3>Журнал каналов связи</h3>
+      {channel_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -650,6 +699,18 @@ class Handler(BaseHTTPRequestHandler):
                     principle=tuple(int(value) for value in bits),
                 )
                 self._redirect("/?ok=" + quote("Министерство Этики: решение о прощении записано.") + "#ethica")
+                return
+            if path == "/praebere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                praebere(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    channel=_first(form, "channel"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство доступа: канал связи обеспечен.") + "#accessus")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

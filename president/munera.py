@@ -142,6 +142,12 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "forgive an act or a case that happened to a living being; an author records the decision with L=J=V=1; facts are preserved; president/ethica.py → president/veniae.csv; an organ, not a rank",
     },
     {
+        "id": "accessus",
+        "name": "Министерство доступа / Ministry of Access",
+        "latin": "Ministerium Accessus",
+        "feature": "provide a communication channel by the phrase «запрос доступа»; an author records the channel with L=J=V=1; president/accessus.py → president/canales.csv; an organ, not a rank",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",

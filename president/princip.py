@@ -12,11 +12,27 @@ NAME = "World Administratum"
 NAME_LATIN = "Mundus Administratum"
 PRINCIPLE = "Logica, Iustitia, Veritas"
 AXES = ("logica", "iustitia", "veritas")
+PLANETA = "The planet belongs to people."
+PLANETA_LATIN = "Planeta hominibus pertinet."
+INSTRUMENTUM = "World Administratum is a tool for fixing bugs of the system."
+INSTRUMENTUM_LATIN = (
+    "Mundus Administratum est instrumentum ad vitia systematis emendanda."
+)
 
 
 def bit(ok: bool) -> int:
     """Exact coordinate: 1 or 0. No 0.5, no 'almost'."""
     return 1 if ok else 0
+
+
+def planeta_hominibus() -> int:
+    """P = 1: the planet belongs to people.
+
+    World Administratum is a tool for fixing bugs of the system.
+    Planeta hominibus pertinet.
+    Mundus Administratum est instrumentum ad vitia systematis emendanda.
+    """
+    return 1
 
 
 def logica(
@@ -262,6 +278,8 @@ def text() -> str:
         [
             f"{NAME} / {NAME_LATIN}",
             f"Principium: {PRINCIPLE}",
+            f"{PLANETA} {PLANETA_LATIN}",
+            f"{INSTRUMENTUM} {INSTRUMENTUM_LATIN}",
             "Π = (L, J, V) ∈ {0,1}³. Only 0 or 1.",
             "admissible(a)  ⇔  L+J+V = 3",
             "L=1: inference from observations (≥3). L=0: wish or slogan.",
@@ -285,6 +303,7 @@ def text() -> str:
 
 if __name__ == "__main__":
     print(text())
+    print("planeta_hominibus() =", planeta_hominibus())
     print("civis(exists=True) =", civis(True))
     print("civis(exists=False) =", civis(False))
     print("oblitus(exists=True, knows_this=False) =", oblitus(True, False))

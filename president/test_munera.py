@@ -172,6 +172,35 @@ def test_telum_railgun() -> None:
     assert "it will be shot with plasma" in Relsotron().text()
 
 
+def test_planeta_hominibus() -> None:
+    from princip import (
+        INSTRUMENTUM,
+        INSTRUMENTUM_LATIN,
+        PLANETA,
+        PLANETA_LATIN,
+        planeta_hominibus,
+        text,
+    )
+    from interfacies import page
+
+    assert planeta_hominibus() == 1
+    body = text()
+    assert PLANETA in body
+    assert PLANETA_LATIN in body
+    assert INSTRUMENTUM in body
+    assert INSTRUMENTUM_LATIN in body
+    root = Path(__file__).resolve().parent.parent
+    for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
+        doc = (root / name).read_text(encoding="utf-8")
+        assert "The planet belongs to people" in doc
+        assert "tool for fixing bugs of the system" in doc
+    html = page().decode("utf-8")
+    assert "The planet belongs to people." in html
+    assert "Planeta hominibus pertinet." in html
+    assert "World Administratum is a tool for fixing bugs of the system." in html
+    assert "Mundus Administratum est instrumentum ad vitia systematis emendanda." in html
+
+
 def test_interface_scp_header() -> None:
     from interfacies import page
 
@@ -469,6 +498,7 @@ if __name__ == "__main__":
     with tempfile.TemporaryDirectory() as d:
         test_luna_government(Path(d))
     test_telum_railgun()
+    test_planeta_hominibus()
     test_interface_scp_header()
     test_interface_telum()
     test_sol_waves()

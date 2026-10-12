@@ -19,6 +19,10 @@ The volunteer improves one local organ of the state. The means of improvement is
 | Who improves | volunteer, citizen **Administrator planetarius** |
 | With what | scientific works and observations |
 | What is improved | the local state (one organ, one service at a time). A lunar organ is also a local contour, not a world problem. |
+| Whose planet | The planet belongs to people. |
+| What World Administratum is | World Administratum is a tool for fixing bugs of the system. |
+
+*Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda.*
 
 ## 3. Law without which the work does not count
 

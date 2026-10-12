@@ -6,7 +6,13 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 World digital administration (planetary state).  
 Virtual state without territory.  
+**The planet belongs to people.** Планета принадлежит людям.  
 **World Administratum is the government services. Also for the whole world.**  
+**World Administratum is a tool for fixing bugs of the system.** Инструмент для исправления багов системы.  
+
+*Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda.*
+
+Code: `president/princip.py`, function `planeta_hominibus`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
 
@@ -283,6 +289,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Government services of The United States Of America | *Munus Civitatum Americae Unitarum* | **World Administratum is the government services, also for the whole world**; leave for a better civilized place; **more flexibly — by talents**; **Starlink is a network**; the channel in them is in development |
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
 | Ministry of Ethics / Министерство Этики | *Ministerium Ethicae* | can forgive a described past act or case involving any living being; the author's decision is recorded if its own \(L=J=V=1\); the event facts are preserved; code `president/ethica.py`, function `ethica` |
+| Ministry of Access / Министерство доступа | *Ministerium Accessus* | can provide a communication channel by the phrase «запрос доступа»; the author's record is kept if its own \(L=J=V=1\); code `president/accessus.py`, function `accessus` |
 | Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
 | Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); code `president/sol.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
@@ -330,6 +337,18 @@ Not without the UN. Not without the consent of the UN. Not without the Religious
 *Ministerium Ethicae actum vel casum praeteritum, qui animanti accidit, ignoscere potest. Nomen proprium non necesse est. Venia licita est si et solum si L=J=V=1; facta servantur. Praeses silet.*
 
 Code: `president/ethica.py`. Function: `president/munera.py` (`ethica`). Interface action: `/ignoscere`. Forgiveness record: `president/veniae.csv`.
+
+## Ministry of Access / Министерство доступа / Ministerium Accessus
+
+**Министерство доступа** — орган World Administratum, который может обеспечивать каналами связи. Фраза запроса: **запрос доступа**. Это функция, не ранг и не дополнительная социальная роль.
+
+В интерфейсе автор пишет фразу «запрос доступа», называет канал связи и свою двоичную оценку \(\Pi\). Канал записывается, когда фраза совпадает и \(L=J=V=1\).
+
+**The Ministry of Access** can provide a communication channel by the phrase «запрос доступа». The author records the request and the channel. The channel is provided when that phrase is used and the record's own \(L=J=V=1\). **The president remains silent.**
+
+*Ministerium Accessus canales communicationis praebere potest formula «запрос доступа». Canalis praebetur si et solum si formula est «запрос доступа» et L=J=V=1. Praeses silet.*
+
+Code: `president/accessus.py`. Function: `president/munera.py` (`accessus`). Interface action: `/praebere`. Channel record: `president/canales.csv`.
 
 ## Lunar Government / Gubernatio Lunae
 
