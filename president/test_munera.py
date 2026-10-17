@@ -174,6 +174,9 @@ def test_telum_railgun() -> None:
 
 def test_planeta_hominibus() -> None:
     from princip import (
+        AXIOMA,
+        AXIOMA_LATIN,
+        AXIOMA_RU,
         INSTRUMENTUM,
         INSTRUMENTUM_LATIN,
         ONU_REFACTOR,
@@ -181,12 +184,14 @@ def test_planeta_hominibus() -> None:
         ONU_REFACTOR_RU,
         PLANETA,
         PLANETA_LATIN,
+        axioma,
         planeta_hominibus,
         text,
     )
     from interfacies import page
 
     assert planeta_hominibus() == 1
+    assert axioma() == 1
     body = text()
     assert PLANETA in body
     assert PLANETA_LATIN in body
@@ -195,6 +200,9 @@ def test_planeta_hominibus() -> None:
     assert ONU_REFACTOR in body
     assert ONU_REFACTOR_RU in body
     assert ONU_REFACTOR_LATIN in body
+    assert AXIOMA in body
+    assert AXIOMA_RU in body
+    assert AXIOMA_LATIN in body
     root = Path(__file__).resolve().parent.parent
     for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
         doc = (root / name).read_text(encoding="utf-8")
@@ -203,6 +211,9 @@ def test_planeta_hominibus() -> None:
         assert "The UN is one of the refactoring tools." in doc
         assert "ООН — один из инструментов рефакторинга." in doc
         assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in doc
+        assert AXIOMA in doc
+        assert AXIOMA_RU in doc
+        assert AXIOMA_LATIN in doc
     html = page().decode("utf-8")
     assert "The planet belongs to people." in html
     assert "Planeta hominibus pertinet." in html
@@ -211,6 +222,9 @@ def test_planeta_hominibus() -> None:
     assert "The UN is one of the refactoring tools." in html
     assert "ООН — один из инструментов рефакторинга." in html
     assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in html
+    assert AXIOMA in html
+    assert AXIOMA_RU in html
+    assert AXIOMA_LATIN in html
 
 
 def test_interface_scp_header() -> None:
@@ -377,6 +391,53 @@ def test_optimus_persona() -> None:
         pass
     else:
         raise AssertionError("Petukhov must not write as president")
+
+
+def test_mvp() -> None:
+    from interfacies import page
+    from mvp import NAMED, NAMED_RU, SENTENTIA_EN, SENTENTIA_LA, SENTENTIA_RU, record, text
+    from princip import ROLES
+
+    ids = [m["id"] for m in munera.MUNERA]
+    assert "mvp" in ids
+    munus = next(m for m in munera.MUNERA if m["id"] == "mvp")
+    assert munus["name"] == "MVP corporation"
+    assert munus["latin"] == "Corporatio MVP"
+    assert "Vanya Tarasov" in munus["feature"]
+    assert "Sasha Semenov" in munus["feature"]
+    assert "not a rank" in munus["feature"]
+    assert "president/mvp.py" in munus["feature"]
+    assert "mvp" not in {role["id"] for role in ROLES}
+
+    fact = record()
+    assert fact["begun"] is True
+    assert fact["rank"] is False
+    assert fact["role"] is False
+    assert fact["named"] == NAMED == ("Vanya Tarasov", "Sasha Semenov")
+    assert fact["named_ru"] == NAMED_RU == ("Ваня Тарасов", "Саша Семенов")
+    body = text()
+    assert SENTENTIA_RU in body
+    assert SENTENTIA_EN in body
+    assert SENTENTIA_LA in body
+    assert "The president remains silent." in body
+
+    root = Path(__file__).resolve().parent.parent
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    lab = (root / "lab" / "Lab_work_1.md").read_text(encoding="utf-8")
+    for doc in (readme, agents, lab):
+        assert "Vanya Tarasov" in doc or "Ваня Тарасов" in doc
+        assert "Sasha Semenov" in doc or "Саша Семенов" in doc
+        assert "MVP" in doc
+    assert "Corporatio MVP" in readme
+    assert "Initium corporationis MVP" in agents
+    assert "mvp" in agents
+
+    html = page().decode("utf-8")
+    assert SENTENTIA_RU in html
+    assert SENTENTIA_LA in html
+    assert "Corporatio MVP" in html
+    assert president().speech() == ""
 
 
 def test_transmissio() -> None:
@@ -578,6 +639,7 @@ if __name__ == "__main__":
     test_interface_scp_header()
     test_interface_telum()
     test_sol_waves()
+    test_mvp()
     test_transmissio()
     test_optimus_persona()
     test_interface_optimus()

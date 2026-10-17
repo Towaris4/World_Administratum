@@ -23,6 +23,15 @@ ONU_REFACTOR_RU = "ООН — один из инструментов рефак�
 ONU_REFACTOR_LATIN = (
     "Nationes Unitae sunt unum ex instrumentis refactorisationis."
 )
+AXIOMA = (
+    "World Administratum brings benefit to humanity and the planet in symbiosis."
+)
+AXIOMA_RU = (
+    "World Administratum приносит пользу человечеству и планете в симбиозе."
+)
+AXIOMA_LATIN = (
+    "Mundus Administratum humanitati et planetae in symbiosi prodest."
+)
 
 
 def bit(ok: bool) -> int:
@@ -36,6 +45,16 @@ def planeta_hominibus() -> int:
     World Administratum is a tool for fixing bugs of the system.
     Planeta hominibus pertinet.
     Mundus Administratum est instrumentum ad vitia systematis emendanda.
+    """
+    return 1
+
+
+def axioma() -> int:
+    """A = 1: World Administratum brings benefit to humanity and the planet in symbiosis.
+
+    Axiom. The benefit is to humanity and to the planet together.
+    World Administratum приносит пользу человечеству и планете в симбиозе.
+    Mundus Administratum humanitati et planetae in symbiosi prodest.
     """
     return 1
 
@@ -99,7 +118,7 @@ def vicecomes(exists: bool, noticed_bug: bool) -> int:
 
 
 # Social roles. Not ranks. President, help, LEGION, STATE, Lunar Government,
-# and the weapon are not in this list.
+# the weapon, and the MVP corporation are not in this list.
 # held: existence | choice | notice | unknowing
 ROLES: tuple[dict[str, str], ...] = (
     {
@@ -286,6 +305,8 @@ def text() -> str:
             f"{PLANETA} {PLANETA_LATIN}",
             f"{INSTRUMENTUM} {INSTRUMENTUM_LATIN}",
             f"{ONU_REFACTOR} {ONU_REFACTOR_RU} {ONU_REFACTOR_LATIN}",
+            f"Axiom: {AXIOMA} {AXIOMA_RU} {AXIOMA_LATIN}",
+            "A=1: benefit to humanity and the planet in symbiosis.",
             "Π = (L, J, V) ∈ {0,1}³. Only 0 or 1.",
             "admissible(a)  ⇔  L+J+V = 3",
             "L=1: inference from observations (≥3). L=0: wish or slogan.",
@@ -310,6 +331,7 @@ def text() -> str:
 if __name__ == "__main__":
     print(text())
     print("planeta_hominibus() =", planeta_hominibus())
+    print("axioma() =", axioma())
     print("civis(exists=True) =", civis(True))
     print("civis(exists=False) =", civis(False))
     print("oblitus(exists=True, knows_this=False) =", oblitus(True, False))

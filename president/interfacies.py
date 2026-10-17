@@ -19,6 +19,8 @@ if str(HERE) not in sys.path:
 
 from arma import telum  # noqa: E402
 from accessus import list_canales, praebere  # noqa: E402
+from beneficium import augere, list_beneficia  # noqa: E402
+from creatio import condere, list_opera  # noqa: E402
 from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
     MUNERA,
@@ -34,8 +36,19 @@ from munera import (  # noqa: E402
 )
 from optimus import optimus as robotus  # noqa: E402
 from praeses import president  # noqa: E402
-from princip import ROLES, admissible, iustitia, logica, veritas  # noqa: E402
+from princip import (  # noqa: E402
+    AXIOMA,
+    AXIOMA_LATIN,
+    AXIOMA_RU,
+    ROLES,
+    admissible,
+    iustitia,
+    logica,
+    veritas,
+)
 from sol import aequilibrium, restituere, sol as intelligent_sun  # noqa: E402
+from mvp import SENTENTIA_LA as MVP_LA  # noqa: E402
+from mvp import SENTENTIA_RU as MVP_RU  # noqa: E402
 from transmissio import SENTENTIA_LA, SENTENTIA_RU  # noqa: E402
 
 HOST = "127.0.0.1"
@@ -213,6 +226,40 @@ def page(
         )
     else:
         channel_rows = "<p class='empty'>Каналов связи пока нет.</p>"
+    work_records = list_opera()
+    if work_records:
+        work_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Произведение:</strong> {_esc(r['opus'])}</p>"
+                f"<p><strong>Что появилось:</strong> {_esc(r['brings'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('созидание записано' if r['decision'] == 'conditum' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in work_records
+        )
+    else:
+        work_rows = "<p class='empty'>Созиданий пока нет.</p>"
+    buff_records = list_beneficia()
+    if buff_records:
+        buff_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Баф:</strong> {_esc(r['buff'])}</p>"
+                f"<p><strong>Внутри носителя:</strong> {_esc(r['intra'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('баф записан' if r['decision'] == 'auctum' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in buff_records
+        )
+    else:
+        buff_rows = "<p class='empty'>Внутренних бафов пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -362,7 +409,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Axiom: {_esc(AXIOMA)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -373,7 +420,9 @@ def page(
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
       <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
       <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
+      <p>Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_RU)} <em>{_esc(AXIOMA_LATIN)}</em></p>
       <p>{_esc(SENTENTIA_RU)} <em>{_esc(SENTENTIA_LA)}</em></p>
+      <p>{_esc(MVP_RU)} <em>{_esc(MVP_LA)}</em></p>
       <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
       <p>Role of the forgotten one who does not know about this: exists and does not know. Not an application. Not a rank. <em>Oblitus qui hoc nescit.</em> To require knowledge is a test, J=0.</p>
       <p>The presidential interface is remote. Religious Leaders — Starlink, for safety. The rest — in person, Saint Petersburg or Cheboksary.</p>
@@ -574,6 +623,72 @@ def page(
       <h3>Журнал каналов связи</h3>
       {channel_rows}
     </section>
+    <section id="creatio" lang="ru">
+      <h2>Министерство Созидания / Ministerium Creationis</h2>
+      <p>Министерство Созидания записывает произведение, приведённое в бытие. Фраза: созидание.</p>
+      <p class="note">Орган World Administratum. Не роль Создателя. Автор записывает фразу «созидание», произведение, то, чего не было и что появилось, и свою оценку L, J, V. Запись хранится при этой фразе и при L=J=V=1. Президент молча принимает данные.</p>
+      <form method="post" action="/condere">
+        <label for="c_author">Автор записи созидания</label>
+        <input id="c_author" name="author" required maxlength="120">
+        <label for="c_phrase">Фраза</label>
+        <input id="c_phrase" name="phrase" required maxlength="80" placeholder="созидание">
+        <label for="c_opus">Произведение</label>
+        <input id="c_opus" name="opus" required maxlength="300">
+        <label for="c_brings">Что появилось, чего не было</label>
+        <textarea id="c_brings" name="brings" required></textarea>
+        <p class="note">Оценка созидания: Π = (L, J, V). Запись допустима при фразе «созидание» и при L=J=V=1.</p>
+        <div class="grid two">
+          <div>
+            <label for="c_L">L — логика</label>
+            <select id="c_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="c_J">J — справедливость</label>
+            <select id="c_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="c_V">V — истина</label>
+            <select id="c_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать созидание</button>
+      </form>
+      <h3>Журнал созиданий</h3>
+      {work_rows}
+    </section>
+    <section id="beneficium" lang="ru">
+      <h2>Министерство внутренних бафов / Ministerium Beneficiorum Internorum</h2>
+      <p>Министерство внутренних бафов записывает внутренний баф. Фраза: внутренний баф.</p>
+      <p class="note">Орган World Administratum. Не ранг. Внутри носителя. Автор записывает фразу «внутренний баф», баф, то, что он усиливает внутри, и свою оценку L, J, V. Запись хранится при этой фразе и при L=J=V=1. Сам баф не пишет L, J, V. Президент молча принимает данные.</p>
+      <form method="post" action="/augere">
+        <label for="bf_author">Автор записи внутреннего бафа</label>
+        <input id="bf_author" name="author" required maxlength="120">
+        <label for="bf_phrase">Фраза</label>
+        <input id="bf_phrase" name="phrase" required maxlength="80" placeholder="внутренний баф">
+        <label for="bf_buff">Баф</label>
+        <input id="bf_buff" name="buff" required maxlength="300">
+        <label for="bf_intra">Что усиливается внутри носителя</label>
+        <textarea id="bf_intra" name="intra" required></textarea>
+        <p class="note">Оценка внутреннего бафа: Π = (L, J, V). Запись допустима при фразе «внутренний баф» и при L=J=V=1. Эта оценка принадлежит автору. Баф её не пишет.</p>
+        <div class="grid two">
+          <div>
+            <label for="bf_L">L — логика</label>
+            <select id="bf_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="bf_J">J — справедливость</label>
+            <select id="bf_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="bf_V">V — истина</label>
+            <select id="bf_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать внутренний баф</button>
+      </form>
+      <h3>Журнал внутренних бафов</h3>
+      {buff_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -714,6 +829,32 @@ class Handler(BaseHTTPRequestHandler):
                     principle=tuple(int(value) for value in bits),
                 )
                 self._redirect("/?ok=" + quote("Министерство доступа: канал связи обеспечен.") + "#accessus")
+                return
+            if path == "/condere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                condere(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    opus=_first(form, "opus"),
+                    brings=_first(form, "brings"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство Созидания: созидание записано.") + "#creatio")
+                return
+            if path == "/augere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                augere(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    buff=_first(form, "buff"),
+                    intra=_first(form, "intra"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство внутренних бафов: внутренний баф записан.") + "#beneficium")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

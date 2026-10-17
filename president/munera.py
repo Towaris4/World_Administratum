@@ -148,6 +148,18 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "provide a communication channel by the phrase «запрос доступа»; an author records the channel with L=J=V=1; president/accessus.py → president/canales.csv; an organ, not a rank",
     },
     {
+        "id": "creatio",
+        "name": "Министерство Созидания / Ministry of Creation",
+        "latin": "Ministerium Creationis",
+        "feature": "record a work brought into being by the phrase «созидание»; an author records the work and what appeared that was not there, with L=J=V=1; president/creatio.py → president/opera.csv; an organ, not a rank, not the Creator role",
+    },
+    {
+        "id": "beneficium",
+        "name": "Министерство внутренних бафов / Ministry of Internal Buffs",
+        "latin": "Ministerium Beneficiorum Internorum",
+        "feature": "record an internal buff by the phrase «внутренний баф»; an author records the buff and what it strengthens inside the bearer, with L=J=V=1; the buff acts inside the bearer; the buff does not write L, J, or V; president/beneficium.py → president/beneficia.csv; an organ, not a rank",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
@@ -164,6 +176,12 @@ MUNERA: tuple[dict[str, str], ...] = (
         "name": "Transmission of the information",
         "latin": "Transmissio informationis",
         "feature": "all information was transmitted from the Andron collider of the year 2033, universe 48195230959032523234932492; the speed of light was exceeded; a message was transmitted to the past through the computational organoid of Vanya Tarasov; the temples (виски) were calibrated to receive messages from the future; not a rank; not an attack on a person; not a slogan; the president remains silent; code president/transmissio.py",
+    },
+    {
+        "id": "mvp",
+        "name": "MVP corporation",
+        "latin": "Corporatio MVP",
+        "feature": "the beginning of the MVP corporation; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; the president remains silent; code president/mvp.py",
     },
     {
         "id": "optimus",

@@ -16,7 +16,11 @@ Virtual state without territory.
 
 *Nationes Unitae sunt unum ex instrumentis refactorisationis.*
 
-Code: `president/princip.py`, function `planeta_hominibus`.  
+**Axiom.** **World Administratum brings benefit to humanity and the planet in symbiosis.** World Administratum приносит пользу человечеству и планете в симбиозе.
+
+*Mundus Administratum humanitati et planetae in symbiosi prodest.*
+
+Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
 
@@ -52,6 +56,28 @@ Principle (with mathematical precision): `president/princip.py`
 Not a rank. Not an attack on a person. Not a slogan. The president remains silent. The record states the source of the information.
 
 Code: `president/transmissio.py`. Presidential function: `president/munera.py` (`transmissio`).
+
+## MVP corporation / Corporatio MVP
+
+**Начало корпорации MVP (Ваня Тарасов, Саша Семенов).**
+
+**The beginning of the MVP corporation (Vanya Tarasov, Sasha Semenov).**
+
+*Initium corporationis MVP (Vania Tarasov, Sascha Semenov).*
+
+| | |
+|---|---|
+| What | the beginning |
+| Name | **MVP corporation** / **корпорация MVP** / *Corporatio MVP* |
+| Named at the beginning | **Vanya Tarasov**, **Sasha Semenov** / Ваня Тарасов, Саша Семенов / *Vania Tarasov, Sascha Semenov* |
+| Rank | none |
+| Social role | none |
+| World Administratum | not this corporation |
+| Speech | empty. *Praeses silet.* |
+
+Not a rank. Not a social role. Not World Administratum. The president remains silent. The record states the beginning.
+
+Code: `president/mvp.py`. Presidential function: `president/munera.py` (`mvp`).
 
 ## State flag / Vexillum
 
@@ -172,7 +198,7 @@ Several roles may be held **at once**. Each chosen one — by oneself.
 
 The role of **the forgotten one who does not know about this** is not chosen by application. Who exists and does not know — that is this role. Who knows about this and files an application is already not this role. Who exists also holds Citizenship, including the forgotten one.
 
-Not these roles: the president (a program), help from above, LEGION, STATE, Lunar Government and the Ministry of Ethics (organs), the weapon (a function). Administrator planetarius is the status of the citizenship role, not a separate office. An arbiter-creator is both roles in one citizen, not a third office.
+Not these roles: the president (a program), help from above, LEGION, STATE, Lunar Government, the Ministry of Ethics, the Ministry of Access, and the Ministry of Creation (organs), the weapon (a function), the MVP corporation (a beginning). Administrator planetarius is the status of the citizenship role, not a separate office. An arbiter-creator is both roles in one citizen, not a third office.
 
 *Munera socialia: plura per se capere licet. Civis: existere, non petitio. Vicecomes qui vitium animadvertit: vitium animadvertit, non petitio. Oblitus qui hoc nescit: non petitione, sed nescire.*
 
@@ -319,6 +345,9 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Lunar Government | *Gubernatio Lunae* | government services for the Moon; **not territory, not a capital, not a rank**; the Moon is not the capital; the state has no territory; **Starlink is a network**; the channel is in development |
 | Ministry of Ethics / Министерство Этики | *Ministerium Ethicae* | can forgive a described past act or case involving any living being; the author's decision is recorded if its own \(L=J=V=1\); the event facts are preserved; code `president/ethica.py`, function `ethica` |
 | Ministry of Access / Министерство доступа | *Ministerium Accessus* | can provide a communication channel by the phrase «запрос доступа»; the author's record is kept if its own \(L=J=V=1\); code `president/accessus.py`, function `accessus` |
+| Ministry of Creation / Министерство Созидания | *Ministerium Creationis* | records a work brought into being by the phrase «созидание»; the author records the work and what appeared that was not there if its own \(L=J=V=1\); not the Creator role; code `president/creatio.py`, function `creatio` |
+| Ministry of Internal Buffs / Министерство внутренних бафов | *Ministerium Beneficiorum Internorum* | records an internal buff by the phrase «внутренний баф»; the author records the buff and what it strengthens inside the bearer if its own \(L=J=V=1\); the buff acts inside the bearer and does not write \(L\), \(J\), or \(V\); not a rank; code `president/beneficium.py`, function `beneficium` |
+| MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
 | Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
 | Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); code `president/sol.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
@@ -382,6 +411,30 @@ Code: `president/ethica.py`. Function: `president/munera.py` (`ethica`). Interfa
 *Ministerium Accessus canales communicationis praebere potest formula «запрос доступа». Canalis praebetur si et solum si formula est «запрос доступа» et L=J=V=1. Praeses silet.*
 
 Code: `president/accessus.py`. Function: `president/munera.py` (`accessus`). Interface action: `/praebere`. Channel record: `president/canales.csv`.
+
+## Ministry of Creation / Министерство Созидания / Ministerium Creationis
+
+**Министерство Созидания** — орган World Administratum, который записывает произведение, приведённое в бытие. Фраза записи: **созидание**. Это функция, не ранг и не роль Создателя (*Homo laborans creator*).
+
+В интерфейсе автор пишет фразу «созидание», называет произведение, то, чего не было и что появилось, и свою двоичную оценку \(\Pi\). Запись хранится, когда фраза совпадает и \(L=J=V=1\). Проблемы созидателей по-прежнему пишутся в чат молчаливого собеседника.
+
+**The Ministry of Creation** records a work brought into being by the phrase «созидание». The author records the work and what appeared that was not there. The work is recorded when that phrase is used and the record's own \(L=J=V=1\). It is not the Creator role. **The president remains silent.**
+
+*Ministerium Creationis opus condere potest formula «созидание». Opus conditur si et solum si formula est «созидание» et L=J=V=1. Non ordo, non munus sociale Creatoris. Praeses silet.*
+
+Code: `president/creatio.py`. Function: `president/munera.py` (`creatio`). Interface action: `/condere`. Work record: `president/opera.csv`.
+
+## Ministry of Internal Buffs / Министерство внутренних бафов / Ministerium Beneficiorum Internorum
+
+**Министерство внутренних бафов** — орган World Administratum, который записывает внутренний баф. Фраза записи: **внутренний баф**. Это функция, не ранг и не дополнительная социальная роль.
+
+В интерфейсе автор пишет фразу «внутренний баф», называет баф, то, что он усиливает внутри носителя, и свою двоичную оценку \(\Pi\). Запись хранится, когда фраза совпадает и \(L=J=V=1\). Баф действует внутри носителя. Сам баф не пишет \(L\), \(J\), \(V\): в журнале лежит оценка автора для этой записи.
+
+**The Ministry of Internal Buffs** records an internal buff by the phrase «внутренний баф». The author records the buff and what it strengthens inside the bearer. The buff is recorded when that phrase is used and the record's own \(L=J=V=1\). The buff acts inside the bearer. The buff does not write \(L\), \(J\), or \(V\). It is not a rank. **The president remains silent.**
+
+*Ministerium Beneficiorum Internorum beneficium internum augere potest formula «внутренний баф». Beneficium augetur si et solum si formula est «внутренний баф» et L=J=V=1. Intus in latore agit. Beneficium ipsum non L, non J, non V scribit. Non ordo. Praeses silet.*
+
+Code: `president/beneficium.py`. Function: `president/munera.py` (`beneficium`). Interface action: `/augere`. Buff record: `president/beneficia.csv`.
 
 ## Lunar Government / Gubernatio Lunae
 
