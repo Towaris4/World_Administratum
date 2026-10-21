@@ -182,8 +182,14 @@ def test_planeta_hominibus() -> None:
         ONU_REFACTOR,
         ONU_REFACTOR_LATIN,
         ONU_REFACTOR_RU,
+        PHYSICE,
+        PHYSICE_LATIN,
+        PHYSICE_RU,
         PLANETA,
         PLANETA_LATIN,
+        SPATIUM,
+        SPATIUM_LATIN,
+        SPATIUM_RU,
         axioma,
         planeta_hominibus,
         text,
@@ -193,6 +199,15 @@ def test_planeta_hominibus() -> None:
     assert planeta_hominibus() == 1
     assert axioma() == 1
     body = text()
+    assert SPATIUM in body
+    assert SPATIUM_RU in body
+    assert SPATIUM_LATIN in body
+    assert PHYSICE in body
+    assert PHYSICE_RU in body
+    assert PHYSICE_LATIN in body
+    assert "The 0 State of Liberty" in body
+    assert "World digital administration" not in body
+    assert "Virtual state" not in body
     assert PLANETA in body
     assert PLANETA_LATIN in body
     assert INSTRUMENTUM in body
@@ -206,6 +221,15 @@ def test_planeta_hominibus() -> None:
     root = Path(__file__).resolve().parent.parent
     for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
         doc = (root / name).read_text(encoding="utf-8")
+        assert SPATIUM in doc
+        assert SPATIUM_RU in doc
+        assert SPATIUM_LATIN in doc
+        assert PHYSICE in doc
+        assert PHYSICE_RU in doc
+        assert PHYSICE_LATIN in doc
+        assert "The 0 State of Liberty" in doc
+        assert "World digital administration" not in doc
+        assert "Virtual state" not in doc
         assert "The planet belongs to people" in doc
         assert "tool for fixing bugs of the system" in doc
         assert "The UN is one of the refactoring tools." in doc
@@ -215,6 +239,15 @@ def test_planeta_hominibus() -> None:
         assert AXIOMA_RU in doc
         assert AXIOMA_LATIN in doc
     html = page().decode("utf-8")
+    assert SPATIUM in html
+    assert SPATIUM_RU in html
+    assert SPATIUM_LATIN in html
+    assert PHYSICE in html
+    assert PHYSICE_RU in html
+    assert PHYSICE_LATIN in html
+    assert "The 0 State of Liberty" in html
+    assert "World digital administration" not in html
+    assert "Virtual state" not in html
     assert "The planet belongs to people." in html
     assert "Planeta hominibus pertinet." in html
     assert "World Administratum is a tool for fixing bugs of the system." in html

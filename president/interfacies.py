@@ -41,6 +41,12 @@ from princip import (  # noqa: E402
     AXIOMA_LATIN,
     AXIOMA_RU,
     ROLES,
+    PHYSICE,
+    PHYSICE_LATIN,
+    PHYSICE_RU,
+    SPATIUM,
+    SPATIUM_LATIN,
+    SPATIUM_RU,
     admissible,
     iustitia,
     logica,
@@ -409,7 +415,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. Virtual state without territory. The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Axiom: {_esc(AXIOMA)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Axiom: {_esc(AXIOMA)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -418,6 +424,8 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
+      <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} <em>{_esc(SPATIUM_LATIN)}</em></p>
+      <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} <em>{_esc(PHYSICE_LATIN)}</em></p>
       <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
       <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
       <p>Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_RU)} <em>{_esc(AXIOMA_LATIN)}</em></p>

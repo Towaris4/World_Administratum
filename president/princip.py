@@ -12,6 +12,12 @@ NAME = "World Administratum"
 NAME_LATIN = "Mundus Administratum"
 PRINCIPLE = "Logica, Iustitia, Veritas"
 AXES = ("logica", "iustitia", "veritas")
+SPATIUM = "A state in the information space, without territory."
+SPATIUM_RU = "Государство в информационном пространстве, без территории."
+SPATIUM_LATIN = "Civitas in spatio informationis, sine territorio."
+PHYSICE = "It appears physically in The 0 State of Liberty."
+PHYSICE_RU = "Оно появляется физически в The 0 State of Liberty."
+PHYSICE_LATIN = "Physice apparet in The 0 State of Liberty."
 PLANETA = "The planet belongs to people."
 PLANETA_LATIN = "Planeta hominibus pertinet."
 INSTRUMENTUM = "World Administratum is a tool for fixing bugs of the system."
@@ -302,6 +308,8 @@ def text() -> str:
         [
             f"{NAME} / {NAME_LATIN}",
             f"Principium: {PRINCIPLE}",
+            f"{SPATIUM} {SPATIUM_RU} {SPATIUM_LATIN}",
+            f"{PHYSICE} {PHYSICE_RU} {PHYSICE_LATIN}",
             f"{PLANETA} {PLANETA_LATIN}",
             f"{INSTRUMENTUM} {INSTRUMENTUM_LATIN}",
             f"{ONU_REFACTOR} {ONU_REFACTOR_RU} {ONU_REFACTOR_LATIN}",

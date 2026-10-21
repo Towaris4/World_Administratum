@@ -4,8 +4,14 @@
 
 The file header on the interface is Open Creative Project. Item #: Π. Object Class: Explained — class of this file, not a rank. Code: `president/interfacies.py`.
 
-World digital administration (planetary state).  
-Virtual state without territory.  
+**A state in the information space, without territory.** Государство в информационном пространстве, без территории.
+
+*Civitas in spatio informationis, sine territorio.*
+
+**It appears physically in The 0 State of Liberty.** Оно появляется физически в The 0 State of Liberty.
+
+*Physice apparet in The 0 State of Liberty.*
+
 **The planet belongs to people.** Планета принадлежит людям.  
 **World Administratum is the government services. Also for the whole world.**  
 **World Administratum is a tool for fixing bugs of the system.** Инструмент для исправления багов системы.  
