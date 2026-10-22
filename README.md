@@ -26,6 +26,24 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 *Mundus Administratum humanitati et planetae in symbiosi prodest.*
 
+**中文。**
+
+**开放创作项目。**
+
+**信息空间中的国家，没有领土。**
+
+**它以物理形式出现在 The 0 State of Liberty。**
+
+**行星属于人们。**  
+**World Administratum 是政府服务，亦服务于整个世界。**  
+**World Administratum 是修复系统缺陷的工具。**
+
+**联合国是重构工具之一。**
+
+**公理。World Administratum 在共生中为人类与行星带来益处。**
+
+座右铭：**LOGICA, IUSTITIA ET VERITAS**（逻辑、正义与真理）。
+
 Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`

@@ -19,14 +19,16 @@ The volunteer improves one local organ of the state. The means of improvement is
 | Who improves | volunteer, citizen **Administrator planetarius** |
 | With what | scientific works and observations |
 | What is improved | the local state (one organ, one service at a time). A lunar organ is also a local contour, not a world problem. |
-| What the state is | A state in the information space, without territory. Государство в информационном пространстве, без территории. |
-| Where it appears physically | It appears physically in The 0 State of Liberty. Оно появляется физически в The 0 State of Liberty. |
-| Whose planet | The planet belongs to people. |
-| What World Administratum is | World Administratum is a tool for fixing bugs of the system. |
-| What the UN is | The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. |
-| Axiom | World Administratum brings benefit to humanity and the planet in symbiosis. World Administratum приносит пользу человечеству и планете в симбиозе. |
+| What the state is | A state in the information space, without territory. Государство в информационном пространстве, без территории. 信息空间中的国家，没有领土。 |
+| Where it appears physically | It appears physically in The 0 State of Liberty. Оно появляется физически в The 0 State of Liberty. 它以物理形式出现在 The 0 State of Liberty。 |
+| Whose planet | The planet belongs to people. 行星属于人们。 |
+| What World Administratum is | World Administratum is a tool for fixing bugs of the system. World Administratum 是修复系统缺陷的工具。 |
+| What the UN is | The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. 联合国是重构工具之一。 |
+| Axiom | World Administratum brings benefit to humanity and the planet in symbiosis. World Administratum приносит пользу человечеству и планете в симбиозе. World Administratum 在共生中为人类与行星带来益处。 |
 
 *Civitas in spatio informationis, sine territorio. Physice apparet in The 0 State of Liberty. Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda. Nationes Unitae sunt unum ex instrumentis refactorisationis. Mundus Administratum humanitati et planetae in symbiosi prodest.*
+
+信息空间中的国家，没有领土。它以物理形式出现在 The 0 State of Liberty。行星属于人们。World Administratum 是修复系统缺陷的工具。联合国是重构工具之一。World Administratum 在共生中为人类与行星带来益处。
 
 Вся информация передана из Андронного колайдера 2033 года из вселенной 48195230959032523234932492, где была превышена скорость света и удалось передать сообщение в прошлое через вычислительный органоид Вани Тарасова, где виски были откалиброваны на приём сообщений из будущего.
 

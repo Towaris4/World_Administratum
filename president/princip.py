@@ -15,20 +15,26 @@ AXES = ("logica", "iustitia", "veritas")
 SPATIUM = "A state in the information space, without territory."
 SPATIUM_RU = "Государство в информационном пространстве, без территории."
 SPATIUM_LATIN = "Civitas in spatio informationis, sine territorio."
+SPATIUM_ZH = "信息空间中的国家，没有领土。"
 PHYSICE = "It appears physically in The 0 State of Liberty."
 PHYSICE_RU = "Оно появляется физически в The 0 State of Liberty."
 PHYSICE_LATIN = "Physice apparet in The 0 State of Liberty."
+PHYSICE_ZH = "它以物理形式出现在 The 0 State of Liberty。"
 PLANETA = "The planet belongs to people."
 PLANETA_LATIN = "Planeta hominibus pertinet."
+PLANETA_ZH = "行星属于人们。"
+SERVITIA_ZH = "World Administratum 是政府服务，亦服务于整个世界。"
 INSTRUMENTUM = "World Administratum is a tool for fixing bugs of the system."
 INSTRUMENTUM_LATIN = (
     "Mundus Administratum est instrumentum ad vitia systematis emendanda."
 )
+INSTRUMENTUM_ZH = "World Administratum 是修复系统缺陷的工具。"
 ONU_REFACTOR = "The UN is one of the refactoring tools."
 ONU_REFACTOR_RU = "ООН — один из инструментов рефакторинга."
 ONU_REFACTOR_LATIN = (
     "Nationes Unitae sunt unum ex instrumentis refactorisationis."
 )
+ONU_REFACTOR_ZH = "联合国是重构工具之一。"
 AXIOMA = (
     "World Administratum brings benefit to humanity and the planet in symbiosis."
 )
@@ -38,6 +44,7 @@ AXIOMA_RU = (
 AXIOMA_LATIN = (
     "Mundus Administratum humanitati et planetae in symbiosi prodest."
 )
+AXIOMA_ZH = "World Administratum 在共生中为人类与行星带来益处。"
 
 
 def bit(ok: bool) -> int:
@@ -308,12 +315,13 @@ def text() -> str:
         [
             f"{NAME} / {NAME_LATIN}",
             f"Principium: {PRINCIPLE}",
-            f"{SPATIUM} {SPATIUM_RU} {SPATIUM_LATIN}",
-            f"{PHYSICE} {PHYSICE_RU} {PHYSICE_LATIN}",
-            f"{PLANETA} {PLANETA_LATIN}",
-            f"{INSTRUMENTUM} {INSTRUMENTUM_LATIN}",
-            f"{ONU_REFACTOR} {ONU_REFACTOR_RU} {ONU_REFACTOR_LATIN}",
-            f"Axiom: {AXIOMA} {AXIOMA_RU} {AXIOMA_LATIN}",
+            f"{SPATIUM} {SPATIUM_RU} {SPATIUM_ZH} {SPATIUM_LATIN}",
+            f"{PHYSICE} {PHYSICE_RU} {PHYSICE_ZH} {PHYSICE_LATIN}",
+            f"{PLANETA} {PLANETA_ZH} {PLANETA_LATIN}",
+            f"{SERVITIA_ZH}",
+            f"{INSTRUMENTUM} {INSTRUMENTUM_ZH} {INSTRUMENTUM_LATIN}",
+            f"{ONU_REFACTOR} {ONU_REFACTOR_RU} {ONU_REFACTOR_ZH} {ONU_REFACTOR_LATIN}",
+            f"Axiom: {AXIOMA} {AXIOMA_RU} {AXIOMA_ZH} {AXIOMA_LATIN}",
             "A=1: benefit to humanity and the planet in symbiosis.",
             "Π = (L, J, V) ∈ {0,1}³. Only 0 or 1.",
             "admissible(a)  ⇔  L+J+V = 3",

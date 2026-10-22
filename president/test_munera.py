@@ -198,19 +198,26 @@ def test_planeta_hominibus() -> None:
         AXIOMA,
         AXIOMA_LATIN,
         AXIOMA_RU,
+        AXIOMA_ZH,
         INSTRUMENTUM,
         INSTRUMENTUM_LATIN,
+        INSTRUMENTUM_ZH,
         ONU_REFACTOR,
         ONU_REFACTOR_LATIN,
         ONU_REFACTOR_RU,
+        ONU_REFACTOR_ZH,
         PHYSICE,
         PHYSICE_LATIN,
         PHYSICE_RU,
+        PHYSICE_ZH,
         PLANETA,
         PLANETA_LATIN,
+        PLANETA_ZH,
+        SERVITIA_ZH,
         SPATIUM,
         SPATIUM_LATIN,
         SPATIUM_RU,
+        SPATIUM_ZH,
         axioma,
         planeta_hominibus,
         text,
@@ -238,7 +245,14 @@ def test_planeta_hominibus() -> None:
     assert ONU_REFACTOR_LATIN in body
     assert AXIOMA in body
     assert AXIOMA_RU in body
+    assert AXIOMA_ZH in body
     assert AXIOMA_LATIN in body
+    assert SPATIUM_ZH in body
+    assert PHYSICE_ZH in body
+    assert PLANETA_ZH in body
+    assert SERVITIA_ZH in body
+    assert INSTRUMENTUM_ZH in body
+    assert ONU_REFACTOR_ZH in body
     root = Path(__file__).resolve().parent.parent
     for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
         doc = (root / name).read_text(encoding="utf-8")
@@ -258,7 +272,13 @@ def test_planeta_hominibus() -> None:
         assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in doc
         assert AXIOMA in doc
         assert AXIOMA_RU in doc
+        assert AXIOMA_ZH in doc
         assert AXIOMA_LATIN in doc
+        assert SPATIUM_ZH in doc
+        assert PHYSICE_ZH in doc
+        assert PLANETA_ZH in doc
+        assert INSTRUMENTUM_ZH in doc
+        assert ONU_REFACTOR_ZH in doc
     html = page().decode("utf-8")
     assert SPATIUM in html
     assert SPATIUM_RU in html
@@ -278,7 +298,14 @@ def test_planeta_hominibus() -> None:
     assert "Nationes Unitae sunt unum ex instrumentis refactorisationis." in html
     assert AXIOMA in html
     assert AXIOMA_RU in html
+    assert AXIOMA_ZH in html
     assert AXIOMA_LATIN in html
+    assert SPATIUM_ZH in html
+    assert PHYSICE_ZH in html
+    assert PLANETA_ZH in html
+    assert SERVITIA_ZH in html
+    assert INSTRUMENTUM_ZH in html
+    assert ONU_REFACTOR_ZH in html
 
 
 def test_interface_scp_header() -> None:

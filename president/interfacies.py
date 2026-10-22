@@ -44,9 +44,16 @@ from princip import (  # noqa: E402
     PHYSICE,
     PHYSICE_LATIN,
     PHYSICE_RU,
+    AXIOMA_ZH,
+    INSTRUMENTUM_ZH,
+    ONU_REFACTOR_ZH,
+    PHYSICE_ZH,
+    PLANETA_ZH,
+    SERVITIA_ZH,
     SPATIUM,
     SPATIUM_LATIN,
     SPATIUM_RU,
+    SPATIUM_ZH,
     admissible,
     iustitia,
     logica,
@@ -438,7 +445,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. Government services, also for the whole world. World Administratum is a tool for fixing bugs of the system. The UN is one of the refactoring tools. Axiom: {_esc(AXIOMA)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. {_esc(PLANETA_ZH)} Government services, also for the whole world. {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} The UN is one of the refactoring tools. {_esc(ONU_REFACTOR_ZH)} Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_ZH)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -447,11 +454,11 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
-      <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} <em>{_esc(SPATIUM_LATIN)}</em></p>
-      <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} <em>{_esc(PHYSICE_LATIN)}</em></p>
-      <p>The planet belongs to people. <em>Planeta hominibus pertinet.</em> World Administratum is a tool for fixing bugs of the system. <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
-      <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
-      <p>Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_RU)} <em>{_esc(AXIOMA_LATIN)}</em></p>
+      <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em></p>
+      <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em></p>
+      <p>The planet belongs to people. {_esc(PLANETA_ZH)} <em>Planeta hominibus pertinet.</em> {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
+      <p>The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. {_esc(ONU_REFACTOR_ZH)} <em>Nationes Unitae sunt unum ex instrumentis refactorisationis.</em></p>
+      <p>Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_RU)} {_esc(AXIOMA_ZH)} <em>{_esc(AXIOMA_LATIN)}</em></p>
       <p>{_esc(SENTENTIA_RU)} <em>{_esc(SENTENTIA_LA)}</em></p>
       <p>{_esc(MVP_RU)} <em>{_esc(MVP_LA)}</em></p>
       <p>Role of Citizenship (Гражданство, <em>Civis</em>): held by existence, not by application. Not a rank. Knowledge of the name is not obligatory. Who exists is Administrator planetarius. <em>Ut civis sis, existere sufficit. Nomen nosse non necesse est.</em></p>
