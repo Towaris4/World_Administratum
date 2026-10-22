@@ -371,6 +371,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Ministry of Access / Министерство доступа | *Ministerium Accessus* | can provide a communication channel by the phrase «запрос доступа»; the author's record is kept if its own \(L=J=V=1\); code `president/accessus.py`, function `accessus` |
 | Ministry of Creation / Министерство Созидания | *Ministerium Creationis* | records a work brought into being by the phrase «созидание»; the author records the work and what appeared that was not there if its own \(L=J=V=1\); not the Creator role; code `president/creatio.py`, function `creatio` |
 | Ministry of Internal Buffs / Министерство внутренних бафов | *Ministerium Beneficiorum Internorum* | records an internal buff by the phrase «внутренний баф»; the author records the buff and what it strengthens inside the bearer if its own \(L=J=V=1\); the buff acts inside the bearer and does not write \(L\), \(J\), or \(V\); not a rank; code `president/beneficium.py`, function `beneficium` |
+| Ministry of Internal Affairs / Министерство внутренних дел | *Ministerium Rerum Internarum* | records a request by the phrase «запрос»; the author records the request if its own \(L=J=V=1\); the request does not transfer the named things and does not write \(L\), \(J\), or \(V\); not a rank; code `president/internae.py`, function `internae` |
 | MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
 | Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
 | Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); request for a **controlled magnetic field** in a **spherical segment of the planet** is recorded in the weapon catalog; code `president/sol.py` |
@@ -459,6 +460,18 @@ Code: `president/creatio.py`. Function: `president/munera.py` (`creatio`). Inter
 *Ministerium Beneficiorum Internorum beneficium internum augere potest formula «внутренний баф». Beneficium augetur si et solum si formula est «внутренний баф» et L=J=V=1. Intus in latore agit. Beneficium ipsum non L, non J, non V scribit. Non ordo. Praeses silet.*
 
 Code: `president/beneficium.py`. Function: `president/munera.py` (`beneficium`). Interface action: `/augere`. Buff record: `president/beneficia.csv`.
+
+## Ministry of Internal Affairs / Министерство внутренних дел / Ministerium Rerum Internarum
+
+**Министерство внутренних дел** — орган World Administratum, который записывает запрос. Фраза записи: **запрос**. Это функция, не ранг и не дополнительная социальная роль.
+
+В интерфейсе автор пишет фразу «запрос», текст запроса и свою двоичную оценку \(\Pi\). Запись хранится, когда фраза совпадает и \(L=J=V=1\). Запрос не передаёт названное. Сам запрос не пишет \(L\), \(J\), \(V\): в журнале лежит оценка автора для этой записи.
+
+**The Ministry of Internal Affairs** records a request by the phrase «запрос». The author records the request. The request is recorded when that phrase is used and the record's own \(L=J=V=1\). The request does not transfer the named things. The request does not write \(L\), \(J\), or \(V\). It is not a rank. **The president remains silent.**
+
+*Ministerium Rerum Internarum petitionem scribere potest formula «запрос». Petitio scribitur si et solum si formula est «запрос» et L=J=V=1. Petitio res petitas non transfert. Petitio ipsa non L, non J, non V scribit. Non ordo. Praeses silet.*
+
+Code: `president/internae.py`. Function: `president/munera.py` (`internae`). Interface action: `/scribere`. Request record: `president/internae.csv`.
 
 ## Lunar Government / Gubernatio Lunae
 

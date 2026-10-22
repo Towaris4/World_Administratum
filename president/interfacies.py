@@ -20,6 +20,7 @@ if str(HERE) not in sys.path:
 from arma import telum  # noqa: E402
 from accessus import list_canales, praebere  # noqa: E402
 from beneficium import augere, list_beneficia  # noqa: E402
+from internae import list_petitiones, scribere  # noqa: E402
 from creatio import condere, list_opera  # noqa: E402
 from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
@@ -296,6 +297,22 @@ def page(
         )
     else:
         buff_rows = "<p class='empty'>Внутренних бафов пока нет.</p>"
+    petition_records = list_petitiones()
+    if petition_records:
+        petition_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Запрос:</strong> {_esc(r['petitio'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('запрос записан' if r['decision'] == 'scripta' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in petition_records
+        )
+    else:
+        petition_rows = "<p class='empty'>Запросов пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -738,6 +755,37 @@ def page(
       <h3>Журнал внутренних бафов</h3>
       {buff_rows}
     </section>
+    <section id="internae" lang="ru">
+      <h2>Министерство внутренних дел / Ministerium Rerum Internarum</h2>
+      <p>Министерство внутренних дел записывает запрос. Фраза: запрос.</p>
+      <p class="note">Орган World Administratum. Не ранг. Автор записывает фразу «запрос», текст запроса и свою оценку L, J, V. Запись хранится при этой фразе и при L=J=V=1. Запрос не передаёт названное. Сам запрос не пишет L, J, V. Президент молча принимает данные.</p>
+      <form method="post" action="/scribere">
+        <label for="in_author">Автор записи запроса</label>
+        <input id="in_author" name="author" required maxlength="120">
+        <label for="in_phrase">Фраза</label>
+        <input id="in_phrase" name="phrase" required maxlength="80" placeholder="запрос">
+        <label for="in_petitio">Текст запроса</label>
+        <textarea id="in_petitio" name="petitio" required></textarea>
+        <p class="note">Оценка запроса: Π = (L, J, V). Запись допустима при фразе «запрос» и при L=J=V=1. Эта оценка принадлежит автору. Запрос её не пишет. Запись хранит текст и не передаёт названное.</p>
+        <div class="grid two">
+          <div>
+            <label for="in_L">L — логика</label>
+            <select id="in_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="in_J">J — справедливость</label>
+            <select id="in_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="in_V">V — истина</label>
+            <select id="in_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать запрос</button>
+      </form>
+      <h3>Журнал запросов</h3>
+      {petition_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -904,6 +952,18 @@ class Handler(BaseHTTPRequestHandler):
                     principle=tuple(int(value) for value in bits),
                 )
                 self._redirect("/?ok=" + quote("Министерство внутренних бафов: внутренний баф записан.") + "#beneficium")
+                return
+            if path == "/scribere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                scribere(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    petitio=_first(form, "petitio"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство внутренних дел: запрос записан.") + "#internae")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

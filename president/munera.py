@@ -160,6 +160,12 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "record an internal buff by the phrase «внутренний баф»; an author records the buff and what it strengthens inside the bearer, with L=J=V=1; the buff acts inside the bearer; the buff does not write L, J, or V; president/beneficium.py → president/beneficia.csv; an organ, not a rank",
     },
     {
+        "id": "internae",
+        "name": "Министерство внутренних дел / Ministry of Internal Affairs",
+        "latin": "Ministerium Rerum Internarum",
+        "feature": "record a request by the phrase «запрос»; an author records the request with L=J=V=1; the request does not transfer the named things; the request does not write L, J, or V; president/internae.py → president/internae.csv; an organ, not a rank",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
