@@ -7,7 +7,17 @@ from pathlib import Path
 
 import arma
 import munera
-from arma import CIMICES, PETITIO_SOLIS, Relsotron, telum
+from arma import (
+    AUTOMATA,
+    CIMICES,
+    LAUNCHED_LATIN,
+    LAUNCHED_RU,
+    MINIGUN,
+    PETITIO_SOLIS,
+    SIRENA,
+    Relsotron,
+    telum,
+)
 from munera import Silentium, president_author, silere
 from praeses import Praeses, president
 from princip import ROLES, admissible, civis, iustitia, oblitus, roles_held, vicecomes
@@ -95,6 +105,9 @@ def test_telum_railgun() -> None:
     weapon = next(m for m in munera.MUNERA if m["id"] == "telum")
     assert weapon["name"] == "Weapon"
     assert weapon["latin"] == "Telum rallarium"
+    assert "Armed with words" in weapon["feature"]
+    assert "Natus Vincere" in weapon["feature"]
+    assert "Vinsere" not in weapon["feature"]
     assert "railgun" in weapon["feature"]
     assert "fantasy" in weapon["feature"]
     assert "LinkedList" in weapon["feature"]
@@ -109,6 +122,11 @@ def test_telum_railgun() -> None:
     assert "mathematical precision" in weapon["feature"]
     assert "eye" in weapon["feature"]
     assert "task completed" in weapon["feature"]
+    assert "minigun of letters" in weapon["feature"]
+    assert "Миниган из писем" in weapon["feature"]
+    assert "Minigun litterarum" in weapon["feature"]
+    assert "the Creator of World Administratum uses it himself" in weapon["feature"]
+    assert "charge: letters" in weapon["feature"]
 
     gun = telum()
     waiting = gun.ordo()
@@ -134,13 +152,35 @@ def test_telum_railgun() -> None:
     assert gun.factum(CIMICES.target) is True
     assert gun.factum(CIMICES.latin) is True
     facta = gun.facta()
-    assert len(facta) == 1
+    assert len(facta) == 3
     assert facta[0] is CIMICES
+    assert facta[1] is SIRENA
+    assert facta[2] is AUTOMATA
+    assert SIRENA.status == "fired"
+    assert SIRENA.destination == "fantasy"
+    assert AUTOMATA.status == "fired"
+    assert AUTOMATA.destination == "fantasy"
+    assert AUTOMATA.modus == "passive firing"
+    assert AUTOMATA.modus_latin == "modus passivus disparandi"
+    assert AUTOMATA.locus == "over the Chuvash Republic"
+    assert gun.factum(SIRENA.target) is True
+    assert gun.factum(SIRENA.latin) is True
+    assert gun.factum(AUTOMATA.target) is True
+    assert gun.exspectat(SIRENA.target) is False
+    assert gun.exspectat(AUTOMATA.target) is False
+    assert LAUNCHED_RU in gun.text()
+    assert LAUNCHED_LATIN in gun.text()
+    assert "passive firing" in gun.text()
     assert facta[0].hit == "eye"
     assert facta[0].hit_latin == "oculus"
     assert facta[0].precision == "mathematical"
     assert facta[0].status == "fired"
     assert facta[0].locus == "father's room at work"
+    assert Relsotron.SLOGAN == "Armed with words"
+    assert Relsotron.SLOGAN_RU == "Вооружены словами"
+    assert Relsotron.SLOGAN_LATIN == "Natus Vincere"
+    assert gun.text().splitlines()[:2] == ["Armed with words", "Natus Vincere"]
+    assert "Vinsere" not in gun.text()
     assert "All shot. Task completed." in gun.text()
     assert "in oculum" in gun.text()
     assert "Hostility is removed: Hostility / Hostilitas. Not fired." in gun.text()
@@ -156,6 +196,24 @@ def test_telum_railgun() -> None:
     assert "Not a shot. Not fired." in gun.text()
     assert "campus magneticus gubernabilis" in gun.text()
     assert PETITIO_SOLIS.status == "recorded"
+    assert gun.armaturae() == (MINIGUN,)
+    assert gun.armatum("Миниган из писем") is True
+    assert gun.armatum("Minigun litterarum") is True
+    assert gun.armatum("Созидатель") is True
+    assert gun.exspectat("Миниган из писем") is False
+    assert gun.exspectat("Minigun of letters") is False
+    assert gun.factum("Minigun of letters") is False
+    assert gun.disparatum(MINIGUN.name) is False
+    assert MINIGUN.bearer == "Creator of World Administratum"
+    assert MINIGUN.bearer_ru == "Созидатель"
+    assert MINIGUN.bearer_latin == "Homo laborans creator"
+    assert MINIGUN.charge == "letters"
+    assert MINIGUN.charge_ru == "письма"
+    assert MINIGUN.status == "used by the Creator himself"
+    assert MINIGUN.phrase in gun.text()
+    assert "Minigun litterarum" in gun.text()
+    assert "uses it himself" in gun.text()
+    assert "head → War / Bellum → None" == gun.chain()
     root = Path(__file__).resolve().parent.parent
     agents = (root / "AGENTS.md").read_text(encoding="utf-8")
     readme = (root / "README.md").read_text(encoding="utf-8")
@@ -163,6 +221,29 @@ def test_telum_railgun() -> None:
     assert PETITIO_SOLIS.phrase in readme
     assert "segmentum sphaericum planetae" in agents
     assert "segmentum sphaericum planetae" in readme
+    assert "Armed with words" in agents
+    assert "Armed with words" in readme
+    assert "Вооружены словами" in agents
+    assert "Вооружены словами" in readme
+    assert "Natus Vincere" in agents
+    assert "Natus Vincere" in readme
+    assert "Vinsere" not in agents
+    assert "Vinsere" not in readme
+    assert MINIGUN.phrase in agents
+    assert MINIGUN.phrase in readme
+    assert "Minigun litterarum" in agents
+    assert "Minigun litterarum" in readme
+    assert "the Creator of World Administratum uses it himself" in agents
+    assert "the Creator of World Administratum uses it himself" in readme
+    assert LAUNCHED_RU in agents
+    assert LAUNCHED_RU in readme
+    assert "Fons iussi sirenae" in agents
+    assert "Fons iussi sirenae" in readme
+    assert "modus passivus disparandi" in agents
+    assert "modus passivus disparandi" in readme
+    assert "passive firing" in weapon["feature"]
+    assert "source of the siren order" in weapon["feature"]
+    assert "Chuvash Republic" in weapon["feature"]
 
     first = gun.disparare()
     assert first is not None
@@ -175,13 +256,19 @@ def test_telum_railgun() -> None:
     assert len(gun.ordo()) == 0
     assert [s.target for s in gun.facta()] == [
         CIMICES.target,
+        SIRENA.target,
+        AUTOMATA.target,
         "War",
     ]
     assert gun.sublatum("Hostility") is True
 
     fresh = Relsotron()
     assert [s.target for s in fresh.ordo()] == ["War"]
-    assert [s.target for s in fresh.facta()] == [CIMICES.target]
+    assert [s.target for s in fresh.facta()] == [
+        CIMICES.target,
+        SIRENA.target,
+        AUTOMATA.target,
+    ]
     assert [s.target for s in fresh.sublata()] == ["Hostility"]
     assert arma.BELLUM.target == "War"
     assert arma.HOSTILITAS.target == "Hostility"
@@ -202,6 +289,10 @@ def test_planeta_hominibus() -> None:
         INSTRUMENTUM,
         INSTRUMENTUM_LATIN,
         INSTRUMENTUM_ZH,
+        CONSTITUTIO,
+        CONSTITUTIO_LATIN,
+        CONSTITUTIO_RU,
+        CONSTITUTIO_ZH,
         ONU_REFACTOR,
         ONU_REFACTOR_LATIN,
         ONU_REFACTOR_RU,
@@ -219,6 +310,7 @@ def test_planeta_hominibus() -> None:
         SPATIUM_RU,
         SPATIUM_ZH,
         axioma,
+        constitutio,
         planeta_hominibus,
         text,
     )
@@ -226,6 +318,7 @@ def test_planeta_hominibus() -> None:
 
     assert planeta_hominibus() == 1
     assert axioma() == 1
+    assert constitutio() == 1
     body = text()
     assert SPATIUM in body
     assert SPATIUM_RU in body
@@ -253,6 +346,13 @@ def test_planeta_hominibus() -> None:
     assert SERVITIA_ZH in body
     assert INSTRUMENTUM_ZH in body
     assert ONU_REFACTOR_ZH in body
+    assert CONSTITUTIO in body
+    assert CONSTITUTIO_RU in body
+    assert CONSTITUTIO_LATIN in body
+    assert CONSTITUTIO_ZH in body
+    assert body.splitlines()[1] == (
+        f"{CONSTITUTIO} {CONSTITUTIO_RU} {CONSTITUTIO_ZH} {CONSTITUTIO_LATIN}"
+    )
     root = Path(__file__).resolve().parent.parent
     for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
         doc = (root / name).read_text(encoding="utf-8")
@@ -279,6 +379,10 @@ def test_planeta_hominibus() -> None:
         assert PLANETA_ZH in doc
         assert INSTRUMENTUM_ZH in doc
         assert ONU_REFACTOR_ZH in doc
+        assert CONSTITUTIO in doc
+        assert CONSTITUTIO_RU in doc
+        assert CONSTITUTIO_LATIN in doc
+        assert CONSTITUTIO_ZH in doc
     html = page().decode("utf-8")
     assert SPATIUM in html
     assert SPATIUM_RU in html
@@ -306,6 +410,10 @@ def test_planeta_hominibus() -> None:
     assert SERVITIA_ZH in html
     assert INSTRUMENTUM_ZH in html
     assert ONU_REFACTOR_ZH in html
+    assert CONSTITUTIO in html
+    assert CONSTITUTIO_RU in html
+    assert CONSTITUTIO_LATIN in html
+    assert CONSTITUTIO_ZH in html
 
 
 def test_interface_scp_header() -> None:
@@ -335,6 +443,10 @@ def test_interface_telum() -> None:
 
     html = page().decode("utf-8")
     assert "Weapon / Telum rallarium" in html
+    assert '<p class="motto">Armed with words</p>' in html
+    assert '<p class="motto">Natus Vincere</p>' in html
+    assert "Вооружены словами" in html
+    assert "Vinsere" not in html
     assert "railgun on the far side of the Moon" in html
     assert "head → War / Bellum → None" in html
     assert "War and Hostility" not in html
@@ -359,6 +471,19 @@ def test_interface_telum() -> None:
     assert ">fired<" in html
     assert "All shot. Task completed." in html
     assert "Munus perfectum." in html
+    assert "Source of the siren order" in html
+    assert "Fons iussi sirenae" in html
+    assert "Source of the drone-launch order over the Chuvash Republic (passive firing)" in html
+    assert "Fons iussi automatonum volantium super Rem publicam Cuvassicam" in html
+    assert LAUNCHED_RU in html
+    assert LAUNCHED_LATIN in html
+    assert "Minigun of letters" in html
+    assert MINIGUN.phrase in html
+    assert "Minigun litterarum" in html
+    assert "The Creator of World Administratum uses it himself." in html
+    assert "used by the Creator himself" in html
+    assert "<td>Созидатель</td>" in html
+    assert "письма / letters" in html
 
 
 def test_sol_waves() -> None:

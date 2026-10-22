@@ -35,6 +35,10 @@ ONU_REFACTOR_LATIN = (
     "Nationes Unitae sunt unum ex instrumentis refactorisationis."
 )
 ONU_REFACTOR_ZH = "联合国是重构工具之一。"
+CONSTITUTIO = "The basis of the constitution is the Charter of the United Nations."
+CONSTITUTIO_RU = "В основе конституции — Устав ООН."
+CONSTITUTIO_LATIN = "Fundamentum constitutionis est Charta Nationum Unitarum."
+CONSTITUTIO_ZH = "宪法的基础是《联合国宪章》。"
 AXIOMA = (
     "World Administratum brings benefit to humanity and the planet in symbiosis."
 )
@@ -58,6 +62,16 @@ def planeta_hominibus() -> int:
     World Administratum is a tool for fixing bugs of the system.
     Planeta hominibus pertinet.
     Mundus Administratum est instrumentum ad vitia systematis emendanda.
+    """
+    return 1
+
+
+def constitutio() -> int:
+    """K = 1: the basis of the constitution is the Charter of the United Nations.
+
+    В основе конституции — Устав ООН.
+    Fundamentum constitutionis est Charta Nationum Unitarum.
+    The record names the basis. It does not write the consent of the UN.
     """
     return 1
 
@@ -314,6 +328,7 @@ def text() -> str:
     return "\n".join(
         [
             f"{NAME} / {NAME_LATIN}",
+            f"{CONSTITUTIO} {CONSTITUTIO_RU} {CONSTITUTIO_ZH} {CONSTITUTIO_LATIN}",
             f"Principium: {PRINCIPLE}",
             f"{SPATIUM} {SPATIUM_RU} {SPATIUM_ZH} {SPATIUM_LATIN}",
             f"{PHYSICE} {PHYSICE_RU} {PHYSICE_ZH} {PHYSICE_LATIN}",
@@ -347,6 +362,7 @@ def text() -> str:
 if __name__ == "__main__":
     print(text())
     print("planeta_hominibus() =", planeta_hominibus())
+    print("constitutio() =", constitutio())
     print("axioma() =", axioma())
     print("civis(exists=True) =", civis(True))
     print("civis(exists=False) =", civis(False))

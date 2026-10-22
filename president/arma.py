@@ -10,9 +10,17 @@ in a spherical segment of the planet. Recorded in the catalog.
 Not a shot. Not fired. The request does not write L, J, or V.
 Fired: bed bugs in the father's room at work;
 all shot with mathematical precision in the eye. Task completed.
+Launched at the source of the siren order and at the source
+of the drone-launch order over the Chuvash Republic,
+which is in passive firing mode. Shots at fantasy.
+Minigun of letters: the Creator of World Administratum uses it himself.
+Charge: letters. It shoots at fantasy. Not in the LinkedList.
 
 Not territory. Not a capital. Not a rank. The Moon is not the capital.
 Not an attack on a person: the warrior is a meliorator.
+
+Slogan of the armed forces: Armed with words.
+Second line: Natus Vincere.
 """
 
 from __future__ import annotations
@@ -61,6 +69,8 @@ class Ictus:
     hit_latin: str = ""
     precision: str = ""
     locus: str = ""
+    modus: str = ""
+    modus_latin: str = ""
     status: str = "waiting to be fired"
 
     def as_row(self) -> dict[str, str]:
@@ -73,6 +83,8 @@ class Ictus:
             "hit_latin": self.hit_latin,
             "precision": self.precision,
             "locus": self.locus,
+            "modus": self.modus,
+            "modus_latin": self.modus_latin,
             "status": self.status,
         }
 
@@ -186,6 +198,94 @@ CIMICES = Ictus(
     locus="father's room at work",
     status="fired",
 )
+SIRENA = Ictus(
+    target="Source of the siren order",
+    latin="Fons iussi sirenae",
+    charge="plasma",
+    destination="fantasy",
+    status="fired",
+)
+AUTOMATA = Ictus(
+    target="Source of the drone-launch order over the Chuvash Republic",
+    latin="Fons iussi automatonum volantium super Rem publicam Cuvassicam",
+    charge="plasma",
+    destination="fantasy",
+    locus="over the Chuvash Republic",
+    modus="passive firing",
+    modus_latin="modus passivus disparandi",
+    status="fired",
+)
+LAUNCHED_RU = (
+    "Запущен в источник приказа сирены и в источник приказа запуска "
+    "беспилотников над Чувашской Республикой, который в режиме пассивной стрельбы."
+)
+LAUNCHED_LATIN = (
+    "Disparatum in fontem iussi sirenae et in fontem iussi automatonum "
+    "volantium super Rem publicam Cuvassicam, qui in modo passivo disparandi est. "
+    "In phantasiam."
+)
+FIRED = (CIMICES, SIRENA, AUTOMATA)
+
+
+@dataclass(frozen=True)
+class Armatura:
+    """A weapon of the armed forces, held by its bearer. Not a queued shot."""
+
+    name: str
+    name_ru: str
+    latin: str
+    kind: str
+    charge: str
+    charge_ru: str
+    charge_latin: str
+    bearer: str
+    bearer_ru: str
+    bearer_latin: str
+    phrase: str
+    phrase_latin: str
+    destination: str = "fantasy"
+    destination_latin: str = "phantasia"
+    status: str = "used by the Creator himself"
+
+    def as_row(self) -> dict[str, str]:
+        return {
+            "name": self.name,
+            "name_ru": self.name_ru,
+            "latin": self.latin,
+            "kind": self.kind,
+            "charge": self.charge,
+            "charge_ru": self.charge_ru,
+            "charge_latin": self.charge_latin,
+            "bearer": self.bearer,
+            "bearer_ru": self.bearer_ru,
+            "bearer_latin": self.bearer_latin,
+            "phrase": self.phrase,
+            "phrase_latin": self.phrase_latin,
+            "destination": self.destination,
+            "destination_latin": self.destination_latin,
+            "status": self.status,
+        }
+
+
+MINIGUN = Armatura(
+    name="Minigun of letters",
+    name_ru="Миниган из писем",
+    latin="Minigun litterarum",
+    kind="minigun",
+    charge="letters",
+    charge_ru="письма",
+    charge_latin="litterae",
+    bearer="Creator of World Administratum",
+    bearer_ru="Созидатель",
+    bearer_latin="Homo laborans creator",
+    phrase=(
+        "Миниган из писем. Им пользуется сам Созидатель World Administratum."
+    ),
+    phrase_latin=(
+        "Minigun litterarum. Ipse Homo laborans creator Mundi Administrati "
+        "eo utitur. Litterae in phantasiam. Non ordo. Non oppugnatio hominis."
+    ),
+)
 
 
 class Relsotron:
@@ -193,6 +293,9 @@ class Relsotron:
 
     NAME = "Weapon"
     NAME_LATIN = "Telum rallarium"
+    SLOGAN = "Armed with words"
+    SLOGAN_RU = "Вооружены словами"
+    SLOGAN_LATIN = "Natus Vincere"
     KIND = "railgun"
     PLACE = "far side of the Moon"
     PLACE_LATIN = "facies aversa Lunae"
@@ -207,18 +310,22 @@ class Relsotron:
         fired: tuple[Ictus, ...] | None = None,
         removed: tuple[Ictus, ...] | None = None,
         petitiones: tuple[Petitio, ...] | None = None,
+        armaturae: tuple[Armatura, ...] | None = None,
     ) -> None:
         if queue is None:
             self.queue = LinkedList()
             self.queue.append(BELLUM)
         else:
             self.queue = queue
-        self.fired: list[Ictus] = list(fired if fired is not None else (CIMICES,))
+        self.fired: list[Ictus] = list(fired if fired is not None else FIRED)
         self.removed: list[Ictus] = list(
             removed if removed is not None else (HOSTILITAS,)
         )
         self._petitiones: tuple[Petitio, ...] = (
             petitiones if petitiones is not None else (PETITIO_SOLIS,)
+        )
+        self._armaturae: tuple[Armatura, ...] = (
+            armaturae if armaturae is not None else (MINIGUN,)
         )
 
     def disparatum(self, target: str) -> bool:
@@ -242,6 +349,30 @@ class Relsotron:
     def petitiones(self) -> tuple[Petitio, ...]:
         """Requests recorded in the catalog. Not the shot queue."""
         return self._petitiones
+
+    def armaturae(self) -> tuple[Armatura, ...]:
+        """Weapons held in the armed forces. Not the shot queue."""
+        return self._armaturae
+
+    def armatum(self, key: str) -> bool:
+        """The weapon is written in the catalog."""
+        name = key.strip().casefold()
+        return any(
+            name
+            in {
+                a.name.casefold(),
+                a.name_ru.casefold(),
+                a.latin.casefold(),
+                a.kind.casefold(),
+                a.charge.casefold(),
+                a.charge_ru.casefold(),
+                a.bearer.casefold(),
+                a.bearer_ru.casefold(),
+                a.bearer_latin.casefold(),
+                a.phrase.casefold(),
+            }
+            for a in self._armaturae
+        )
 
     def petita(self, key: str) -> bool:
         """The request is written in the catalog."""
@@ -308,6 +439,7 @@ class Relsotron:
                 f"{i.target} / {i.latin}"
                 + (f"; {i.precision} precision" if i.precision else "")
                 + (f"; in the {i.hit}" if i.hit else "")
+                + (f"; {i.modus}" if i.modus else "")
                 for i in self.facta()
             )
             or "none"
@@ -326,8 +458,23 @@ class Relsotron:
             request_lines.extend(p.phrase_latin for p in requests)
         else:
             request_lines = ["No request is recorded in the catalog."]
+        arms = self.armaturae()
+        if arms:
+            arm_lines = [
+                (
+                    f"{a.name}. The Creator of World Administratum uses it himself. "
+                    f"Charge: {a.charge}. Shoots at fantasy."
+                )
+                for a in arms
+            ]
+            arm_lines.extend(a.phrase for a in arms)
+            arm_lines.extend(a.phrase_latin for a in arms)
+        else:
+            arm_lines = ["No held weapon is recorded in the catalog."]
         return "\n".join(
             [
+                self.SLOGAN,
+                self.SLOGAN_LATIN,
                 f"{self.NAME} — {self.KIND} on the far side of the Moon.",
                 f"{self.NAME_LATIN} in facie aversa Lunae.",
                 "Shoots at fantasy. In phantasiam disparat.",
@@ -348,8 +495,16 @@ class Relsotron:
                     "Cimices lectularii in cubiculo patris in labore. "
                     "Omnes disparati. Munus perfectum."
                 ),
+                (
+                    "Launched at the source of the siren order and at the source "
+                    "of the drone-launch order over the Chuvash Republic, "
+                    "which is in passive firing mode. Shots at fantasy."
+                ),
+                LAUNCHED_RU,
+                LAUNCHED_LATIN,
                 f"Fired: {fired}.",
                 *request_lines,
+                *arm_lines,
                 "Not territory. Not a capital. Not a rank. The Moon is not the capital.",
             ]
         )

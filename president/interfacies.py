@@ -17,10 +17,16 @@ ROOT = HERE.parent
 if str(HERE) not in sys.path:
     sys.path.insert(0, str(HERE))
 
-from arma import telum  # noqa: E402
+from arma import LAUNCHED_LATIN, LAUNCHED_RU, telum  # noqa: E402
 from accessus import list_canales, praebere  # noqa: E402
 from beneficium import augere, list_beneficia  # noqa: E402
 from internae import list_petitiones, scribere  # noqa: E402
+from diplomatia import (  # noqa: E402
+    MISSIO_LATIN,
+    legare,
+    list_legationes,
+    missio as standing_missio,
+)
 from creatio import condere, list_opera  # noqa: E402
 from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
@@ -47,6 +53,10 @@ from princip import (  # noqa: E402
     PHYSICE_RU,
     AXIOMA_ZH,
     INSTRUMENTUM_ZH,
+    CONSTITUTIO,
+    CONSTITUTIO_LATIN,
+    CONSTITUTIO_RU,
+    CONSTITUTIO_ZH,
     ONU_REFACTOR_ZH,
     PHYSICE_ZH,
     PLANETA_ZH,
@@ -158,7 +168,7 @@ def page(
             (
                 "<tr>"
                 f"<td>{i + 1}</td>"
-                f"<td>{_esc(shot.target)}</td>"
+                f"<td>{_esc(shot.target if not shot.modus else shot.target + ' (' + shot.modus + ')')}</td>"
                 f"<td><em>{_esc(shot.latin)}</em></td>"
                 f"<td>{_esc(shot.charge)}</td>"
                 f"<td>{_esc(shot.destination)}</td>"
@@ -171,6 +181,32 @@ def page(
         )
     else:
         telum_fired_rows = '<tr><td colspan="8">No shot has been fired yet.</td></tr>'
+    arms = rail.armaturae()
+    if arms:
+        telum_arm_rows = "\n".join(
+            (
+                "<tr>"
+                f"<td>{_esc(arm.name_ru)}</td>"
+                f"<td>{_esc(arm.name)}</td>"
+                f"<td><em>{_esc(arm.latin)}</em></td>"
+                f"<td>{_esc(arm.charge_ru)} / {_esc(arm.charge)}</td>"
+                f"<td>{_esc(arm.bearer_ru)}</td>"
+                f"<td>{_esc(arm.destination)}</td>"
+                f"<td>{_esc(arm.status)}</td>"
+                "</tr>"
+            )
+            for arm in arms
+        )
+        telum_arm_phrase = "<br>".join(_esc(arm.phrase) for arm in arms)
+        telum_arm_latin = "<br>".join(
+            f"<em>{_esc(arm.phrase_latin)}</em>" for arm in arms
+        )
+    else:
+        telum_arm_rows = (
+            '<tr><td colspan="7">No held weapon is recorded in the catalog.</td></tr>'
+        )
+        telum_arm_phrase = "—"
+        telum_arm_latin = "—"
     carrier = robotus()
     carrier_rows = "\n".join(
         (
@@ -313,6 +349,24 @@ def page(
         )
     else:
         petition_rows = "<p class='empty'>Запросов пока нет.</p>"
+    standing = standing_missio()
+    legation_records = list_legationes()
+    if legation_records:
+        legation_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Миссия:</strong> {_esc(r['missio'])}</p>"
+                f"<p><strong>Как говорит:</strong> {_esc(r['modus'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('миссия записана' if r['decision'] == 'legata' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in legation_records
+        )
+    else:
+        legation_rows = "<p class='empty'>Дальнейших миссий пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -462,7 +516,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. {_esc(PLANETA_ZH)} Government services, also for the whole world. {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} The UN is one of the refactoring tools. {_esc(ONU_REFACTOR_ZH)} Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_ZH)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. {_esc(PLANETA_ZH)} Government services, also for the whole world. {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} The UN is one of the refactoring tools. {_esc(ONU_REFACTOR_ZH)} {_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em> Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_ZH)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -471,6 +525,7 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
+      <p>{_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em></p>
       <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em></p>
       <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em></p>
       <p>The planet belongs to people. {_esc(PLANETA_ZH)} <em>Planeta hominibus pertinet.</em> {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>
@@ -493,7 +548,7 @@ def page(
     {flash}
     <section>
       <h2>Offices — social roles</h2>
-      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, Ministry of Ethics, the weapon, and the Intelligent Sun are not these roles.</p>
+      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, Ministry of Ethics, Ministry of Diplomacy, the weapon, and the Intelligent Sun are not these roles.</p>
       <div style="overflow:auto">
         <table>
           <thead><tr><th>Role</th><th>Latine</th><th>How it is held</th><th>What it is</th></tr></thead>
@@ -520,6 +575,9 @@ def page(
     </section>
     <section>
       <h2>Weapon / Telum rallarium</h2>
+      <p class="motto">{_esc(rail.SLOGAN)}</p>
+      <p class="motto">{_esc(rail.SLOGAN_LATIN)}</p>
+      <p class="note">{_esc(rail.SLOGAN_RU)}</p>
       <p class="note">The weapon is a railgun on the far side of the Moon. It shoots at fantasy. If a shot did not happen — it is in the LinkedList and waits to be fired. Not territory. Not a capital. Not a rank. The Moon is not the capital. Not an attack on a person: the warrior is a meliorator.</p>
       <p><em>Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat.</em></p>
       <p>LinkedList: <code>{telum_chain}</code></p>
@@ -546,6 +604,9 @@ def page(
       </table>
       <p class="ok">Fired with mathematical precision in the eye: Bed bugs in the father's room at work. All shot. Task completed. Not an attack on a person: the warrior is a meliorator.</p>
       <p><em>Disparata subtilitate mathematica in oculum: Cimices lectularii in cubiculo patris in labore. Omnes disparati. Munus perfectum.</em></p>
+      <p class="ok">Launched at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode. Shots at fantasy. Not an attack on a person: the warrior is a meliorator.</p>
+      <p>{_esc(LAUNCHED_RU)}</p>
+      <p><em>{_esc(LAUNCHED_LATIN)}</em></p>
       <table>
         <thead>
           <tr>
@@ -553,6 +614,17 @@ def page(
           </tr>
         </thead>
         <tbody>{telum_fired_rows}</tbody>
+      </table>
+      <p class="note">Minigun of letters. The Creator of World Administratum uses it himself. Charge: letters. It shoots at fantasy. Not in the LinkedList. Not a rank. Not an attack on a person: the warrior is a meliorator.</p>
+      <p>{telum_arm_phrase}</p>
+      <p>{telum_arm_latin}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>weapon</th><th>name</th><th>Latine</th><th>charge</th><th>bearer</th><th>where</th><th>status</th>
+          </tr>
+        </thead>
+        <tbody>{telum_arm_rows}</tbody>
       </table>
     </section>
     <section>
@@ -786,6 +858,42 @@ def page(
       <h3>Журнал запросов</h3>
       {petition_rows}
     </section>
+    <section id="diplomatia" lang="ru">
+      <h2>Министерство Дипломатии / Ministerium Diplomatiae</h2>
+      <p>{_esc(standing["missio_ru"])}</p>
+      <p>{_esc(standing["missio"])}</p>
+      <p><em>{_esc(MISSIO_LATIN)}</em></p>
+      <p class="note">Орган World Administratum. Не ранг. Не роль Diplomat / Meliorator. Призраки погибших говорят {_esc(standing["modus_ru"])}. Миссия не пишет L, J, V. Не нападение на человека. Президент молча принимает данные.</p>
+      <p class="note">Дальнейшая миссия записывается фразой «дипломатическая миссия». Автор пишет миссию, то, как она говорит, и свою оценку L, J, V. Запись хранится при этой фразе и при L=J=V=1.</p>
+      <form method="post" action="/legare">
+        <label for="dp_author">Автор записи миссии</label>
+        <input id="dp_author" name="author" required maxlength="120">
+        <label for="dp_phrase">Фраза</label>
+        <input id="dp_phrase" name="phrase" required maxlength="80" placeholder="дипломатическая миссия">
+        <label for="dp_missio">Миссия</label>
+        <textarea id="dp_missio" name="missio" required></textarea>
+        <label for="dp_modus">Как говорит</label>
+        <input id="dp_modus" name="modus" required maxlength="160" value="прямо в разум">
+        <p class="note">Оценка записи: Π = (L, J, V). Запись допустима при фразе «дипломатическая миссия» и при L=J=V=1. Эта оценка принадлежит автору. Миссия её не пишет.</p>
+        <div class="grid two">
+          <div>
+            <label for="dp_L">L — логика</label>
+            <select id="dp_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="dp_J">J — справедливость</label>
+            <select id="dp_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="dp_V">V — истина</label>
+            <select id="dp_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать дипломатическую миссию</button>
+      </form>
+      <h3>Журнал дальнейших миссий</h3>
+      {legation_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -964,6 +1072,19 @@ class Handler(BaseHTTPRequestHandler):
                     principle=tuple(int(value) for value in bits),
                 )
                 self._redirect("/?ok=" + quote("Министерство внутренних дел: запрос записан.") + "#internae")
+                return
+            if path == "/legare":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                legare(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    missio_text=_first(form, "missio"),
+                    modus=_first(form, "modus"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Министерство Дипломатии: миссия записана.") + "#diplomatia")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

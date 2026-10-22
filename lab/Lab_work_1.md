@@ -24,11 +24,12 @@ The volunteer improves one local organ of the state. The means of improvement is
 | Whose planet | The planet belongs to people. 行星属于人们。 |
 | What World Administratum is | World Administratum is a tool for fixing bugs of the system. World Administratum 是修复系统缺陷的工具。 |
 | What the UN is | The UN is one of the refactoring tools. ООН — один из инструментов рефакторинга. 联合国是重构工具之一。 |
+| Basis of the constitution | The basis of the constitution is the Charter of the United Nations. В основе конституции — Устав ООН. 宪法的基础是《联合国宪章》。 |
 | Axiom | World Administratum brings benefit to humanity and the planet in symbiosis. World Administratum приносит пользу человечеству и планете в симбиозе. World Administratum 在共生中为人类与行星带来益处。 |
 
-*Civitas in spatio informationis, sine territorio. Physice apparet in The 0 State of Liberty. Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda. Nationes Unitae sunt unum ex instrumentis refactorisationis. Mundus Administratum humanitati et planetae in symbiosi prodest.*
+*Civitas in spatio informationis, sine territorio. Physice apparet in The 0 State of Liberty. Planeta hominibus pertinet. Mundus Administratum est instrumentum ad vitia systematis emendanda. Nationes Unitae sunt unum ex instrumentis refactorisationis. Fundamentum constitutionis est Charta Nationum Unitarum. Mundus Administratum humanitati et planetae in symbiosi prodest.*
 
-信息空间中的国家，没有领土。它以物理形式出现在 The 0 State of Liberty。行星属于人们。World Administratum 是修复系统缺陷的工具。联合国是重构工具之一。World Administratum 在共生中为人类与行星带来益处。
+信息空间中的国家，没有领土。它以物理形式出现在 The 0 State of Liberty。行星属于人们。World Administratum 是修复系统缺陷的工具。联合国是重构工具之一。宪法的基础是《联合国宪章》。World Administratum 在共生中为人类与行星带来益处。
 
 Вся информация передана из Андронного колайдера 2033 года из вселенной 48195230959032523234932492, где была превышена скорость света и удалось передать сообщение в прошлое через вычислительный органоид Вани Тарасова, где виски были откалиброваны на приём сообщений из будущего.
 

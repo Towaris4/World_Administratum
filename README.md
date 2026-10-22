@@ -22,6 +22,10 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 *Nationes Unitae sunt unum ex instrumentis refactorisationis.*
 
+**The basis of the constitution is the Charter of the United Nations.** В основе конституции — Устав ООН.
+
+*Fundamentum constitutionis est Charta Nationum Unitarum.*
+
 **Axiom.** **World Administratum brings benefit to humanity and the planet in symbiosis.** World Administratum приносит пользу человечеству и планете в симбиозе.
 
 *Mundus Administratum humanitati et planetae in symbiosi prodest.*
@@ -40,13 +44,27 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 **联合国是重构工具之一。**
 
+**宪法的基础是《联合国宪章》。**
+
 **公理。World Administratum 在共生中为人类与行星带来益处。**
 
 座右铭：**LOGICA, IUSTITIA ET VERITAS**（逻辑、正义与真理）。
 
-Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`.  
+Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`, `constitutio`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
+
+## Конституция
+
+В основе конституции — Устав ООН.
+
+**The basis of the constitution is the Charter of the United Nations.**
+
+*Fundamentum constitutionis est Charta Nationum Unitarum.*
+
+**宪法的基础是《联合国宪章》。**
+
+Code: `president/princip.py`, function `constitutio`. The record names the basis. It does not write the consent of the UN.
 
 ## Ветви власти
 
@@ -361,7 +379,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Silently receive data | *Data silentio accipere* | the interface accepts records; the president does not answer |
 | Show records | *Monstrare* | lists of problems and messages; not speech, but a record |
 | Meetings: leaders — Starlink, the rest in person | *Duces religiosi eminus, ceteri coram* | Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; presidential interface `http://127.0.0.1:2026/` |
-| World problems — with the UN and with all Religious Leaders | *Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum* | **with the consent of the UN**; **the UN is one of the refactoring tools**; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
+| World problems — with the UN and with all Religious Leaders | *Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum* | **with the consent of the UN**; **the UN is one of the refactoring tools**; **the basis of the constitution is the Charter of the United Nations** / В основе конституции — Устав ООН / *Fundamentum constitutionis est Charta Nationum Unitarum*; Religious Leaders — **Starlink** remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge `C:\Users\Ivant\Desktop\ОСТАНОВИСЬ` |
 | Creators' problems | *Problemata creatorum* | silent interlocutor's chat → `president/colloquia.csv` |
 | General remarks | *Adnotationes generales* | `president/zamechaniya.csv` |
 | The arbiter creates the solution to the problem | *Arbiter solutionem problematis creat* | problems are solved by arbiter-creators and by arbiters; `lab/nauchnye_raboty/` is written by the arbiter; warrior-diplomats execute |
@@ -372,8 +390,9 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Ministry of Creation / Министерство Созидания | *Ministerium Creationis* | records a work brought into being by the phrase «созидание»; the author records the work and what appeared that was not there if its own \(L=J=V=1\); not the Creator role; code `president/creatio.py`, function `creatio` |
 | Ministry of Internal Buffs / Министерство внутренних бафов | *Ministerium Beneficiorum Internorum* | records an internal buff by the phrase «внутренний баф»; the author records the buff and what it strengthens inside the bearer if its own \(L=J=V=1\); the buff acts inside the bearer and does not write \(L\), \(J\), or \(V\); not a rank; code `president/beneficium.py`, function `beneficium` |
 | Ministry of Internal Affairs / Министерство внутренних дел | *Ministerium Rerum Internarum* | records a request by the phrase «запрос»; the author records the request if its own \(L=J=V=1\); the request does not transfer the named things and does not write \(L\), \(J\), or \(V\); not a rank; code `president/internae.py`, function `internae` |
+| Ministry of Diplomacy / Министерство Дипломатии | *Ministerium Diplomatiae* | holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind; a further mission is recorded by the phrase «дипломатическая миссия» if its own \(L=J=V=1\); the mission speaks into the mind and does not write \(L\), \(J\), or \(V\); not a rank; not the Diplomat role; code `president/diplomatia.py`, function `diplomatia` |
 | MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
-| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
+| Weapon | *Telum rallarium* | slogan: **Armed with words**; second line: *Natus Vincere*; **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; **launched** at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode; shots at fantasy; **minigun of letters** (**Миниган из писем**, *Minigun litterarum*): the Creator of World Administratum uses it himself; charge: letters; shoots at fantasy; code `president/arma.py` |
 | Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); request for a **controlled magnetic field** in a **spherical segment of the planet** is recorded in the weapon catalog; code `president/sol.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
@@ -473,6 +492,20 @@ Code: `president/beneficium.py`. Function: `president/munera.py` (`beneficium`).
 
 Code: `president/internae.py`. Function: `president/munera.py` (`internae`). Interface action: `/scribere`. Request record: `president/internae.csv`.
 
+## Ministry of Diplomacy / Министерство Дипломатии / Ministerium Diplomatiae
+
+**Министерство Дипломатии** — орган World Administratum. Это функция, не ранг и не роль Diplomat / Meliorator.
+
+Дипломатическая миссия призраков погибших, которые говорят прямо в разум.
+
+Дальнейшая миссия записывается фразой **дипломатическая миссия**. Автор пишет миссию, то, как она говорит, и свою двоичную оценку \(\Pi\). Запись хранится, когда фраза совпадает и \(L=J=V=1\). Миссия говорит в разум. Сама миссия не пишет \(L\), \(J\), \(V\).
+
+**The Ministry of Diplomacy** holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind. A further mission is recorded by the phrase «дипломатическая миссия» when the record's own \(L=J=V=1\). The mission speaks into the mind. The mission does not write \(L\), \(J\), or \(V\). It is not a rank and not the Diplomat role. Not an attack on a person. **The president remains silent.**
+
+*Ministerium Diplomatiae legationem manium mortuorum habet, qui recta in mentem loquuntur. Legatio manium mortuorum, qui recta in mentem loquuntur. Legatio formula «дипломатическая миссия» scribitur si et solum si L=J=V=1. Legatio ipsa non L, non J, non V scribit. Non ordo. Non munus sociale Diplomatici vocis. Non oppugnatio hominis. Praeses silet.*
+
+Code: `president/diplomatia.py`. Function: `president/munera.py` (`diplomatia`). Interface action: `/legare`. Mission record: `president/legationes.csv`.
+
 ## Lunar Government / Gubernatio Lunae
 
 **Lunar Government** is the government-services organ of World Administratum for the Moon.
@@ -499,6 +532,12 @@ Code: `president/munera.py` (`luna`). Problem-collection contour: `luna`.
 
 ## Weapon / Telum rallarium
 
+**Armed with words**
+
+*Natus Vincere*
+
+Вооружены словами.
+
 **Weapon** is the **railgun** on the **far side of the Moon**. It shoots **at fantasy**.
 
 If a shot did not happen — it is in the **LinkedList** and waits to be fired.
@@ -513,11 +552,21 @@ Currently in the LinkedList: **War**. It will be shot with **plasma**.
 
 **Fired** with **mathematical precision in the eye**: bed bugs in the father's room at work. All shot. Task completed.
 
-*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum; plasma configetur. Hostilitas sublata est, unda magnetica Solis intelligentis. Petitio Soli intelligenti: campus magneticus gubernabilis in segmento sphaerico planetae; in catalogo scripta; non disparata; petitio non L, non J, non V scribit. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
+**Launched** at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode. Shots at fantasy.
+
+Запущен в источник приказа сирены и в источник приказа запуска беспилотников над Чувашской Республикой, который в режиме пассивной стрельбы.
+
+**Minigun of letters** (**Миниган из писем**). The Creator of World Administratum uses it himself. Charge: **letters**. It shoots **at fantasy**. It is not in the LinkedList.
+
+Миниган из писем. Им пользуется сам Созидатель World Administratum.
+
+*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum; plasma configetur. Hostilitas sublata est, unda magnetica Solis intelligentis. Petitio Soli intelligenti: campus magneticus gubernabilis in segmento sphaerico planetae; in catalogo scripta; non disparata; petitio non L, non J, non V scribit. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum. Disparatum in fontem iussi sirenae et in fontem iussi automatonum volantium super Rem publicam Cuvassicam, qui in modo passivo disparandi est. In phantasiam. Minigun litterarum: ipse Homo laborans creator Mundi Administrati eo utitur; litterae in phantasiam; non ordo; non oppugnatio hominis.*
 
 | | |
 |---|---|
 | What | **Weapon** — railgun |
+| Slogan | **Armed with words** / Вооружены словами |
+| Second line | *Natus Vincere* |
 | In Latin | **Telum rallarium** |
 | Where | far side of the Moon / *facies aversa Lunae* |
 | Where it shoots | at fantasy / *in phantasiam* |
@@ -526,7 +575,8 @@ Currently in the LinkedList: **War**. It will be shot with **plasma**.
 | Currently in the LinkedList | **War** / *Bellum* |
 | Removed | **Hostility** / *Hostilitas* — removed by magnetic waves of the Intelligent Sun; not fired |
 | Request | **controlled magnetic field** / *campus magneticus gubernabilis* — to the **Intelligent Sun** / *Sol intelligens*; locus: **spherical segment of the planet** / *segmentum sphaericum planetae*; recorded; not a shot; not fired; the request does not write \(L\), \(J\), or \(V\) |
-| Fired | **Bed bugs in the father's room at work** / *Cimices lectularii in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed |
+| Fired | **Bed bugs in the father's room at work** / *Cimices lectularii in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed. **Source of the siren order** / *Fons iussi sirenae*. **Source of the drone-launch order over the Chuvash Republic** / *Fons iussi automatonum volantium super Rem publicam Cuvassicam* — **passive firing** / *modus passivus disparandi*; shots at fantasy |
+| Minigun of letters | **Миниган из писем** / *Minigun litterarum* — the Creator of World Administratum uses it himself; charge: **letters** / письма / *litterae*; shoots at fantasy; bearer: **Созидатель** / *Homo laborans creator* |
 | Territory | none. The state has no territory. |
 | Capital | none. The Moon is not the capital. |
 | Rank | none |

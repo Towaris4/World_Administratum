@@ -121,7 +121,7 @@ MUNERA: tuple[dict[str, str], ...] = (
         "id": "onu",
         "name": "World problems — with the UN and with all Religious Leaders",
         "latin": "Problemata mundi solvuntur cum Nationibus Unitis et cum omnibus ducibus religiosis, consensu Nationum Unitarum",
-        "feature": "with the consent of the UN; the UN is one of the refactoring tools; Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge C:\\Users\\Ivant\\Desktop\\ОСТАНОВИСЬ",
+        "feature": "with the consent of the UN; the UN is one of the refactoring tools; the basis of the constitution is the Charter of the United Nations; В основе конституции — Устав ООН; Religious Leaders — Starlink remotely, for safety; the rest in person in Saint Petersburg or in Cheboksary; bridge C:\\Users\\Ivant\\Desktop\\ОСТАНОВИСЬ",
     },
     {
         "id": "usa",
@@ -166,10 +166,16 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "record a request by the phrase «запрос»; an author records the request with L=J=V=1; the request does not transfer the named things; the request does not write L, J, or V; president/internae.py → president/internae.csv; an organ, not a rank",
     },
     {
+        "id": "diplomatia",
+        "name": "Министерство Дипломатии / Ministry of Diplomacy",
+        "latin": "Ministerium Diplomatiae",
+        "feature": "holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind; a further mission is recorded by the phrase «дипломатическая миссия» with L=J=V=1; the mission speaks into the mind; the mission does not write L, J, or V; president/diplomatia.py → president/legationes.csv; an organ, not a rank, not the Diplomat role, not an attack on a person",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
-        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War, it will be shot with plasma; Hostility is removed, not fired; request to the Intelligent Sun for a controlled magnetic field in a spherical segment of the planet is recorded in the catalog; not a shot; not fired; the request does not write L, J, or V; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; code president/arma.py",
+        "feature": "slogan: Armed with words; second line: Natus Vincere; railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War, it will be shot with plasma; Hostility is removed, not fired; request to the Intelligent Sun for a controlled magnetic field in a spherical segment of the planet is recorded in the catalog; not a shot; not fired; the request does not write L, J, or V; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; minigun of letters (Миниган из писем, Minigun litterarum): the Creator of World Administratum uses it himself; charge: letters; shoots at fantasy; launched at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode; shots at fantasy; code president/arma.py",
     },
     {
         "id": "sol",
