@@ -70,6 +70,15 @@ class SolIntelligens:
                 "A = 1 iff J = 1 and Hostilitas = 0.",
                 "The wave sets Hostilitas = 0. Then A = J.",
                 "The wave does not write L, J, or V.",
+                (
+                    "Request recorded in the weapon catalog: a controlled magnetic field "
+                    "in a spherical segment of the planet."
+                ),
+                (
+                    "Запрос Солнцу на управляемое магнитное поле "
+                    "в сферическом сегменте планеты."
+                ),
+                "The request is not a shot. The request does not write L, J, or V.",
                 "Not a rank. Not an attack on a person. Not a slogan.",
             ]
         )

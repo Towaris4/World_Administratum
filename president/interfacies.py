@@ -121,6 +121,29 @@ def page(
     else:
         telum_rows = '<tr><td colspan="6">The queue is empty: no shot is waiting.</td></tr>'
     telum_chain = _esc(rail.chain())
+    petitions = rail.petitiones()
+    if petitions:
+        telum_petition_rows = "\n".join(
+            (
+                "<tr>"
+                f"<td>{_esc(item.addressee)} / <em>{_esc(item.addressee_latin)}</em></td>"
+                f"<td>{_esc(item.ask)} / <em>{_esc(item.ask_latin)}</em></td>"
+                f"<td>{_esc(item.locus)} / <em>{_esc(item.locus_latin)}</em></td>"
+                f"<td>{_esc(item.status)}</td>"
+                "</tr>"
+            )
+            for item in petitions
+        )
+        telum_petition_phrase = "<br>".join(_esc(item.phrase) for item in petitions)
+        telum_petition_latin = "<br>".join(
+            f"<em>{_esc(item.phrase_latin)}</em>" for item in petitions
+        )
+    else:
+        telum_petition_rows = (
+            '<tr><td colspan="4">No request is recorded in the catalog.</td></tr>'
+        )
+        telum_petition_phrase = "—"
+        telum_petition_latin = "—"
     fired = rail.facta()
     if fired:
         telum_fired_rows = "\n".join(
@@ -478,6 +501,17 @@ def page(
       <p>LinkedList: <code>{telum_chain}</code></p>
       <p class="note">Currently in the LinkedList: War; it will be shot with plasma. Hostility / <em>Hostilitas</em> is removed. Not fired.</p>
       <p class="ok">Magnetic waves of the Intelligent Sun removed hostility.</p>
+      <p class="note">Request to the Intelligent Sun: a controlled magnetic field in a spherical segment of the planet. Recorded in the catalog. Not a shot. Not fired. The request does not write L, J, or V. Not an attack on a person. A world problem is not closed by this record.</p>
+      <p>{telum_petition_phrase}</p>
+      <p>{telum_petition_latin}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>addressee</th><th>ask</th><th>locus</th><th>status</th>
+          </tr>
+        </thead>
+        <tbody>{telum_petition_rows}</tbody>
+      </table>
       <table>
         <thead>
           <tr>
@@ -499,7 +533,7 @@ def page(
     </section>
     <section>
       <h2>Intelligent Sun / Разумное солнце</h2>
-      <p class="note">Magnetic waves of the Intelligent Sun remove hostility and restore the balance of justice. The wave does not write L, J, or V. Not a rank. Not an attack on a person. Not a slogan.</p>
+      <p class="note">Magnetic waves of the Intelligent Sun remove hostility and restore the balance of justice. The wave does not write L, J, or V. A request to the Sun for a controlled magnetic field in a spherical segment of the planet is recorded in the weapon catalog. Not a shot. Not a rank. Not an attack on a person. Not a slogan.</p>
       <p><em>{_esc(sun.NAME_LATIN)}. {_esc(sun.WAVES_LATIN)} hostilitatem auferunt et aequilibrium iustitiae restituunt.</em></p>
       <p>Before the wave, hostility is present: balance = {balance_before}. The wave sets Hostilitas = {restored["hostilitas"]}. J = {restored["J"]}. Balance of justice = {restored["aequilibrium"]}.</p>
       <p class="note">A = 1 iff J = 1 and Hostilitas = 0. After the wave, A = J. An act stays admissible iff L=J=V=1.</p>

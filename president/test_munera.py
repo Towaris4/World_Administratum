@@ -7,7 +7,7 @@ from pathlib import Path
 
 import arma
 import munera
-from arma import CIMICES, Relsotron, telum
+from arma import CIMICES, PETITIO_SOLIS, Relsotron, telum
 from munera import Silentium, president_author, silere
 from praeses import Praeses, president
 from princip import ROLES, admissible, civis, iustitia, oblitus, roles_held, vicecomes
@@ -100,6 +100,9 @@ def test_telum_railgun() -> None:
     assert "LinkedList" in weapon["feature"]
     assert "War" in weapon["feature"]
     assert "Hostility is removed" in weapon["feature"]
+    assert "controlled magnetic field" in weapon["feature"]
+    assert "spherical segment of the planet" in weapon["feature"]
+    assert "not a shot" in weapon["feature"]
     assert "not fired" in weapon["feature"]
     assert "plasma" in weapon["feature"]
     assert "bed bugs" in weapon["feature"].casefold()
@@ -142,6 +145,24 @@ def test_telum_railgun() -> None:
     assert "in oculum" in gun.text()
     assert "Hostility is removed: Hostility / Hostilitas. Not fired." in gun.text()
     assert "Magnetic waves of the Intelligent Sun removed it." in gun.text()
+    assert gun.petitiones() == (PETITIO_SOLIS,)
+    assert gun.petita("spherical segment of the planet") is True
+    assert gun.petita("controlled magnetic field") is True
+    assert gun.petita(PETITIO_SOLIS.phrase) is True
+    assert gun.exspectat("spherical segment of the planet") is False
+    assert gun.factum("controlled magnetic field") is False
+    assert gun.disparatum(PETITIO_SOLIS.locus) is False
+    assert PETITIO_SOLIS.phrase in gun.text()
+    assert "Not a shot. Not fired." in gun.text()
+    assert "campus magneticus gubernabilis" in gun.text()
+    assert PETITIO_SOLIS.status == "recorded"
+    root = Path(__file__).resolve().parent.parent
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    assert PETITIO_SOLIS.phrase in agents
+    assert PETITIO_SOLIS.phrase in readme
+    assert "segmentum sphaericum planetae" in agents
+    assert "segmentum sphaericum planetae" in readme
 
     first = gun.disparare()
     assert first is not None
@@ -294,6 +315,11 @@ def test_interface_telum() -> None:
     assert "<td><em>Hostilitas</em></td>" not in html
     assert "Hostility / <em>Hostilitas</em> is removed. Not fired." in html
     assert "Magnetic waves of the Intelligent Sun removed hostility." in html
+    assert "controlled magnetic field in a spherical segment of the planet" in html
+    assert PETITIO_SOLIS.phrase in html
+    assert "campus magneticus gubernabilis" in html
+    assert "segmentum sphaericum planetae" in html
+    assert ">recorded<" in html
     assert "it will be shot with plasma" in html
     assert "War" in html
     assert "plasma" in html

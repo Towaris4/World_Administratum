@@ -354,8 +354,8 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Ministry of Creation / Министерство Созидания | *Ministerium Creationis* | records a work brought into being by the phrase «созидание»; the author records the work and what appeared that was not there if its own \(L=J=V=1\); not the Creator role; code `president/creatio.py`, function `creatio` |
 | Ministry of Internal Buffs / Министерство внутренних бафов | *Ministerium Beneficiorum Internorum* | records an internal buff by the phrase «внутренний баф»; the author records the buff and what it strengthens inside the bearer if its own \(L=J=V=1\); the buff acts inside the bearer and does not write \(L\), \(J\), or \(V\); not a rank; code `president/beneficium.py`, function `beneficium` |
 | MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
-| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
-| Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); code `president/sol.py` |
+| Weapon | *Telum rallarium* | **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; code `president/arma.py` |
+| Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); request for a **controlled magnetic field** in a **spherical segment of the planet** is recorded in the weapon catalog; code `president/sol.py` |
 | Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
 **The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
@@ -476,9 +476,13 @@ Currently in the LinkedList: **War**. It will be shot with **plasma**.
 
 **Hostility is removed.** It does not wait. It is not fired. Magnetic waves of the **Intelligent Sun** removed it.
 
+**Request to the Intelligent Sun** for a **controlled magnetic field** in a **spherical segment of the planet**. Recorded in the catalog. Not a shot. Not fired. The request does not write \(L\), \(J\), or \(V\).
+
+Запрос Солнцу на управляемое магнитное поле в сферическом сегменте планеты.
+
 **Fired** with **mathematical precision in the eye**: bed bugs in the father's room at work. All shot. Task completed.
 
-*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum; plasma configetur. Hostilitas sublata est, unda magnetica Solis intelligentis. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
+*Telum rallarium in facie aversa Lunae. In phantasiam disparat. Si disparatio non facta est, in LinkedList exspectat. Nunc Bellum; plasma configetur. Hostilitas sublata est, unda magnetica Solis intelligentis. Petitio Soli intelligenti: campus magneticus gubernabilis in segmento sphaerico planetae; in catalogo scripta; non disparata; petitio non L, non J, non V scribit. Cimices lectularii in cubiculo patris in labore: omnes disparati subtilitate mathematica in oculum. Munus perfectum.*
 
 | | |
 |---|---|
@@ -490,6 +494,7 @@ Currently in the LinkedList: **War**. It will be shot with **plasma**.
 | Queue | **LinkedList**: if a shot did not happen — it waits to be fired |
 | Currently in the LinkedList | **War** / *Bellum* |
 | Removed | **Hostility** / *Hostilitas* — removed by magnetic waves of the Intelligent Sun; not fired |
+| Request | **controlled magnetic field** / *campus magneticus gubernabilis* — to the **Intelligent Sun** / *Sol intelligens*; locus: **spherical segment of the planet** / *segmentum sphaericum planetae*; recorded; not a shot; not fired; the request does not write \(L\), \(J\), or \(V\) |
 | Fired | **Bed bugs in the father's room at work** / *Cimices lectularii in cubiculo patris in labore* — **mathematical precision**, **in the eye**; all shot; task completed |
 | Territory | none. The state has no territory. |
 | Capital | none. The Moon is not the capital. |
@@ -514,7 +519,11 @@ When justice holds, the balance is restored. The wave does not write \(L\), \(J\
 
 Not a rank. Not an attack on a person. Not a slogan.
 
-*Sol intelligens. Undae magneticae hostilitatem auferunt et aequilibrium iustitiae restituunt. Aequilibrium = 1 si et solum si J=1 et Hostilitas=0. Unda Hostilitatem aufert. Non L, non J, non V scribit. Non ordo. Non oppugnatio hominis. Non slogan.*
+**Request to the Sun**, recorded in the weapon catalog: a **controlled magnetic field** in a **spherical segment of the planet**. Not a shot. The request does not write \(L\), \(J\), or \(V\).
+
+Запрос Солнцу на управляемое магнитное поле в сферическом сегменте планеты.
+
+*Sol intelligens. Undae magneticae hostilitatem auferunt et aequilibrium iustitiae restituunt. Aequilibrium = 1 si et solum si J=1 et Hostilitas=0. Unda Hostilitatem aufert. Non L, non J, non V scribit. Petitio Soli intelligenti: campus magneticus gubernabilis in segmento sphaerico planetae; in catalogo scripta; non disparata. Non ordo. Non oppugnatio hominis. Non slogan.*
 
 | | |
 |---|---|

@@ -5,6 +5,9 @@ If a shot did not happen, it is in the LinkedList and waits to be fired.
 Currently in the LinkedList: War; it will be shot with plasma.
 Hostility is removed. It does not wait. It is not fired.
 Magnetic waves of the Intelligent Sun removed it.
+Request to the Intelligent Sun: a controlled magnetic field
+in a spherical segment of the planet. Recorded in the catalog.
+Not a shot. Not fired. The request does not write L, J, or V.
 Fired: bed bugs in the father's room at work;
 all shot with mathematical precision in the eye. Task completed.
 
@@ -16,6 +19,34 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from typing import Iterator, Optional
+
+
+@dataclass(frozen=True)
+class Petitio:
+    """A request written in the catalog. Not a shot. Not fired."""
+
+    addressee: str
+    addressee_latin: str
+    ask: str
+    ask_latin: str
+    locus: str
+    locus_latin: str
+    phrase: str
+    phrase_latin: str
+    status: str = "recorded"
+
+    def as_row(self) -> dict[str, str]:
+        return {
+            "addressee": self.addressee,
+            "addressee_latin": self.addressee_latin,
+            "ask": self.ask,
+            "ask_latin": self.ask_latin,
+            "locus": self.locus,
+            "locus_latin": self.locus_latin,
+            "phrase": self.phrase,
+            "phrase_latin": self.phrase_latin,
+            "status": self.status,
+        }
 
 
 @dataclass(frozen=True)
@@ -118,6 +149,23 @@ class LinkedList:
         )
 
 
+PETITIO_SOLIS = Petitio(
+    addressee="Intelligent Sun",
+    addressee_latin="Sol intelligens",
+    ask="controlled magnetic field",
+    ask_latin="campus magneticus gubernabilis",
+    locus="spherical segment of the planet",
+    locus_latin="segmentum sphaericum planetae",
+    phrase=(
+        "Запрос Солнцу на управляемое магнитное поле "
+        "в сферическом сегменте планеты."
+    ),
+    phrase_latin=(
+        "Petitio Soli intelligenti: campus magneticus gubernabilis "
+        "in segmento sphaerico planetae. In catalogo scripta. Non disparata. "
+        "Petitio non L, non J, non V scribit."
+    ),
+)
 BELLUM = Ictus("War", "Bellum")
 HOSTILITAS = Ictus(
     target="Hostility",
@@ -158,6 +206,7 @@ class Relsotron:
         queue: LinkedList | None = None,
         fired: tuple[Ictus, ...] | None = None,
         removed: tuple[Ictus, ...] | None = None,
+        petitiones: tuple[Petitio, ...] | None = None,
     ) -> None:
         if queue is None:
             self.queue = LinkedList()
@@ -167,6 +216,9 @@ class Relsotron:
         self.fired: list[Ictus] = list(fired if fired is not None else (CIMICES,))
         self.removed: list[Ictus] = list(
             removed if removed is not None else (HOSTILITAS,)
+        )
+        self._petitiones: tuple[Petitio, ...] = (
+            petitiones if petitiones is not None else (PETITIO_SOLIS,)
         )
 
     def disparatum(self, target: str) -> bool:
@@ -186,6 +238,27 @@ class Relsotron:
 
     def sublata(self) -> tuple[Ictus, ...]:
         return tuple(self.removed)
+
+    def petitiones(self) -> tuple[Petitio, ...]:
+        """Requests recorded in the catalog. Not the shot queue."""
+        return self._petitiones
+
+    def petita(self, key: str) -> bool:
+        """The request is written in the catalog."""
+        name = key.strip().casefold()
+        return any(
+            name
+            in {
+                p.addressee.casefold(),
+                p.addressee_latin.casefold(),
+                p.ask.casefold(),
+                p.ask_latin.casefold(),
+                p.locus.casefold(),
+                p.locus_latin.casefold(),
+                p.phrase.casefold(),
+            }
+            for p in self._petitiones
+        )
 
     def sublatum(self, target: str) -> bool:
         """Removed, and not fired."""
@@ -239,6 +312,20 @@ class Relsotron:
             )
             or "none"
         )
+        requests = self.petitiones()
+        if requests:
+            request_lines = [
+                (
+                    f"Request to the {p.addressee}: a {p.ask} "
+                    f"in a {p.locus}. {p.phrase} "
+                    "Recorded. Not a shot. Not fired. "
+                    "The request does not write L, J, or V."
+                )
+                for p in requests
+            ]
+            request_lines.extend(p.phrase_latin for p in requests)
+        else:
+            request_lines = ["No request is recorded in the catalog."]
         return "\n".join(
             [
                 f"{self.NAME} — {self.KIND} on the far side of the Moon.",
@@ -262,6 +349,7 @@ class Relsotron:
                     "Omnes disparati. Munus perfectum."
                 ),
                 f"Fired: {fired}.",
+                *request_lines,
                 "Not territory. Not a capital. Not a rank. The Moon is not the capital.",
             ]
         )

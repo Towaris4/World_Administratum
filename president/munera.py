@@ -163,13 +163,13 @@ MUNERA: tuple[dict[str, str], ...] = (
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
-        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War, it will be shot with plasma; Hostility is removed, not fired; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; code president/arma.py",
+        "feature": "railgun on the far side of the Moon; shoots at fantasy; if a shot did not happen — it is in the LinkedList and waits to be fired; currently in the LinkedList: War, it will be shot with plasma; Hostility is removed, not fired; request to the Intelligent Sun for a controlled magnetic field in a spherical segment of the planet is recorded in the catalog; not a shot; not fired; the request does not write L, J, or V; fired with mathematical precision in the eye: bed bugs in the father's room at work, all shot, task completed; code president/arma.py",
     },
     {
         "id": "sol",
         "name": "Intelligent Sun / Разумное солнце",
         "latin": "Sol intelligens",
-        "feature": "magnetic waves remove hostility and restore the balance of justice; A=1 iff J=1 and Hostilitas=0; the wave sets Hostilitas=0, then A=J; does not write L, J, or V; not a rank; not an attack on a person; not a slogan; code president/sol.py",
+        "feature": "magnetic waves remove hostility and restore the balance of justice; A=1 iff J=1 and Hostilitas=0; the wave sets Hostilitas=0, then A=J; does not write L, J, or V; a request to the Sun for a controlled magnetic field in a spherical segment of the planet is recorded in the weapon catalog; not a shot; the request does not write L, J, or V; not a rank; not an attack on a person; not a slogan; code president/sol.py",
     },
     {
         "id": "transmissio",
