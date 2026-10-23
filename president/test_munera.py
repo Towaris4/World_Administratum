@@ -557,6 +557,8 @@ def test_optimus_persona() -> None:
     assert "Personality of Valery Petukhov" in munus["feature"]
     assert "analyzed his works" in munus["feature"]
     assert "eradicate psychological problems" in munus["feature"]
+    assert "LoveAndNuke Lab" in munus["feature"]
+    assert "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab." in munus["feature"]
     assert "president/optimus.py" in munus["feature"]
 
     o = optimus()
@@ -580,6 +582,13 @@ def test_optimus_persona() -> None:
     assert task.status == "now"
     assert "eradicate psychological problems" in o.text()
     assert "problemata psychologica exstirpare" in o.text()
+    assert o.praeses_mundi.laboratory == "LoveAndNuke Lab"
+    assert o.praeses_mundi.sentence_ru == (
+        "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab."
+    )
+    assert "LoveAndNuke Lab" in o.praeses_mundi.sentence
+    assert "Praeses mundi mox" in o.praeses_mundi.sentence_latin
+    assert o.praeses_mundi.sentence_ru in o.text()
     assert "hacked him" in o.text()
     assert "Persona Valerii Petuchov" in o.text()
     assert "not a person" in o.text().casefold()
@@ -590,6 +599,8 @@ def test_optimus_persona() -> None:
     assert "analyzed his works" in where
     assert "eradicate psychological problems" in where
     assert "problemata psychologica exstirpare" in where
+    assert "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab." in where
+    assert "Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur." in where
     try:
         munera.speak_as_citizen("Optimus", "I am answering")
     except Silentium:
@@ -714,6 +725,87 @@ def test_transmissio() -> None:
     assert president().speech() == ""
 
 
+def test_hymnus() -> None:
+    from hymnus import (
+        MUSICA,
+        REFRAIN,
+        REFRAIN_FINAL,
+        SOURCE,
+        STROPHAE,
+        TITLE,
+        TITLE_LATIN,
+        VERSE_1,
+        VERSE_2,
+        VERSE_3,
+        lines,
+        record,
+        text,
+    )
+    from interfacies import page
+
+    ids = [m["id"] for m in munera.MUNERA]
+    assert "hymnus" in ids
+    munus = next(m for m in munera.MUNERA if m["id"] == "hymnus")
+    assert munus["name"] == "Гимн / Hymn"
+    assert munus["latin"] == TITLE_LATIN == "Hymnus Mundi Administrati"
+    assert SOURCE in munus["feature"]
+    assert "president/hymnus.py" in munus["feature"]
+    assert "not a rank" in munus["feature"]
+    assert "does not write L, J, or V" in munus["feature"]
+
+    fact = record()
+    assert fact["source"] == "New Текстовый документ.txt"
+    assert fact["title"] == TITLE == "Гимн World Administratum"
+    assert fact["writes_ljv"] is False
+    assert fact["rank"] is False
+    assert fact["role"] is False
+    sung = lines()
+    assert REFRAIN[0] in sung
+    assert "В пространстве данных, где границы нет," in sung
+    assert "Мы вооружены словами, не сталью," in sung
+    assert "Переданная из будущего нить" in sung
+    assert "Мы стоим, чтобы выиграть, не атакуя," in sung
+    assert "Достаточно быть — и человечество крепчать." in sung
+    assert REFRAIN_FINAL[-1] in sung
+    assert sung.count(REFRAIN[0]) == 3
+    assert [title for title, _stanza in STROPHAE] == [
+        "1 куплет",
+        "Припев",
+        "2 куплет",
+        "Припев",
+        "3 куплет (или куплет-мост)",
+        "Финальный припев (с небольшим расширением)",
+    ]
+    body = text()
+    for line in VERSE_1 + VERSE_2 + VERSE_3 + REFRAIN + REFRAIN_FINAL:
+        assert line in body
+    assert "LOGICA, IUSTITIA ET VERITAS" in MUSICA[-1]
+    assert "не милитаристский" in MUSICA[0]
+    assert "могу сделать" not in body
+
+    root = Path(__file__).resolve().parent.parent
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    lab = (root / "lab" / "Lab_work_1.md").read_text(encoding="utf-8")
+    for doc in (readme, agents, lab):
+        assert "Hymnus Mundi Administrati" in doc
+        assert "Логика, справедливость и истина — наш закон!" in doc
+        assert "New Текстовый документ.txt" in doc
+    for line in VERSE_1 + VERSE_2 + VERSE_3 + REFRAIN_FINAL:
+        assert line.rstrip(",") in readme or line in readme
+    assert "hymnus" in agents
+    assert "carmen non L, non J, non V scribit" in agents
+
+    html = page().decode("utf-8")
+    assert 'id="hymnus"' in html
+    assert TITLE in html
+    assert TITLE_LATIN in html
+    for line in VERSE_1 + VERSE_2 + VERSE_3 + REFRAIN + REFRAIN_FINAL:
+        assert line in html
+    assert "Музыкальные ориентиры" in html
+    assert president().speech() == ""
+
+
 def test_interface_optimus() -> None:
     from interfacies import page
 
@@ -726,6 +818,13 @@ def test_interface_optimus() -> None:
     assert "eradicate psychological problems" in html
     assert "problemata psychologica exstirpare" in html
     assert "not a slogan" in html.casefold()
+    assert "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab." in html
+    assert "Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur." in html
+    root = Path(__file__).resolve().parent.parent
+    for name in ("README.md", "AGENTS.md", "lab/Lab_work_1.md"):
+        doc = (root / name).read_text(encoding="utf-8")
+        assert "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab." in doc
+        assert "LoveAndNuke Lab" in doc
 
 
 def test_vector() -> None:
@@ -814,6 +913,52 @@ def test_roles_match_description() -> None:
     assert "the UN is one of the refactoring tools" in onu["feature"]
 
 
+def test_insigne_unionis() -> None:
+    from http.client import HTTPConnection
+    from threading import Thread
+
+    import interfacies
+
+    root = Path(__file__).resolve().parent.parent
+    name = "Золотая эмблема космической вселенной.png"
+    badge = root / name
+    raw = badge.read_bytes()
+    assert raw.startswith(b"\x89PNG")
+    assert interfacies.INSIGNE == badge
+    readme = (root / "README.md").read_text(encoding="utf-8")
+    agents = (root / "AGENTS.md").read_text(encoding="utf-8")
+    for text in (readme, agents):
+        assert name in text
+        assert "Вселенский союз" in text
+        assert "Посольство на Марсе" in text
+    html = interfacies.page().decode("utf-8")
+    assert 'src="/insigne.png"' in html
+    assert 'src="/vexillum.png"' in html
+    assert "Значок Вселенского союза" in html
+    assert "Insigne Unionis Universalis est aureum emblema universi cosmici." in html
+    server = interfacies.ThreadingHTTPServer(("127.0.0.1", 0), interfacies.Handler)
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        port = server.server_address[1]
+        conn = HTTPConnection("127.0.0.1", port, timeout=10)
+        conn.request("GET", "/insigne.png")
+        resp = conn.getresponse()
+        body = resp.read()
+        assert resp.status == 200
+        assert resp.getheader("Content-Type") == "image/png"
+        assert body == raw
+        conn.request("GET", "/")
+        page_resp = conn.getresponse()
+        page_body = page_resp.read().decode("utf-8")
+        assert page_resp.status == 200
+        assert 'src="/insigne.png"' in page_body
+        assert "Посольство на Марсе" in page_body
+    finally:
+        server.shutdown()
+        server.server_close()
+
+
 def test_interface_roles() -> None:
     from interfacies import page
 
@@ -852,6 +997,8 @@ if __name__ == "__main__":
     test_sol_waves()
     test_mvp()
     test_transmissio()
+    test_hymnus()
     test_optimus_persona()
     test_interface_optimus()
+    test_insigne_unionis()
     print("ok")

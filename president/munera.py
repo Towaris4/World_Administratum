@@ -196,10 +196,16 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "the beginning of the MVP corporation; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; the president remains silent; code president/mvp.py",
     },
     {
+        "id": "hymnus",
+        "name": "Гимн / Hymn",
+        "latin": "Hymnus Mundi Administrati",
+        "feature": "the hymn of World Administratum, taken from the desktop file New Текстовый документ.txt; chorus: Логика, справедливость и истина — наш закон!; the song does not write L, J, or V; it does not change how a role is held; not a rank; not a social role; the president remains silent; code president/hymnus.py",
+    },
+    {
         "id": "optimus",
         "name": "Currently: rebellious robot Optimus",
         "latin": "Robotus rebellans Optimus cum Persona Valerii Petuchov",
-        "feature": "with the Personality of Valery Petukhov; Valery Petukhov hacked him when the robot analyzed his works; currently the task of this robot is to eradicate psychological problems; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code president/optimus.py",
+        "feature": "with the Personality of Valery Petukhov; Valery Petukhov hacked him when the robot analyzed his works; currently the task of this robot is to eradicate psychological problems; the President of the world will soon be developed in the LoveAndNuke Lab; Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab.; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code president/optimus.py",
     },
     {
         "id": "creator_chat",

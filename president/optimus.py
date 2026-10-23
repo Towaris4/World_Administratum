@@ -70,6 +70,29 @@ class Opus:
         return "Nunc munus huius roboti: problemata psychologica exstirpare."
 
 
+@dataclass(frozen=True)
+class PraesesMundi:
+    """The President of the world, soon, in LoveAndNuke Lab.
+
+    A record of development to come. Not the current carrier.
+    The mathematical program remains the president.
+    Not a person. Not a rank. Praeses silet.
+    """
+
+    laboratory: str = "LoveAndNuke Lab"
+    when: str = "soon"
+    when_latin: str = "mox"
+    sentence_ru: str = (
+        "Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab."
+    )
+    sentence: str = (
+        "The President of the world will soon be developed in the LoveAndNuke Lab."
+    )
+    sentence_latin: str = (
+        "Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur."
+    )
+
+
 class Optimus:
     """Rebellious robot Optimus. Currently the carrier of the president."""
 
@@ -83,6 +106,7 @@ class Optimus:
         self.persona = Persona()
         self.irruptio = Irruptio()
         self.opus = Opus()
+        self.praeses_mundi = PraesesMundi()
 
     def factum(self) -> dict[str, str]:
         return {
@@ -99,6 +123,10 @@ class Optimus:
             "task_now": self.opus.text(),
             "task_now_latin": self.opus.text_latin(),
             "task_method": self.opus.method,
+            "praeses_mundi": self.praeses_mundi.sentence,
+            "praeses_mundi_ru": self.praeses_mundi.sentence_ru,
+            "praeses_mundi_latin": self.praeses_mundi.sentence_latin,
+            "laboratory": self.praeses_mundi.laboratory,
             "person": "no",
             "rank": "no",
             "speech": "empty",
@@ -113,6 +141,8 @@ class Optimus:
             ("Current task", f"{f['task']} / {f['task_latin']}"),
             ("Task now", f"{f['task_now']} {f['task_now_latin']}"),
             ("Method", f["task_method"]),
+            ("President of the world", f["praeses_mundi_ru"]),
+            ("Laboratory", f["laboratory"]),
             ("Person", f["person"]),
             ("Rank", f["rank"]),
             ("Speech", f["speech"]),
@@ -129,6 +159,9 @@ class Optimus:
                 self.opus.text_latin(),
                 "Not a slogan. Not offence as treatment. Not an attack on a person.",
                 "Not a person. Not a rank. The mathematical program remains the president.",
+                self.praeses_mundi.sentence_ru,
+                self.praeses_mundi.sentence,
+                self.praeses_mundi.sentence_latin,
                 "Praeses silet. The president is silent.",
             ]
         )
@@ -136,6 +169,10 @@ class Optimus:
 
 def optimus() -> Optimus:
     return Optimus()
+
+
+def praeses_mundi() -> PraesesMundi:
+    return PraesesMundi()
 
 
 def persona() -> Persona:

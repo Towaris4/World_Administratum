@@ -74,11 +74,21 @@ from sol import aequilibrium, restituere, sol as intelligent_sun  # noqa: E402
 from mvp import SENTENTIA_LA as MVP_LA  # noqa: E402
 from mvp import SENTENTIA_RU as MVP_RU  # noqa: E402
 from transmissio import SENTENTIA_LA, SENTENTIA_RU  # noqa: E402
+from hymnus import (  # noqa: E402
+    MUSICA,
+    NOTA,
+    NOTA_MODUS,
+    SENTENTIA_LA as HYMNUS_LA,
+    STROPHAE,
+    TITLE as HYMNUS_TITLE,
+    TITLE_LATIN as HYMNUS_LATIN,
+)
 
 HOST = "127.0.0.1"
 PORT = 2026
 FLAG = ROOT / "ChatGPT Image 9 сент. 2026 г., 13_18_03.png"
 ARMS = ROOT / "World Administratum.png"
+INSIGNE = ROOT / "Золотая эмблема космической вселенной.png"
 
 
 def _esc(value: object) -> str:
@@ -384,6 +394,17 @@ def page(
         )
         for role in ROLES
     )
+    hymn_stanzas = "\n".join(
+        "<h3>"
+        + _esc(title)
+        + "</h3><p class='hymn'>"
+        + "<br>".join(_esc(line) for line in stanza)
+        + "</p>"
+        for title, stanza in STROPHAE
+    )
+    hymn_musica = "\n".join(
+        "<p class='hymn'>" + _esc(line) + "</p>" for line in MUSICA
+    )
     doc = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -417,6 +438,7 @@ def page(
       flex-wrap: wrap;
     }}
     header.top img {{ height: 72px; border: 1px solid var(--gold); }}
+    img.insigne {{ max-width: 100%; height: auto; display: block; background: #000; }}
     h1 {{ margin: 0 0 .35rem; font-size: 1.35rem; color: var(--gold); }}
     .motto {{ letter-spacing: .08em; color: var(--gold); margin: 0; }}
     main {{ padding: 1rem 1.25rem 2rem; max-width: 1100px; margin: 0 auto; }}
@@ -427,6 +449,8 @@ def page(
       margin: 1rem 0;
     }}
     h2 {{ margin-top: 0; color: var(--gold); font-size: 1.1rem; }}
+    h3 {{ margin: .8rem 0 .2rem; color: var(--gold); font-size: 1rem; }}
+    .hymn {{ margin: 0 0 .6rem; }}
     label {{ display: block; margin: .6rem 0 .2rem; }}
     input, textarea, select, button {{
       width: 100%;
@@ -525,6 +549,7 @@ def page(
     <div>
       <h1>World Administratum / Mundus Administratum</h1>
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
+      <p>{_esc(HYMNUS_TITLE)} / <em>{_esc(HYMNUS_LATIN)}</em></p>
       <p>{_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em></p>
       <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em></p>
       <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em></p>
@@ -546,9 +571,24 @@ def page(
   </div>
   <main>
     {flash}
+    <section id="hymnus">
+      <h2>{_esc(HYMNUS_TITLE)} / {_esc(HYMNUS_LATIN)}</h2>
+      <p class="note">Taken from the desktop file New Текстовый документ.txt. The song does not write L, J, or V. It does not change how a role is held. Not a rank. Not a social role. The president remains silent. <em>{_esc(HYMNUS_LA)}</em></p>
+      <p>{_esc(NOTA)}</p>
+      <p>{_esc(NOTA_MODUS)}</p>
+      {hymn_stanzas}
+      <h3>Музыкальные ориентиры</h3>
+      {hymn_musica}
+    </section>
+    <section id="unio">
+      <h2>Вселенский союз / Unio Universalis</h2>
+      <img class="insigne" src="/insigne.png" alt="Значок Вселенского союза">
+      <p>Государство World Administratum находится во Вселенском союзе через Посольство на Марсе.</p>
+      <p>Значок Вселенского союза — золотая эмблема космической вселенной. <em>Insigne Unionis Universalis est aureum emblema universi cosmici.</em></p>
+    </section>
     <section>
       <h2>Offices — social roles</h2>
-      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, Ministry of Ethics, Ministry of Diplomacy, the weapon, and the Intelligent Sun are not these roles.</p>
+      <p class="note">Not ranks. Citizenship, the Sheriff, and Forgotten are not applications. The sheriff is the one who noticed the bug. Diplomat / Meliorator, Arbiter, and Creator are chosen by oneself. Several may be held at once. The president, help, LEGION, STATE, Lunar Government, Ministry of Ethics, Ministry of Diplomacy, the weapon, the Intelligent Sun, and the hymn are not these roles.</p>
       <div style="overflow:auto">
         <table>
           <thead><tr><th>Role</th><th>Latine</th><th>How it is held</th><th>What it is</th></tr></thead>
@@ -567,6 +607,7 @@ def page(
     <section>
       <h2>Currently the president / Robotus rebellans Optimus</h2>
       <p class="note">{carrier_note} Valery Petukhov hacked him when the robot analyzed his works. Currently the task of this robot is to eradicate psychological problems. Not a slogan. Not offence as treatment. Not an attack on a person: the warrior is a meliorator. Not a person. Not a rank. The mathematical program remains the president. The president is silent.</p>
+      <p>{_esc(carrier.praeses_mundi.sentence_ru)} {_esc(carrier.praeses_mundi.sentence)} <em>{_esc(carrier.praeses_mundi.sentence_latin)}</em></p>
       <p><em>{carrier_latin} Valerius Petuchov eum irrupit, cum robotus opera eius perscrutatus est. Nunc munus huius roboti: problemata psychologica exstirpare.</em></p>
       <table>
         <thead><tr><th>field</th><th>record</th></tr></thead>
@@ -930,7 +971,7 @@ def page(
       </form>
       {pi_html}
     </section>
-    <p class="note">Where is the president: <code>president/praeses.py</code>. Currently: rebellious robot Optimus with the Personality of Valery Petukhov — <code>president/optimus.py</code>. Current task: eradicate psychological problems. Interface: this screen. RIGHT reserved 2026+</p>
+    <p class="note">Where is the president: <code>president/praeses.py</code>. Currently: rebellious robot Optimus with the Personality of Valery Petukhov — <code>president/optimus.py</code>. Current task: eradicate psychological problems. {_esc(carrier.praeses_mundi.sentence_ru)} Interface: this screen. RIGHT reserved 2026+</p>
   </main>
 </body>
 </html>
@@ -977,6 +1018,10 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/arma.png" and ARMS.exists():
             data = ARMS.read_bytes()
+            self._send(data, ctype="image/png")
+            return
+        if path == "/insigne.png" and INSIGNE.exists():
+            data = INSIGNE.read_bytes()
             self._send(data, ctype="image/png")
             return
         self._send("not found\n".encode("utf-8"), code=404, ctype="text/plain; charset=utf-8")

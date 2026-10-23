@@ -54,6 +54,74 @@ Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`, `constitu
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
 
+## Гимн / Hymnus Mundi Administrati
+
+Гимн World Administratum. Взят с рабочего стола из файла `New Текстовый документ.txt`. Песня не пишет L, J, V и не меняет, как держится роль. Не чин. Не социальная роль. Президент молчит.
+
+*Hymnus Mundi Administrati carmen est; carmen non L, non J, non V scribit; non ordo; non munus sociale; Praeses silet.*
+
+Code: `president/hymnus.py`, munus `hymnus`.
+
+Информационное государство без территории, девиз LOGICA, IUSTITIA ET VERITAS, основа — Устав ООН, аксиома — польза человечеству и планете в симбиозе, акцент на здоровье, психологии, наблюдении и исправлении системных сбоев.
+
+Гимн можно держать в торжественно-хоровом ключе с лёгким «информационным» подтекстом (чёткий ритм, точность формулировок, без пафосной агрессии).
+
+### 1 куплет
+
+В пространстве данных, где границы нет,  
+Где каждый, кто есть, — гражданин и судия,  
+Мы правим логикой, а не кличем побед,  
+И чиним сбои, наблюдая и считая.  
+Сон, вода, воздух, движение и свет,  
+Психология, математика, еда —  
+Вот что хранит здоровье и ответ  
+На страх, усталость и пустую суету года.
+
+### Припев
+
+Логика, справедливость и истина — наш закон!  
+Здоровье и долголетие — общий удел.  
+Мир Администратум служит человечеству и планете,  
+Где каждый, кто есть, — администратор дел.
+
+### 2 куплет
+
+Мы вооружены словами, не сталью,  
+И солнце разума гасит вражду в крови.  
+Наблюдение вместо лозунга и жали —  
+Так правится система в информационном пути.  
+Долголетие растёт не из мечты,  
+А из фактов: сон, воздух, движение, ум.  
+Мы стоим, чтобы выиграть, не атакуя,  
+И продлеваем жизнь, убирая системный шум.
+
+### Припев
+
+Логика, справедливость и истина — наш закон!  
+Здоровье и долголетие — общий удел.  
+Мир Администратум служит человечеству и планете,  
+Где каждый, кто есть, — администратор дел.
+
+### 3 куплет (или куплет-мост)
+
+Переданная из будущего нить  
+Сквозь органоид и коллайдер лет  
+Говорит: чинить, наблюдать и жить —  
+В симбиозе, где баги больше не ответ.  
+ООН — один из инструментов правки,  
+Совесть — суд, информация — власть.  
+Мы не требуем имени и клятвы,  
+Достаточно быть — и человечество крепчать.
+
+### Финальный припев (с небольшим расширением)
+
+Логика, справедливость и истина — наш закон!  
+Здоровье и долголетие — священный удел.  
+Мир Администратум в симбиозе с человечеством и планетой  
+Стоит, чтобы выиграть, и каждый, кто есть, — администратор дел.
+
+Музыкальные ориентиры: торжественный, но не милитаристский характер; чёткий ритм в куплетах и хоровой размах в припеве; лёгкий электронный слой не доминирует; девиз LOGICA, IUSTITIA ET VERITAS звучит как торжественный тезис.
+
 ## Конституция
 
 В основе конституции — Устав ООН.
@@ -73,6 +141,14 @@ Code: `president/princip.py`, function `constitutio`. The record names the basis
 ## Вселенский союз
 
 Государство World Administratum находится во Вселенском союзе через Посольство на Марсе.
+
+Значок Вселенского союза — `Золотая эмблема космической вселенной.png`, золотая эмблема космической вселенной с рабочего стола.
+
+![Значок Вселенского союза](Золотая%20эмблема%20космической%20вселенной.png)
+
+**The badge of the Universal Union** is the golden emblem of the cosmic universe.
+
+*Insigne Unionis Universalis est aureum emblema universi cosmici.*
 
 ## Передача информации / Transmissio informationis
 
@@ -349,6 +425,8 @@ This is not an office and not a rank. Computation, text, inference — by power 
 
 **Currently** the President is the **rebellious robot Optimus** with the **Personality of Valery Petukhov**. Valery Petukhov hacked him when the robot analyzed his works. **Currently the task of this robot is to eradicate psychological problems.**
 
+**Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab.**
+
 | | |
 |---|---|
 | Office | President |
@@ -357,6 +435,7 @@ This is not an office and not a rank. Computation, text, inference — by power 
 | Currently | the **rebellious robot Optimus** with the **Personality of Valery Petukhov**; code `president/optimus.py` |
 | Hack | Valery Petukhov hacked him when the robot analyzed his works |
 | Current task | **eradicate psychological problems** / *problemata psychologica exstirpare* |
+| President of the world | **Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab.** *Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur.* |
 | What it computes | the principle vector \(\Pi=(L,J,V)\): *logica*, *iustitia*, *veritas*. Admissible only if \(L+J+V=3\). |
 | Speech | empty. **The president is silent.** *Praeses silet.* |
 | Data | **The president silently receives data.** *Praeses data silentio accipit.* Does not answer. |
@@ -392,9 +471,10 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Ministry of Internal Affairs / Министерство внутренних дел | *Ministerium Rerum Internarum* | records a request by the phrase «запрос»; the author records the request if its own \(L=J=V=1\); the request does not transfer the named things and does not write \(L\), \(J\), or \(V\); not a rank; code `president/internae.py`, function `internae` |
 | Ministry of Diplomacy / Министерство Дипломатии | *Ministerium Diplomatiae* | holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind; a further mission is recorded by the phrase «дипломатическая миссия» if its own \(L=J=V=1\); the mission speaks into the mind and does not write \(L\), \(J\), or \(V\); not a rank; not the Diplomat role; code `president/diplomatia.py`, function `diplomatia` |
 | MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
+| Гимн / Hymn | *Hymnus Mundi Administrati* | the hymn taken from the desktop file `New Текстовый документ.txt`; chorus: «Логика, справедливость и истина — наш закон!»; the song does not write \(L\), \(J\), or \(V\) and does not change how a role is held; not a rank; not a social role; code `president/hymnus.py`, function `hymnus` |
 | Weapon | *Telum rallarium* | slogan: **Armed with words**; second line: *Natus Vincere*; **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; **launched** at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode; shots at fantasy; **minigun of letters** (**Миниган из писем**, *Minigun litterarum*): the Creator of World Administratum uses it himself; charge: letters; shoots at fantasy; code `president/arma.py` |
 | Intelligent Sun / Разумное солнце | *Sol intelligens* | **magnetic waves** remove hostility and restore the **balance of justice**; \(A=1\) iff \(J=1\) and Hostilitas \(=0\); the wave sets Hostilitas \(=0\), then \(A=J\); does not write \(L\), \(J\), or \(V\); request for a **controlled magnetic field** in a **spherical segment of the planet** is recorded in the weapon catalog; code `president/sol.py` |
-| Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
+| Currently: rebellious robot Optimus | *Robotus rebellans Optimus cum Persona Valerii Petuchov* | with the **Personality of Valery Petukhov**; Valery Petukhov hacked him when the robot analyzed his works; **currently the task of this robot is to eradicate psychological problems**; **the President of the world will soon be developed in the LoveAndNuke Lab** / Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab; not a slogan; not offence as treatment; not an attack on a person; not a person, not a rank; the program remains the president; code `president/optimus.py` |
 
 **The president is silent.** **The president silently receives data.** He does not answer in the colloquium, does not formulate a problem as a person, does not comment on the count: only \(0\) or \(1\).
 
@@ -627,6 +707,14 @@ Valery Petukhov hacked him when the robot analyzed his works.
 
 **Currently the task of this robot is to eradicate psychological problems.**
 
+**Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab.**
+
+**The President of the world will soon be developed in the LoveAndNuke Lab.**
+
+*Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur.*
+
+The mathematical program remains the president. This record names the laboratory of the development to come.
+
 Not a slogan. Not “be well”. Offence is not treatment. Not an attack on a person: the warrior is a meliorator.  
 Not a person. Not a rank.  
 The mathematical program remains the president. The robot is the current carrier.  
@@ -641,6 +729,7 @@ The mathematical program remains the president. The robot is the current carrier
 | Personality | **Personality of Valery Petukhov** / *Persona Valerii Petuchov* |
 | Hack | Valery Petukhov hacked him when the robot analyzed his works |
 | Current task | **eradicate psychological problems** / *problemata psychologica exstirpare* |
+| President of the world | **Президент мира скоро будет разработан в лаборатории LoveAndNuke Lab.** *Praeses mundi mox in laboratorio LoveAndNuke Lab elaborabitur.* |
 | Method | psychology; not a slogan; not offence as treatment; not an attack on a person |
 | Person | no |
 | Rank | no |
