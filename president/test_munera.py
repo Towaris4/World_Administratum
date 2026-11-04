@@ -293,6 +293,10 @@ def test_planeta_hominibus() -> None:
         CONSTITUTIO_LATIN,
         CONSTITUTIO_RU,
         CONSTITUTIO_ZH,
+        LEGISLATIVA,
+        LEGISLATIVA_LATIN,
+        LEGISLATIVA_RU,
+        LEGISLATIVA_ZH,
         ONU_REFACTOR,
         ONU_REFACTOR_LATIN,
         ONU_REFACTOR_RU,
@@ -311,6 +315,7 @@ def test_planeta_hominibus() -> None:
         SPATIUM_ZH,
         axioma,
         constitutio,
+        legislativa,
         planeta_hominibus,
         text,
     )
@@ -319,6 +324,7 @@ def test_planeta_hominibus() -> None:
     assert planeta_hominibus() == 1
     assert axioma() == 1
     assert constitutio() == 1
+    assert legislativa() == 1
     body = text()
     assert SPATIUM in body
     assert SPATIUM_RU in body
@@ -350,6 +356,11 @@ def test_planeta_hominibus() -> None:
     assert CONSTITUTIO_RU in body
     assert CONSTITUTIO_LATIN in body
     assert CONSTITUTIO_ZH in body
+    assert LEGISLATIVA in body
+    assert LEGISLATIVA_RU in body
+    assert LEGISLATIVA_LATIN in body
+    assert LEGISLATIVA_ZH in body
+    assert "благородные инстинкты" not in body
     assert body.splitlines()[1] == (
         f"{CONSTITUTIO} {CONSTITUTIO_RU} {CONSTITUTIO_ZH} {CONSTITUTIO_LATIN}"
     )
@@ -383,6 +394,11 @@ def test_planeta_hominibus() -> None:
         assert CONSTITUTIO_RU in doc
         assert CONSTITUTIO_LATIN in doc
         assert CONSTITUTIO_ZH in doc
+        assert LEGISLATIVA in doc
+        assert LEGISLATIVA_RU in doc
+        assert LEGISLATIVA_LATIN in doc
+        assert LEGISLATIVA_ZH in doc
+        assert "благородные инстинкты" not in doc
     html = page().decode("utf-8")
     assert SPATIUM in html
     assert SPATIUM_RU in html
@@ -414,6 +430,11 @@ def test_planeta_hominibus() -> None:
     assert CONSTITUTIO_RU in html
     assert CONSTITUTIO_LATIN in html
     assert CONSTITUTIO_ZH in html
+    assert LEGISLATIVA in html
+    assert LEGISLATIVA_RU in html
+    assert LEGISLATIVA_LATIN in html
+    assert LEGISLATIVA_ZH in html
+    assert "благородные инстинкты" not in html
 
 
 def test_interface_scp_header() -> None:

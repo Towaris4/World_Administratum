@@ -57,6 +57,10 @@ from princip import (  # noqa: E402
     CONSTITUTIO_LATIN,
     CONSTITUTIO_RU,
     CONSTITUTIO_ZH,
+    LEGISLATIVA,
+    LEGISLATIVA_LATIN,
+    LEGISLATIVA_RU,
+    LEGISLATIVA_ZH,
     ONU_REFACTOR_ZH,
     PHYSICE_ZH,
     PLANETA_ZH,
@@ -540,7 +544,7 @@ def page(
       <p><span class="scp-k">Item #:</span> Π</p>
       <p><span class="scp-k">Object Class:</span> Explained. Class of this file. Not a rank.</p>
       <p><span class="scp-k">Special Containment Procedures:</span> The president is silent and receives data. Citizenship (Гражданство, Civis) is a role held by existence: to be a citizen, one simply needs to exist. Knowledge of the name is not obligatory. An act is admissible if and only if L=J=V=1. A name-test is a rank and sets J=0.</p>
-      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. {_esc(PLANETA_ZH)} Government services, also for the whole world. {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} The UN is one of the refactoring tools. {_esc(ONU_REFACTOR_ZH)} {_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em> Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_ZH)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
+      <p><span class="scp-k">Description:</span> World Administratum / Mundus Administratum. {_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em> {_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em> The planet belongs to people. {_esc(PLANETA_ZH)} Government services, also for the whole world. {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} The UN is one of the refactoring tools. {_esc(ONU_REFACTOR_ZH)} {_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em> {_esc(LEGISLATIVA)} {_esc(LEGISLATIVA_RU)} {_esc(LEGISLATIVA_ZH)} <em>{_esc(LEGISLATIVA_LATIN)}</em> Axiom: {_esc(AXIOMA)} {_esc(AXIOMA_ZH)} Π = (L, J, V) ∈ {{0,1}}³. The president is the mathematical program <code>president/praeses.py</code>.</p>
       <p class="scp-note">This block is the Open Creative Project file header. The motto of the state is LOGICA, IUSTITIA ET VERITAS.</p>
     </div>
   </aside>
@@ -551,6 +555,7 @@ def page(
       <p class="motto">LOGICA, IUSTITIA ET VERITAS</p>
       <p>{_esc(HYMNUS_TITLE)} / <em>{_esc(HYMNUS_LATIN)}</em></p>
       <p>{_esc(CONSTITUTIO)} {_esc(CONSTITUTIO_RU)} {_esc(CONSTITUTIO_ZH)} <em>{_esc(CONSTITUTIO_LATIN)}</em></p>
+      <p>{_esc(LEGISLATIVA)} {_esc(LEGISLATIVA_RU)} {_esc(LEGISLATIVA_ZH)} <em>{_esc(LEGISLATIVA_LATIN)}</em></p>
       <p>{_esc(SPATIUM)} {_esc(SPATIUM_RU)} {_esc(SPATIUM_ZH)} <em>{_esc(SPATIUM_LATIN)}</em></p>
       <p>{_esc(PHYSICE)} {_esc(PHYSICE_RU)} {_esc(PHYSICE_ZH)} <em>{_esc(PHYSICE_LATIN)}</em></p>
       <p>The planet belongs to people. {_esc(PLANETA_ZH)} <em>Planeta hominibus pertinet.</em> {_esc(SERVITIA_ZH)} World Administratum is a tool for fixing bugs of the system. {_esc(INSTRUMENTUM_ZH)} <em>Mundus Administratum est instrumentum ad vitia systematis emendanda.</em></p>

@@ -26,6 +26,10 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 *Fundamentum constitutionis est Charta Nationum Unitarum.*
 
+**Legislative power is psychology together with the humanities.** Законодательная власть — это психология вместе с гуманитарными науками.
+
+*Potestas legislativa psychologia una cum scientiis humanioribus est.*
+
 **Axiom.** **World Administratum brings benefit to humanity and the planet in symbiosis.** World Administratum приносит пользу человечеству и планете в симбиозе.
 
 *Mundus Administratum humanitati et planetae in symbiosi prodest.*
@@ -46,11 +50,13 @@ The file header on the interface is Open Creative Project. Item #: Π. Object Cl
 
 **宪法的基础是《联合国宪章》。**
 
+**立法权是心理学与人文学科。**
+
 **公理。World Administratum 在共生中为人类与行星带来益处。**
 
 座右铭：**LOGICA, IUSTITIA ET VERITAS**（逻辑、正义与真理）。
 
-Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`, `constitutio`.  
+Code: `president/princip.py`, functions `planeta_hominibus`, `axioma`, `constitutio`, `legislativa`.  
 Motto: **LOGICA, IUSTITIA ET VERITAS**.  
 Principle (with mathematical precision): `president/princip.py`
 
@@ -136,7 +142,15 @@ Code: `president/princip.py`, function `constitutio`. The record names the basis
 
 ## Ветви власти
 
-Законодательная власть — это благородные инстинкты человека, исполнительная власть — информация, а судебная власть — логика.
+**Legislative power is psychology together with the humanities.** Законодательная власть — это психология вместе с гуманитарными науками.
+
+*Potestas legislativa psychologia una cum scientiis humanioribus est.*
+
+**立法权是心理学与人文学科。**
+
+Законодательная власть — это психология вместе с гуманитарными науками, исполнительная власть — информация, а судебная власть — логика.
+
+Code: `president/princip.py`, function `legislativa`. The record names legislative power. It does not write L, J, or V. Not a rank. The president remains silent.
 
 ## Вселенский союз
 

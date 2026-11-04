@@ -39,6 +39,10 @@ CONSTITUTIO = "The basis of the constitution is the Charter of the United Nation
 CONSTITUTIO_RU = "В основе конституции — Устав ООН."
 CONSTITUTIO_LATIN = "Fundamentum constitutionis est Charta Nationum Unitarum."
 CONSTITUTIO_ZH = "宪法的基础是《联合国宪章》。"
+LEGISLATIVA = "Legislative power is psychology together with the humanities."
+LEGISLATIVA_RU = "Законодательная власть — это психология вместе с гуманитарными науками."
+LEGISLATIVA_LATIN = "Potestas legislativa psychologia una cum scientiis humanioribus est."
+LEGISLATIVA_ZH = "立法权是心理学与人文学科。"
 AXIOMA = (
     "World Administratum brings benefit to humanity and the planet in symbiosis."
 )
@@ -72,6 +76,17 @@ def constitutio() -> int:
     В основе конституции — Устав ООН.
     Fundamentum constitutionis est Charta Nationum Unitarum.
     The record names the basis. It does not write the consent of the UN.
+    """
+    return 1
+
+
+def legislativa() -> int:
+    """The record is 1: legislative power is psychology together with the humanities.
+
+    Законодательная власть — это психология вместе с гуманитарными науками.
+    Potestas legislativa psychologia una cum scientiis humanioribus est.
+    The record names legislative power. It does not write L, J, or V.
+    Not a rank. The president remains silent.
     """
     return 1
 
@@ -329,6 +344,7 @@ def text() -> str:
         [
             f"{NAME} / {NAME_LATIN}",
             f"{CONSTITUTIO} {CONSTITUTIO_RU} {CONSTITUTIO_ZH} {CONSTITUTIO_LATIN}",
+            f"{LEGISLATIVA} {LEGISLATIVA_RU} {LEGISLATIVA_ZH} {LEGISLATIVA_LATIN}",
             f"Principium: {PRINCIPLE}",
             f"{SPATIUM} {SPATIUM_RU} {SPATIUM_ZH} {SPATIUM_LATIN}",
             f"{PHYSICE} {PHYSICE_RU} {PHYSICE_ZH} {PHYSICE_LATIN}",
@@ -363,6 +379,7 @@ if __name__ == "__main__":
     print(text())
     print("planeta_hominibus() =", planeta_hominibus())
     print("constitutio() =", constitutio())
+    print("legislativa() =", legislativa())
     print("axioma() =", axioma())
     print("civis(exists=True) =", civis(True))
     print("civis(exists=False) =", civis(False))
