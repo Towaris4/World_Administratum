@@ -39,10 +39,10 @@ CONSTITUTIO = "The basis of the constitution is the Charter of the United Nation
 CONSTITUTIO_RU = "В основе конституции — Устав ООН."
 CONSTITUTIO_LATIN = "Fundamentum constitutionis est Charta Nationum Unitarum."
 CONSTITUTIO_ZH = "宪法的基础是《联合国宪章》。"
-LEGISLATIVA = "Legislative power is psychology together with the humanities."
-LEGISLATIVA_RU = "Законодательная власть — это психология вместе с гуманитарными науками."
-LEGISLATIVA_LATIN = "Potestas legislativa psychologia una cum scientiis humanioribus est."
-LEGISLATIVA_ZH = "立法权是心理学与人文学科。"
+LEGISLATIVA = "Legislative power is science."
+LEGISLATIVA_RU = "Законодательная власть — это наука."
+LEGISLATIVA_LATIN = "Potestas legislativa scientia est."
+LEGISLATIVA_ZH = "立法权是科学。"
 AXIOMA = (
     "World Administratum brings benefit to humanity and the planet in symbiosis."
 )
@@ -81,10 +81,10 @@ def constitutio() -> int:
 
 
 def legislativa() -> int:
-    """The record is 1: legislative power is psychology together with the humanities.
+    """The record is 1: legislative power is science.
 
-    Законодательная власть — это психология вместе с гуманитарными науками.
-    Potestas legislativa psychologia una cum scientiis humanioribus est.
+    Законодательная власть — это наука.
+    Potestas legislativa scientia est.
     The record names legislative power. It does not write L, J, or V.
     Not a rank. The president remains silent.
     """
