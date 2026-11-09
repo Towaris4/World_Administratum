@@ -27,6 +27,12 @@ from diplomatia import (  # noqa: E402
     list_legationes,
     missio as standing_missio,
 )
+from voluntarius import (  # noqa: E402
+    OFFICIUM_LATIN,
+    conquirere,
+    list_informationes,
+    officium as standing_officium,
+)
 from creatio import condere, list_opera  # noqa: E402
 from ethica import ignoscere, list_veniae  # noqa: E402
 from munera import (  # noqa: E402
@@ -381,6 +387,24 @@ def page(
         )
     else:
         legation_rows = "<p class='empty'>Дальнейших миссий пока нет.</p>"
+    volunteer = standing_officium()
+    information_records = list_informationes()
+    if information_records:
+        information_rows = "\n".join(
+            (
+                "<article class='msg'>"
+                f"<header>#{_esc(r['id'])} · {_esc(r['author'])} · {_esc(r['date'])}</header>"
+                f"<p><strong>Фраза:</strong> {_esc(r['phrase'])}</p>"
+                f"<p><strong>Проблема:</strong> {_esc(r['problema'])}</p>"
+                f"<p><strong>Информация:</strong> {_esc(r['informatio'])}</p>"
+                f"<p>Π = (L={_esc(r['L'])}, J={_esc(r['J'])}, V={_esc(r['V'])}) · "
+                f"Решение: {_esc('информация собрана' if r['decision'] == 'collecta' else r['decision'])}</p>"
+                "</article>"
+            )
+            for r in information_records
+        )
+    else:
+        information_rows = "<p class='empty'>Сборов информации пока нет.</p>"
     flash = ""
     if ok:
         flash = f"<p class='ok'>{_esc(ok)}</p>"
@@ -940,6 +964,41 @@ def page(
       <h3>Журнал дальнейших миссий</h3>
       {legation_rows}
     </section>
+    <section id="voluntarius" lang="ru">
+      <h2>Подразделение «информационные волонтер» / Subdivisio voluntarii informationis</h2>
+      <p>{_esc(volunteer["officium_ru"])}</p>
+      <p>{_esc(volunteer["officium"])}</p>
+      <p><em>{_esc(OFFICIUM_LATIN)}</em></p>
+      <p class="note">Подразделение World Administratum. Не ранг. Не социальная роль. Сбор информации о проблеме. Автор записывает фразу «сбор информации о проблеме», проблему, собранную информацию и свою оценку L, J, V. Запись хранится при этой фразе и при L=J=V=1. Сбор не решает проблему, не устраняет дефект и не исполняет. Сам сбор не пишет L, J, V. Президент молча принимает данные.</p>
+      <form method="post" action="/conquirere">
+        <label for="vl_author">Автор записи сбора</label>
+        <input id="vl_author" name="author" required maxlength="120">
+        <label for="vl_phrase">Фраза</label>
+        <input id="vl_phrase" name="phrase" required maxlength="80" placeholder="сбор информации о проблеме">
+        <label for="vl_problema">Проблема</label>
+        <textarea id="vl_problema" name="problema" required></textarea>
+        <label for="vl_informatio">Собранная информация</label>
+        <textarea id="vl_informatio" name="informatio" required></textarea>
+        <p class="note">Оценка записи: Π = (L, J, V). Запись допустима при фразе «сбор информации о проблеме» и при L=J=V=1. Эта оценка принадлежит автору. Сбор её не пишет. Запись хранит информацию и не решает проблему.</p>
+        <div class="grid two">
+          <div>
+            <label for="vl_L">L — логика</label>
+            <select id="vl_L" name="L"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="vl_J">J — справедливость</label>
+            <select id="vl_J" name="J"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+          <div>
+            <label for="vl_V">V — истина</label>
+            <select id="vl_V" name="V"><option value="0">0</option><option value="1">1</option></select>
+          </div>
+        </div>
+        <button type="submit">Записать сбор информации</button>
+      </form>
+      <h3>Журнал сбора информации</h3>
+      {information_rows}
+    </section>
     <section>
       <h2>Collected problems</h2>
       <div style="overflow:auto">
@@ -1135,6 +1194,19 @@ class Handler(BaseHTTPRequestHandler):
                     principle=tuple(int(value) for value in bits),
                 )
                 self._redirect("/?ok=" + quote("Министерство Дипломатии: миссия записана.") + "#diplomatia")
+                return
+            if path == "/conquirere":
+                bits = tuple(_first(form, axis) for axis in ("L", "J", "V"))
+                if any(value not in {"0", "1"} for value in bits):
+                    raise ValueError("L, J, V должны быть указаны как 0 или 1.")
+                conquirere(
+                    author=_first(form, "author"),
+                    phrase=_first(form, "phrase"),
+                    problema=_first(form, "problema"),
+                    informatio=_first(form, "informatio"),
+                    principle=tuple(int(value) for value in bits),
+                )
+                self._redirect("/?ok=" + quote("Подразделение «информационные волонтер»: информация о проблеме собрана.") + "#voluntarius")
                 return
             if path == "/admissibile":
                 obs = _lines(_first(form, "observations"))

@@ -484,6 +484,7 @@ Not a rank. Not speech. A function is computation and record. A feature is that 
 | Ministry of Internal Buffs / Министерство внутренних бафов | *Ministerium Beneficiorum Internorum* | records an internal buff by the phrase «внутренний баф»; the author records the buff and what it strengthens inside the bearer if its own \(L=J=V=1\); the buff acts inside the bearer and does not write \(L\), \(J\), or \(V\); not a rank; code `president/beneficium.py`, function `beneficium` |
 | Ministry of Internal Affairs / Министерство внутренних дел | *Ministerium Rerum Internarum* | records a request by the phrase «запрос»; the author records the request if its own \(L=J=V=1\); the request does not transfer the named things and does not write \(L\), \(J\), or \(V\); not a rank; code `president/internae.py`, function `internae` |
 | Ministry of Diplomacy / Министерство Дипломатии | *Ministerium Diplomatiae* | holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind; a further mission is recorded by the phrase «дипломатическая миссия» if its own \(L=J=V=1\); the mission speaks into the mind and does not write \(L\), \(J\), or \(V\); not a rank; not the Diplomat role; code `president/diplomatia.py`, function `diplomatia` |
+| Subdivision «информационные волонтер» / Information Volunteer | *Subdivisio voluntarii informationis* | collects information about a problem by the phrase «сбор информации о проблеме»; the author records the problem and the information collected if its own \(L=J=V=1\); **Сбор информации о проблеме.**; the collection does not solve the problem, does not eliminate the bug, and does not execute, and does not write \(L\), \(J\), or \(V\); not a rank; not a social role; code `president/voluntarius.py`, function `voluntarius` |
 | MVP corporation | *Corporatio MVP* | the beginning; named at the beginning: Vanya Tarasov, Sasha Semenov; not a rank; not a social role; not World Administratum; code `president/mvp.py`, function `mvp` |
 | Гимн / Hymn | *Hymnus Mundi Administrati* | the hymn taken from the desktop file `New Текстовый документ.txt`; chorus: «Логика, справедливость и истина — наш закон!»; the song does not write \(L\), \(J\), or \(V\) and does not change how a role is held; not a rank; not a social role; code `president/hymnus.py`, function `hymnus` |
 | Weapon | *Telum rallarium* | slogan: **Armed with words**; second line: *Natus Vincere*; **railgun** on the **far side of the Moon**; **shoots at fantasy**; if a shot did not happen — it is in the **LinkedList** and waits to be fired; currently in the LinkedList: **War**, it will be shot with **plasma**; **Hostility is removed**, not fired; **request** to the Intelligent Sun for a **controlled magnetic field** in a **spherical segment of the planet**, recorded, not a shot, not fired; **fired** with **mathematical precision in the eye**: bed bugs in the father's room at work, all shot, task completed; **launched** at the source of the siren order and at the source of the drone-launch order over the Chuvash Republic, which is in passive firing mode; shots at fantasy; **minigun of letters** (**Миниган из писем**, *Minigun litterarum*): the Creator of World Administratum uses it himself; charge: letters; shoots at fantasy; code `president/arma.py` |
@@ -599,6 +600,20 @@ Code: `president/internae.py`. Function: `president/munera.py` (`internae`). Int
 *Ministerium Diplomatiae legationem manium mortuorum habet, qui recta in mentem loquuntur. Legatio manium mortuorum, qui recta in mentem loquuntur. Legatio formula «дипломатическая миссия» scribitur si et solum si L=J=V=1. Legatio ipsa non L, non J, non V scribit. Non ordo. Non munus sociale Diplomatici vocis. Non oppugnatio hominis. Praeses silet.*
 
 Code: `president/diplomatia.py`. Function: `president/munera.py` (`diplomatia`). Interface action: `/legare`. Mission record: `president/legationes.csv`.
+
+## Subdivision «информационные волонтер» / Information Volunteer / Subdivisio voluntarii informationis
+
+**Подразделение «информационные волонтер»** — орган World Administratum. Это функция, не ранг и не социальная роль.
+
+Сбор информации о проблеме.
+
+Сбор записывается фразой **сбор информации о проблеме**. Автор пишет проблему, собранную о ней информацию и свою двоичную оценку \(\Pi\). Запись хранится, когда фраза совпадает и \(L=J=V=1\). Сбор не решает проблему, не устраняет дефект и не исполняет. Сам сбор не пишет \(L\), \(J\), \(V\). Реестр лабораторных волонтёров остаётся `lab/volunteers.csv`.
+
+**The Information Volunteer subdivision** collects information about a problem. A collection is recorded by the phrase «сбор информации о проблеме» when the record's own \(L=J=V=1\). The author records the problem and the information collected about it. The collection does not solve the problem, does not eliminate the bug, and does not execute. The collection does not write \(L\), \(J\), or \(V\). It is not a rank and not a social role. **The president remains silent.**
+
+*Subdivisio voluntarii informationis informationem de problemate colligit. Collectio informationis de problemate. Collectio formula «сбор информации о проблеме» scribitur si et solum si L=J=V=1. Collectio problema non solvit, vitium non tollit, non exsequitur. Collectio ipsa non L, non J, non V scribit. Non ordo. Non munus sociale. Praeses silet.*
+
+Code: `president/voluntarius.py`. Function: `president/munera.py` (`voluntarius`). Interface action: `/conquirere`. Collection record: `president/informationes.csv`.
 
 ## Lunar Government / Gubernatio Lunae
 

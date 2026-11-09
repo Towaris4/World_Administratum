@@ -172,6 +172,12 @@ MUNERA: tuple[dict[str, str], ...] = (
         "feature": "holds the diplomatic mission of the ghosts of the deceased, who speak directly into the mind; a further mission is recorded by the phrase «дипломатическая миссия» with L=J=V=1; the mission speaks into the mind; the mission does not write L, J, or V; president/diplomatia.py → president/legationes.csv; an organ, not a rank, not the Diplomat role, not an attack on a person",
     },
     {
+        "id": "voluntarius",
+        "name": "Подразделение «информационные волонтер» / Information Volunteer",
+        "latin": "Subdivisio voluntarii informationis",
+        "feature": "collects information about a problem by the phrase «сбор информации о проблеме»; an author records the problem and the information collected, with L=J=V=1; Сбор информации о проблеме; the collection does not solve the problem, does not eliminate the bug, and does not execute; the collection does not write L, J, or V; president/voluntarius.py → president/informationes.csv; an organ, not a rank, not a social role",
+    },
+    {
         "id": "telum",
         "name": "Weapon",
         "latin": "Telum rallarium",
